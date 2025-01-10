@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var motion = MotionManager()
+    
     var body: some View {
-        
         
         ZStack {
             Color.background
@@ -19,10 +20,31 @@ struct ContentView: View {
                 VStack(spacing: -40) {
                     //Title
                     Text("Let's Learn")
+                        .foregroundStyle(
+                            .accent.gradient.shadow(
+                                .inner(color: .black, radius: 1, x: motion.x * 50, y: motion.y * 50)
+                            )
+                            .shadow(
+                                .drop(color: .black.opacity(0.2), radius: 1, x: motion.x * 50, y: motion.y * 50)
+                            )
+                        )
                         .font(.custom("InknutAntiqua-Light", size: 26))
+//                        .overlay(
+//                                Text("Let's Learn")
+//                                    .font(.custom("InknutAntiqua-Light", size: 26))
+//                                    .stroke(Color.blue, lineWidth: 10) // Stroke color and width
+//                            )
 
                         
                     Text("Chinese")
+                        .foregroundStyle(
+                            .accent.gradient.shadow(
+                                .inner(color: .black, radius: 1, x: motion.x * 50, y: motion.y * 50)
+                            )
+                            .shadow(
+                                .drop(color: .black.opacity(0.2), radius: 3, x: motion.x * 50, y: motion.y * 50)
+                            )
+                        )
                         .font(.custom("InknutAntiqua-Bold", size: 40))
                     
                 } // title v
