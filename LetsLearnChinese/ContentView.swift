@@ -19,11 +19,9 @@ struct ContentView: View {
                 VStack(spacing: -4) {
                     //Title
                     Text("Let's Learn")
-                        .fontWeight(.light)
                         .font(.system(size: 26))
                         
                     Text("Chinese")
-                        .bold()
                         .font(.system(size: 40))
                     
                 } // title v
