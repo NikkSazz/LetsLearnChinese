@@ -16,19 +16,20 @@ struct ContentView: View {
                 .ignoresSafeArea()
             VStack(alignment:  .center) {
                 
-                VStack(spacing: -4) {
+                VStack(spacing: -40) {
                     //Title
                     Text("Let's Learn")
-                        .font(.system(size: 26))
+                        .font(.custom("InknutAntiqua-Light", size: 26))
+
                         
                     Text("Chinese")
-                        .font(.system(size: 40))
+                        .font(.custom("InknutAntiqua-Bold", size: 40))
                     
                 } // title v
                 .padding(.horizontal, 72)
-//                .padding(.top, 70)
                 .padding(.bottom, 16)
-                .foregroundStyle(.accent)
+                .foregroundStyle(.accent) // Color
+                
                 
                 Image(systemName: "globe")
                     .imageScale(.large)
