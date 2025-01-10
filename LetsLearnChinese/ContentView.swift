@@ -8,22 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var motion = MotionManager()
+    
     var body: some View {
-        
         
         ZStack {
             Color.background
                 .ignoresSafeArea()
             VStack(alignment:  .center) {
                 
-                VStack(spacing: -40) {
-                    //Title
-                    Text("Let's Learn")
-                        .font(.custom("InknutAntiqua-Light", size: 26))
+                VStack(spacing: -40) { // title
+                    
+                    StrokedText(
+                                text: "Let's Learn",
+                                font: .custom("InknutAntiqua-Light", size: 26),
+                                strokeColor: .black,
+                                strokeWidth: 2,
+                                fillColor: .accent
+                            )
+                    
+                    StrokedText(
+                        text: "Chinese",
+                        font: .custom("InknutAntiqua-Bold", size: 40),
+                        strokeColor: .black,
+                        strokeWidth: 2,
+                        fillColor: .accent)
 
-                        
-                    Text("Chinese")
-                        .font(.custom("InknutAntiqua-Bold", size: 40))
                     
                 } // title v
                 .padding(.horizontal, 72)
