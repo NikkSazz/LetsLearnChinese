@@ -34,6 +34,17 @@ struct ContentView: View {
                         strokeWidth: 2,
                         fillColor: .accent)
 
+                        
+                    Text("Chinese")
+                        .foregroundStyle(
+                            .accent.gradient.shadow(
+                                .inner(color: .black, radius: 1, x: motion.x * 50, y: motion.y * 50)
+                            )
+                            .shadow(
+                                .drop(color: .black.opacity(0.2), radius: 3, x: motion.x * 50, y: motion.y * 50)
+                            )
+                        )
+                        .font(.custom("InknutAntiqua-Bold", size: 40))
                     
                 } // title v
                 .padding(.horizontal, 72)
