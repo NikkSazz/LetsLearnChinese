@@ -9,47 +9,72 @@ import SwiftUI
 
 struct TestView: View {
     var body: some View {
-        ZStack{
-            Color.black
-                .ignoresSafeArea()
-            
-            Color.black
-                .opacity(0.25)
-                .overlay(
-                    Rectangle()
-                        .fill(.scrollBackground)
-                        .padding(10) // Padding for the inner shadow effect
-                        .frame(maxWidth: .infinity)
-                        .frame(height: .infinity)
-                        .blur(radius: 25) // Change this if you want less shadow ikr
-                )
-                .shadow(color: Color.black.opacity(0.25), radius: 5, x: 5, y: -5)
-                .ignoresSafeArea()
-            
-            VStack {
-                Spacer()
-                ZStack {
-                    // Inner shadow
-                    Rectangle()
-                        .fill(Color.black.opacity(0.75))
-                        .padding(2) // Padding for the inner shadow effect
-                        .frame(height: 34)
-                        .frame(maxWidth: .infinity)
-                        .blur(radius: 5) // Adds the blur to the inner shadow
-
-                    // Outer box with shadow
-                    Rectangle()
-                        .fill(Color.background)
-                        .frame(height: 34)
-                        .frame(maxWidth: .infinity)
-                        .shadow(color: Color.black.opacity(0.25), radius: 5, x: 0, y: -5) // Outer shadow
-                }
+        NavigationStack {
+            ZStack {
+                Color.background
+                    .ignoresSafeArea()
+                
+                VStack(alignment:  .center) { // Content
+                    
+                    //                Title()
+                    VStack(spacing: -50) {
+                        
+                        Group {
+                            StrokedText(
+                                text: "Let's Learn",
+                                font: .custom("InknutAntiqua-Light", size: 26),
+                                strokeColor: .black,
+                                strokeWidth: 2,
+                                fillColor: .accent
+                            )
+                            
+                            
+                            StrokedText(
+                                text: "Chinese",
+                                font: .custom("InknutAntiqua-Bold", size: 40),
+                                strokeColor: .black,
+                                strokeWidth: 2,
+                                fillColor: .accent
+                            )
+                        }
+                        
+                        
+                    }
+                    .padding(.horizontal, 72)
+                    .padding(.bottom, -16)
+                    //                Title()
+                    
+                    
+                    ScrollView {
+                        VStack(spacing: 10) {
+                            ForEach(0..<8) { index in
+                                NavigationLink(destination: {
+                                    ContentView()
+                                }, label: {
+                                    Button(action: {
+                                        print("Button \(index) tapped")
+                                    }) {
+                                        Rectangle()
+                                            .fill(Color.red)
+                                            .frame(height: 75)
+                                            .cornerRadius(8)
+                                    }
+                                    Spacer()
+                                })
+                            }
+                        }
+                        .padding()
+                    }
+                    
+                } // v
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .padding(.bottom, 16)
             }
-            .edgesIgnoringSafeArea(.bottom)
-        }
-    }
+            
+        } // z
+    } // view
 } // view struct
 
-#Preview {
-    TestView()
-}
+//#Preview {
+//    TestView()
+//}
