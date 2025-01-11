@@ -18,38 +18,51 @@ struct ContentView: View {
             
             VStack(alignment:  .center) { // Content
                 
-                VStack(spacing: -50) { // title
+//                Title()
+                VStack(spacing: -50) {
                     
-                    StrokedText(
-                        text: "Let's Learn",
-                        font: .custom("InknutAntiqua-Light", size: 26),
-                        strokeColor: .black,
-                        strokeWidth: 2,
-                        fillColor: .accent
-                    )
-        
-                    StrokedText(
-                        text: "Chinese",
-                        font: .custom("InknutAntiqua-Bold", size: 40),
-                        strokeColor: .black,
-                        strokeWidth: 2,
-                        fillColor: .accent
-                    )
-                                
-
-                } // title v
+                    Group {
+                        StrokedText(
+                            text: "Let's Learn",
+                            font: .custom("InknutAntiqua-Light", size: 26),
+                            strokeColor: .black,
+                            strokeWidth: 2,
+                            fillColor: .accent
+                        )
+                        
+                        
+                        StrokedText(
+                            text: "Chinese",
+                            font: .custom("InknutAntiqua-Bold", size: 40),
+                            strokeColor: .black,
+                            strokeWidth: 2,
+                            fillColor: .accent
+                        )
+                    }
+                    
+                    
+                }
                 .padding(.horizontal, 72)
-                .padding(.bottom, 16)
+                .padding(.bottom, -16)
+//                Title()
                 
                 
-    
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world! yo")
-                    .foregroundStyle(.accent)
-                    .backgroundStyle(.accent)
-                
+                ScrollView {
+                    VStack(spacing: 10) {
+                        ForEach(0..<8) { index in
+                            Button(action: {
+                                print("Button \(index) tapped")
+                            }) {
+                                Rectangle()
+                                    .fill(Color.red)
+                                    .frame(height: 75)
+                                    .cornerRadius(8)
+                            }
+                            Spacer()
+                        }
+                    }
+                    .padding()
+                }
             } // v
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .padding(.bottom, 16)
