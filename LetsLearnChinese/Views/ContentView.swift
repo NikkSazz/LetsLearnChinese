@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var motion = MotionManager()
+//    @StateObject private var motion = MotionManager()
     
     var body: some View {
         
@@ -63,6 +63,7 @@ struct ContentView: View {
                     }
                     .padding()
                 }
+                
             } // v
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .padding(.bottom, 16)
