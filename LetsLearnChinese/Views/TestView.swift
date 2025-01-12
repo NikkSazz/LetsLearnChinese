@@ -72,6 +72,8 @@ struct TestView: View {
             }
             
         } // z
+//        .navigationBarBackButtonHidden(true)
+        .interactiveDismissDisabled(false)
     } // view
 } // view struct
 
