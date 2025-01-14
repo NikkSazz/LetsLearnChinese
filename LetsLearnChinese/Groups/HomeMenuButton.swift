@@ -12,7 +12,7 @@ func homeMenuButton<Destination: View>(
     destination: Destination,
     buttonHeight: CGFloat
 ) -> some View {
-    NavigationLink(destination: TestView()){
+    NavigationLink(destination: destination){
         ZStack {
             Rectangle()
                 .fill(Color.buttonEdge)
@@ -35,4 +35,4 @@ func homeMenuButton<Destination: View>(
     } // navlink
     .padding()
     .padding(.bottom, -25)
-} // view
+    } // view

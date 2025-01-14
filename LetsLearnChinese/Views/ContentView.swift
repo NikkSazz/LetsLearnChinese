@@ -21,28 +21,28 @@ struct ContentView: View {
                 VStack (alignment: .center, spacing: 10){ // dont think the spacing does anything
                     ScrollView {
                         
-                        homeMenuButton(text: "NoteCard", destination: TestView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "NoteCard", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Writing", destination: TestView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "Writing", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Multiple Choice", destination: TestView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "Multiple Choice", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Fish Game", destination: TestView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "Fish Game", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Review Exam", destination: TestView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "Review Exam", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Emotional Duck", destination: TestView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "Emotional Duck", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Statistics", destination: TestView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "Statistics", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "About Me", destination: TestView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "About Me", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
                         
