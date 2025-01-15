@@ -18,7 +18,11 @@ struct ContentView: View {
                 
                 DefaultBackground()
                 
-                VStack (alignment: .center, spacing: 10){ // dont think the spacing does anything
+                VStack {
+                    
+                    TopBar()
+                        .frame(alignment: .top)
+                    
                     ScrollView {
                         
                         homeMenuButton(text: "NoteCard", destination: NotImplimentedView(), buttonHeight: buttonHeight)
@@ -44,10 +48,15 @@ struct ContentView: View {
                         
                         homeMenuButton(text: "About Me", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
-                        
+
+                        Spacer(minLength: 50)
+                        Text(":)")
+                            .foregroundStyle(.accent)
+                            .opacity(0.075)
+                        Spacer(minLength: 50)
                         
                     } // scroll
-                    .padding(.top, 130)
+//                    .padding(.top, -240)
                     .padding(.bottom, 1)
                 } // v
             } // z

@@ -14,17 +14,6 @@ struct NotImplimentedView: View {
             
             Text("Sorry, this\npart of the app is\nnot yet implimented")
                 .foregroundStyle(.accent)
-        }   /*
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: {
-                    // Leave this action blank or use default behavior
-                }) {
-                    Text("") // Empty text
-                        .opacity(0) // Makes the button invisible
-                }
-            }
         }
-        */
     }
 }

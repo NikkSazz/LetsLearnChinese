@@ -26,8 +26,7 @@ struct DefaultBackground: View {
             .ignoresSafeArea()
         // Gray inside
         
-        TopBar()
-        
+//        TopBar(title: "A", subtitle: "AA")        
         
         BottomBar()
     }
