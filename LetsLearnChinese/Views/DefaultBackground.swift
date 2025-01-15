@@ -29,5 +29,7 @@ struct DefaultBackground: View {
 //        TopBar(title: "A", subtitle: "AA")        
         
         BottomBar()
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .edgesIgnoringSafeArea(.bottom)
     }
 }

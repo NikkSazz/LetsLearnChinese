@@ -10,7 +10,7 @@ import SwiftUI
 struct BottomBar: View {
     var body: some View {
         VStack {
-            Spacer()
+//            Spacer()
             ZStack {
                 // Inner shadow
                 Rectangle()

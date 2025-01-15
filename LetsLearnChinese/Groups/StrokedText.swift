@@ -29,8 +29,6 @@ struct StrokedText: View {
     }
 }
 
-
-
 struct InnerShadowText: View {
     var text: String
     var font: Font

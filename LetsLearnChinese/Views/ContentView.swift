@@ -46,7 +46,7 @@ struct ContentView: View {
                         homeMenuButton(text: "Statistics", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "About Me", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "About Me", destination: AboutMeView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
 
                         Spacer(minLength: 50)
@@ -56,8 +56,7 @@ struct ContentView: View {
                         Spacer(minLength: 50)
                         
                     } // scroll
-//                    .padding(.top, -240)
-                    .padding(.bottom, 1)
+                    .padding(.bottom, 1) // For the bottom bar
                 } // v
             } // z
         } // nav
