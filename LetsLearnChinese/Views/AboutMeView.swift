@@ -19,7 +19,9 @@ struct AboutMeView: View {
                 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 12) {
-                        Spacer()
+                        Spacer() // keep
+                        // Delete me
+                        LinksParagraph()
                         
                         AboutMeHeader(text: "About Me", fontSize: bigSize)
                         
@@ -41,7 +43,7 @@ struct AboutMeView: View {
                         
                         AboutMeParagraph(text: "Swift,  SwiftUI,  XCode, Figma, Git", fontSize: smallSize)
                         
-                        AboutMeParagraph(text: "Swift Data,  SQLite,  Visual Studio", fontSize: smallSize)
+                        AboutMeParagraph(text: "Swift Data,  SQLite,  Swift Doc", fontSize: smallSize)
   
                         
                         AboutMeHeader(text: "Contact Me", fontSize: bigSize)
@@ -51,6 +53,8 @@ struct AboutMeView: View {
                         AboutMeParagraph(text: "This is where I write all my contact Information", fontSize: smallSize)
                         AboutMeParagraph(text: "This is where I write all my contact Information", fontSize: smallSize)
                         AboutMeParagraph(text: "This is where I write all my contact Information", fontSize: smallSize)
+                        
+                        LinksParagraph()
                         
                         Spacer(minLength: 50)
                         Text(":)")
@@ -119,4 +123,93 @@ struct AboutMeParagraph: View {
 
 #Preview(){
     AboutMeView()
+}
+
+struct LinksParagraph: View {
+    var body: some View {
+        HStack {
+            let iconSize: CGFloat = 35
+            ZStack {
+                Image("InstagramIcon")
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: iconSize, height: iconSize)
+                    .foregroundStyle(.black)
+                    .blur(radius: 10)
+                    .offset(x: 4, y: 4)
+                
+                Image("InstagramIcon")
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: iconSize, height: iconSize)
+                    .foregroundStyle(.black)
+                    .offset(x: 4, y: 4)
+                
+                Image("InstagramIcon")
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: iconSize, height: iconSize)
+                    .foregroundStyle(.accent)
+            }
+                
+            
+            Text("Instagram:  ")
+                .foregroundStyle(.accent)
+            
+            Link("@NikkSazz", destination: URL(string: "www.instagram.com/nikksazz/")!)
+                .foregroundStyle(.blue)
+                
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        
+            
+        Divider()
+            .frame(height: 2)
+            .background(.accent)
+            
+        LinkStyle(text: "Instagram:  ", imgName: "InstagramIcon", linkStr: "www.instagram.com/nikksazz/")
+    }
+}
+
+struct LinkStyle: View {
+    var text: String = "No Text :("
+    var imgName: String = "InstagramIcon"
+    var linkStr: String = "www.instagram.com/nikksazz/"
+    
+    var body: some View {
+        HStack {
+            let iconSize: CGFloat = 35
+            ZStack {
+                Image(imgName)
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: iconSize, height: iconSize)
+                    .foregroundStyle(.black)
+                    .blur(radius: 10)
+                    .offset(x: 4, y: 4)
+                
+                Image(imgName)
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: iconSize, height: iconSize)
+                    .foregroundStyle(.black)
+                    .offset(x: 4, y: 4)
+                
+                Image(imgName)
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: iconSize, height: iconSize)
+                    .foregroundStyle(.accent)
+            }
+                
+            
+            Text(text)
+                .foregroundStyle(.accent)
+            
+            Link("@NikkSazz", destination: URL(string: linkStr)!)
+                .foregroundStyle(.blue)
+                
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
 }

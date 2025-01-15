@@ -47,7 +47,6 @@ struct ContentView: View {
                             .opacity(0.5)
                         
                         homeMenuButton(text: "About Me", destination: AboutMeView(), buttonHeight: buttonHeight)
-                            .opacity(0.5)
 
                         Spacer(minLength: 50)
                         Text(":)")
