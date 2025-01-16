@@ -20,12 +20,10 @@ struct AboutMeView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 12) {
                         Spacer() // keep
-                        // Delete me
-                        LinksParagraph()
                         
                         AboutMeHeader(text: "About Me", fontSize: bigSize)
                         
-                        AboutMeParagraph(text: "Hi, I’m Nikolai Sazonov, 18-year-old Mathematics and Computer Science major at Hobart College '28.\nI’m also learning Chinese to challenge myself in a completely different field.", fontSize: smallSize)
+                        AboutMeParagraph(text: "Hi,  I’m Nikolai Sazonov,   18-year-old Mathematics and Computer Science major at Hobart College,  Class of  2028.\nI’m also learning Chinese to challenge myself in a completely different field.", fontSize: smallSize)
 
 
                         AboutMeHeader(text: "Why I built This App", fontSize: bigSize)
@@ -41,9 +39,7 @@ struct AboutMeView: View {
                         
                         AboutMeParagraph(text: "As a first time Apple Developer, I had to learn alot about Apple Ecosystem.", fontSize: smallSize)
                         
-                        Divider()
-                            .frame(height: 2)
-                            .background(.accent)
+                        DividerStyle()
                         
                         AboutMeParagraph(text: "Swift,  SwiftUI,  XCode, Github, Git", fontSize: smallSize)
                         
@@ -55,12 +51,10 @@ struct AboutMeView: View {
                         AboutMeHeader(text: "Contact Me", fontSize: bigSize)
                         
                         AboutMeParagraph(text: "This is where I write all my contact Information", fontSize: smallSize)
-                        AboutMeParagraph(text: "This is where I write all my contact Information", fontSize: smallSize)
-                        AboutMeParagraph(text: "This is where I write all my contact Information", fontSize: smallSize)
-                        AboutMeParagraph(text: "This is where I write all my contact Information", fontSize: smallSize)
-                        AboutMeParagraph(text: "This is where I write all my contact Information", fontSize: smallSize)
+                        
                         
                         LinksParagraph()
+                        
                         
                         Spacer(minLength: 50)
                         Text(":)")
@@ -136,57 +130,95 @@ struct AboutMeParagraph: View {
 struct LinksParagraph: View {
     var body: some View {
         
-        LinkStyle(text: "Email:", imgName: "EmailIcon", linkDestination: "https://malito:nsazonov9@gmail.com/", linkText: "nsazonov9@gmail.com", isCopyPaste: true)
+        LinkStyle(text: "Email:", imgName: "EmailIcon", linkDestination: "https://malito:nsazonov9@gmail.com/", linkText: " Copy Email ", isCopyPaste: true)
         
-        Divider()
-            .frame(height: 2)
-            .background(.accent)
+        DividerStyle()
             
-        LinkStyle(text: "Instagram:  ", imgName: "InstagramIcon", linkDestination: "www.instagram.com/nikksazz/")
+        LinkStyle(text: "Github:  ", imgName: "GithubIcon", linkDestination: "https://github.com/NikkSazz")
+        
+        DividerStyle()
+            
+        LinkStyle(text: "Repository:  ", imgName: "RepositoryIcon", linkDestination: "https://github.com/NikkSazz/LetsLearnChinese/tree/main/LetsLearnChinese")
+        
+        DividerStyle()
+        
+        LinkStyle(text: "LinkedIn:  ", imgName: "LinkedInIcon", linkDestination: "https://www.linkedin.com/in/nikolai-sazonov-9a7218331/")
+        
+        DividerStyle()
+            
+        LinkStyle(text: "Instagram:  ", imgName: "InstagramIcon", linkDestination: "www.instagram.com/nikksazz/", linkText: "@NikkSazz")
+        
+        DividerStyle()
+            
+        LinkStyle(text: "League of Legends:", noImage: true, linkDestination: "AyaMaya#maya", linkText: "AyaMaya#maya", isCopyPaste: true)
     }
 }
 
 struct LinkStyle: View {
     var text: String = "No Text :("
-    var imgName: String = "InstagramIcon"
+    var imgName: String = ""
+    var noImage: Bool = false
     var linkDestination: String = "www.instagram.com/nikksazz/"
-    var linkText = "@NikkSazz"
+    var linkText = "- Get Link -"
     var isCopyPaste = false
+    
     
     var body: some View {
         HStack(spacing: 20) {
             let iconSize: CGFloat = 35
-            ZStack {
-                Image(imgName)
-                    .renderingMode(.template)
-                    .resizable()
-                    .frame(width: iconSize, height: iconSize)
-                    .foregroundStyle(.black)
-                    .blur(radius: 10)
-                    .offset(x: 4, y: 4)
-                
-                Image(imgName)
-                    .renderingMode(.template)
-                    .resizable()
-                    .frame(width: iconSize, height: iconSize)
-                    .foregroundStyle(.black)
-                    .offset(x: 4, y: 4)
-                
-                Image(imgName)
-                    .renderingMode(.template)
-                    .resizable()
-                    .frame(width: iconSize, height: iconSize)
-                    .foregroundStyle(.accent)
-            } // z
-                
+            if(!noImage){
+                ZStack {
+                    Image(imgName)
+                        .renderingMode(.template)
+                        .resizable()
+                        .frame(width: iconSize, height: iconSize)
+                        .foregroundStyle(.black)
+                        .blur(radius: 10)
+                        .offset(x: 4, y: 4)
+                    
+                    Image(imgName)
+                        .renderingMode(.template)
+                        .resizable()
+                        .frame(width: iconSize, height: iconSize)
+                        .foregroundStyle(.black)
+                        .offset(x: 4, y: 4)
+                    
+                    Image(imgName)
+                        .renderingMode(.template)
+                        .resizable()
+                        .frame(width: iconSize, height: iconSize)
+                        .foregroundStyle(.accent)
+                } // z
+            }
+
             
-            Text(text)
-                .foregroundStyle(.accent)
+            ZStack {
+                Text(text)
+                    .foregroundStyle(.black)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
+                    .blur(radius: 4)
+                
+                Text(text)
+                    .foregroundStyle(.black)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
+                    .blur(radius: 1)
+                    .offset(x: 3,y: 2)
+                
+                Text(text)
+                    .foregroundStyle(.accent)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
+            }
+           
+            
             if(isCopyPaste){
                 Button(action: {
-                    UIPasteboard.general.string = "nsazonov9@gmail.com"
+                    UIPasteboard.general.string = linkDestination
                 }){
-                    Text("Copy Email")
+                    Text(linkText)
+                    
                         .foregroundColor(.blue)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 5)
@@ -212,3 +244,20 @@ struct LinkStyle: View {
         .padding(.horizontal, 10)
     } // view
 } // struct
+
+struct DividerStyle: View {
+    var body: some View {
+        ZStack {
+            Divider()
+                .frame(height: 2)
+                .background(.accent)
+                .blur(radius: 10)
+                .opacity(0.8)
+            
+            Divider()
+                .frame(height: 2)
+                .frame(maxWidth: .infinity)
+                .background(.accent)
+        }
+    }
+}
