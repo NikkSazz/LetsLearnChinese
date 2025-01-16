@@ -41,6 +41,10 @@ struct AboutMeView: View {
                         
                         AboutMeParagraph(text: "As a first time Apple Developer, I had to learn alot about Apple Ecosystem.", fontSize: smallSize)
                         
+                        Divider()
+                            .frame(height: 2)
+                            .background(.accent)
+                        
                         AboutMeParagraph(text: "Swift,  SwiftUI,  XCode, Github, Git", fontSize: smallSize)
                         
                         AboutMeParagraph(text: "Swift Data,  SQLite,  Swift Doc", fontSize: smallSize)
@@ -127,59 +131,30 @@ struct AboutMeParagraph: View {
     AboutMeView()
 }
 
+
+
 struct LinksParagraph: View {
     var body: some View {
-        HStack {
-            let iconSize: CGFloat = 35
-            ZStack {
-                Image("InstagramIcon")
-                    .renderingMode(.template)
-                    .resizable()
-                    .frame(width: iconSize, height: iconSize)
-                    .foregroundStyle(.black)
-                    .blur(radius: 10)
-                    .offset(x: 4, y: 4)
-                
-                Image("InstagramIcon")
-                    .renderingMode(.template)
-                    .resizable()
-                    .frame(width: iconSize, height: iconSize)
-                    .foregroundStyle(.black)
-                    .offset(x: 4, y: 4)
-                
-                Image("InstagramIcon")
-                    .renderingMode(.template)
-                    .resizable()
-                    .frame(width: iconSize, height: iconSize)
-                    .foregroundStyle(.accent)
-            }
-                
-            
-            Text("Instagram:  ")
-                .foregroundStyle(.accent)
-            
-            Link("@NikkSazz", destination: URL(string: "www.instagram.com/nikksazz/")!)
-                .foregroundStyle(.blue)
-                
-        }
-        .frame(maxWidth: .infinity, alignment: .center)
         
-            
+        LinkStyle(text: "Email:", imgName: "EmailIcon", linkDestination: "https://malito:nsazonov9@gmail.com/", linkText: "nsazonov9@gmail.com", isCopyPaste: true)
+        
         Divider()
             .frame(height: 2)
             .background(.accent)
             
-        LinkStyle(text: "Instagram:  ", imgName: "InstagramIcon", linkStr: "www.instagram.com/nikksazz/")
+        LinkStyle(text: "Instagram:  ", imgName: "InstagramIcon", linkDestination: "www.instagram.com/nikksazz/")
     }
 }
 
 struct LinkStyle: View {
     var text: String = "No Text :("
     var imgName: String = "InstagramIcon"
-    var linkStr: String = "www.instagram.com/nikksazz/"
+    var linkDestination: String = "www.instagram.com/nikksazz/"
+    var linkText = "@NikkSazz"
+    var isCopyPaste = false
     
     var body: some View {
-        HStack {
+        HStack(spacing: 20) {
             let iconSize: CGFloat = 35
             ZStack {
                 Image(imgName)
@@ -202,16 +177,38 @@ struct LinkStyle: View {
                     .resizable()
                     .frame(width: iconSize, height: iconSize)
                     .foregroundStyle(.accent)
-            }
+            } // z
                 
             
             Text(text)
                 .foregroundStyle(.accent)
+            if(isCopyPaste){
+                Button(action: {
+                    UIPasteboard.general.string = "nsazonov9@gmail.com"
+                }){
+                    Text("Copy Email")
+                        .foregroundColor(.blue)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 5)
+                        .background(.accent)
+                        .opacity(0.8)
+                        .cornerRadius(8)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+            }
+            else{
+                Link(linkText, destination: URL(string: linkDestination)!)
+                    .foregroundStyle(.blue)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 5)
+                    .background(.accent)
+                    .opacity(0.8)
+                    .cornerRadius(8)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
             
-            Link("@NikkSazz", destination: URL(string: linkStr)!)
-                .foregroundStyle(.blue)
-                
-        }
-        .frame(maxWidth: .infinity, alignment: .center)
-    }
-}
+        } // h
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 10)
+    } // view
+} // struct
