@@ -1,26 +1,31 @@
-# Project Title
+# Let's Learn Chinese
 
-A brief description of what this project does and who it's for.
+Language Learning app developed for the HWS Colleges Chinese Cirriculum
+Developer: Nikolai Sazonov
 
 ---
 
 ## Table of Contents
 
-- [About](#about)
+- [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Features](#features)
+- [About](#about)
 - [Contributing](#contributing)
 - [License](#license)
 
 ---
 
-## About
+## Features
 
-A detailed description of the project:
-- **Purpose**: What problem does this solve?
-- **Audience**: Who is this for?
-- **Features**: Overview of the key functionality.
+Let's Learn Chinese has the following features:
+- **Dictionary**: All Chinese Characters Sorted by Units, includes translation, pinyin, and example sentences.
+- **Multiple Choice**: Multiple Choice examinations, fill in the blank, English to Chinese, Chinese to pinyin, Chinese to English.
+- **Writing**: User writed the english character given, in chinese on a paper.
+- **Note Cards**: Note Cards where you can test yourself with translating characters
+- **Review Exam**: HWS Style Chinese Exams, with Level of Difficulty, with multiple units.
+- **Emotional Duck**: 3-dimensional support duck.
+- **Statistics**: Statistics of the users percentage error of given characters or units, and game modes.
 
 If applicable, include screenshots or a demo GIF:
 
@@ -77,7 +82,7 @@ exampleFunction();
 
 ---
 
-## Features
+## About
 
 - Bullet points of major features.
 - Highlight what makes this project unique.
@@ -117,7 +122,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 If you have any questions, feel free to reach out:
 - Email: your-email@example.com
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@NikkSazz](https://github.com/NikkSazz)
 
 ---
 
