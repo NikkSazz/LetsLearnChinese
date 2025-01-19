@@ -12,20 +12,22 @@ struct DBView: View {
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
-        VStack {
+        VStack (spacing: 20){
             Button("Add Units") {
                 let unit1 = Unit(id: 1, name: "Basics")
                 let unit2 = Unit(id: 2, name: "Advanced")
                 modelContext.insert(unit1)
                 modelContext.insert(unit2)
             }
+            .backgroundStyle(.buttonFill)
             
             Button("Add Chinese Characters") {
-                let character1 = ChineseCharacter(id: 1, character: "你", unitId: 1, english: ["you"])
-                let character2 = ChineseCharacter(id: 2, character: "好", unitId: 1, english: ["good"])
+                let character1 = ChineseCharacter(character: "你", unitId: 1, english: ["you"])
+                let character2 = ChineseCharacter(character: "好", unitId: 1, english: ["good"])
                 modelContext.insert(character1)
                 modelContext.insert(character2)
             }
+            .backgroundStyle(.buttonFill)
             
             Button("Fetch Data") {
                 do {
@@ -47,6 +49,7 @@ struct DBView: View {
                     print("Error fetching data \(error)")
                 }
             }
+            .backgroundStyle(.buttonFill)
             
         }
     }

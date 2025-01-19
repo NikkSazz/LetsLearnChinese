@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainMenu: View {
 //    @StateObject private var motion = MotionManager()
     var body: some View {
         
@@ -24,6 +24,8 @@ struct ContentView: View {
                         .frame(alignment: .top)
                     
                     ScrollView {
+                        
+                        homeMenuButton(text: "DataBase", destination: DBView(), buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "NoteCard", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
@@ -63,5 +65,5 @@ struct ContentView: View {
 } // view struct
 
 #Preview {
-    ContentView()
+    MainMenu()
 }

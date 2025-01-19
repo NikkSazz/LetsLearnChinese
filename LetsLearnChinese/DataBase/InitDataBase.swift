@@ -24,7 +24,7 @@ import Foundation
     var unitId: Int
     var english: [String]
     
-    init(id: Int, character: String, unitId: Int, english: [String]) {
+    init(character: String, unitId: Int, english: [String]) {
         self.id = UUID().hashValue
         self.character = character
         self.unitId = unitId
