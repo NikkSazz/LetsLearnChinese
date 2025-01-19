@@ -12,12 +12,11 @@ import SwiftData
 struct LetsLearnChineseApp: App {
     var body: some Scene {
         WindowGroup {
-            BookListView()
+            ContentView()
         }
-        .modelContainer(for: Book.self)
     }
     
-    init() {
-        print(URL.applicationSupportDirectory.path(percentEncoded: false))
-    }
+//    init() {
+//        print(URL.applicationSupportDirectory.path(percentEncoded: false))
+//    }
 }

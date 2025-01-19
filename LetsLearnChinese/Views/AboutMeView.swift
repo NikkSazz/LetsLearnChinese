@@ -121,12 +121,6 @@ struct AboutMeParagraph: View {
     }
 }
 
-#Preview(){
-    AboutMeView()
-}
-
-
-
 struct LinksParagraph: View {
     var body: some View {
         
