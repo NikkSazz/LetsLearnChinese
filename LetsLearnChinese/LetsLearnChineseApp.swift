@@ -13,7 +13,7 @@ struct LetsLearnChineseApp: App {
     var body: some Scene {
         WindowGroup {
             MainMenu()
-                .modelContainer(for: [Unit.self, ChineseCharacter.self])
+//                .modelContainer(for: [Unit.self, ChineseCharacter.self])
         }
     }
     

@@ -1,0 +1,2 @@
+1|Beginner|初学者|chu xue zhe
+2|Intermediate|中级|zhong ji
