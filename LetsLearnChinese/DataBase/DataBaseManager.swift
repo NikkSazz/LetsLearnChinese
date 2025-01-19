@@ -95,4 +95,94 @@ class DataBaseManager {
         }
         sqlite3_finalize(statement)
     }
+    
+    func populateData() {
+        // Read data from text files
+        let chineseCharacterLines = readFile(fileName: "chinese_character_data")
+        let unitIDLines = readFile(fileName: "unit_id_data")
+        let levelIDLines = readFile(fileName: "level_id_data")
+        let exampleSentenceLines = readFile(fileName: "example_sentence_data")
+
+        // Populate the database for each table
+        populateDatabase(lines: chineseCharacterLines, table: "ChineseCharacter")
+        populateDatabase(lines: unitIDLines, table: "UnitID")
+        populateDatabase(lines: levelIDLines, table: "LevelID")
+        populateDatabase(lines: exampleSentenceLines, table: "ExampleSentence")
+
+    }
+    
+    func readFile(fileName: String) -> [String] {
+        guard let filePath = Bundle.main.path(forResource: fileName, ofType: "txt") else {
+            print("File not found")
+            return []
+        }
+
+        do {
+            let content = try String(contentsOfFile: filePath, encoding: .utf8)
+            return content.components(separatedBy: .newlines).filter { !$0.isEmpty && !$0.starts(with: "#") }
+        } catch {
+            print("Error reading file: \(error)")
+            return []
+        }
+    }
+
+    func populateDatabase(lines: [String], table: String) {
+        for line in lines {
+            let components = line.split(separator: "|").map { String($0) }
+
+            if table == "ChineseCharacter" && components.count == 5 { // ChineseCharacter Table
+                insertCharacter(chinese: components[1], pinyin: components[2], english: components[3], unitID: Int(components[4])!)
+            } else if table == "UnitID" && components.count == 4 { // UnitID Table
+                insertUnit(name: components[1], chinese: components[2], pinyin: components[3], levelID: Int(components[4])!)
+            } else if table == "LevelID" && components.count == 3 { // LevelID Table
+                insertLevel(name: components[1], chinese: components[2], pinyin: components[3])
+            } else if table == "ExampleSentence" && components.count == 7 { // ExampleSentence Table
+                insertExampleSentence(characterID: Int(components[0])!,
+                                       ex1English: components[1], ex1Pinyin: components[2], ex1Chinese: components[3],
+                                       ex2English: components[4], ex2Pinyin: components[5], ex2Chinese: components[6])
+            }
+        }
+    }
+
+    func insertCharacter(chinese: String, pinyin: String, english: String, unitID: Int) {
+        let query = "INSERT INTO ChineseCharacter (Chinese, Pinyin, English, Unit_ID) VALUES (?, ?, ?, ?);"
+        executeInsert(query: query, params: [chinese, pinyin, english, "\(unitID)"])
+    }
+
+    func insertUnit(name: String, chinese: String, pinyin: String, levelID: Int) {
+        let query = "INSERT INTO UnitID (Name, Chinese, Pinyin, Level_ID) VALUES (?, ?, ?, ?);"
+        executeInsert(query: query, params: [name, chinese, pinyin, "\(levelID)"])
+    }
+
+    func insertLevel(name: String, chinese: String, pinyin: String) {
+        let query = "INSERT INTO LevelID (Name, Chinese, Pinyin) VALUES (?, ?, ?);"
+        executeInsert(query: query, params: [name, chinese, pinyin])
+    }
+
+    func insertExampleSentence(characterID: Int, ex1English: String, ex1Pinyin: String, ex1Chinese: String, ex2English: String, ex2Pinyin: String, ex2Chinese: String) {
+        let query = """
+        INSERT INTO ExampleSentence (Character_ID, Ex1English, Ex1Pinyin, Ex1Chinese, Ex2English, Ex2Pinyin, Ex2Chinese)
+        VALUES (?, ?, ?, ?, ?, ?, ?);
+        """
+        executeInsert(query: query, params: ["\(characterID)", ex1English, ex1Pinyin, ex1Chinese, ex2English, ex2Pinyin, ex2Chinese])
+    }
+
+    func executeInsert(query: String, params: [String]) {
+        var statement: OpaquePointer?
+        if sqlite3_prepare_v2(DataBaseManager.shared.db, query, -1, &statement, nil) == SQLITE_OK {
+            for (index, param) in params.enumerated() {
+                sqlite3_bind_text(statement, Int32(index + 1), param, -1, nil)
+            }
+
+            if sqlite3_step(statement) == SQLITE_DONE {
+                print("Successfully inserted data")
+            } else {
+                print("Failed to insert data")
+            }
+        } else {
+            print("Error preparing insert statement")
+        }
+        sqlite3_finalize(statement)
+    }
+
 }

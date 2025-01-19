@@ -17,7 +17,8 @@ struct LetsLearnChineseApp: App {
         }
     }
     
-//    init() {
+    init() {
 //        print(URL.applicationSupportDirectory.path(percentEncoded: false))
-//    }
+        DataBaseManager.shared
+    }
 }
