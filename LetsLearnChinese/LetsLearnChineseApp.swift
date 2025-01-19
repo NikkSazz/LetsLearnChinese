@@ -13,12 +13,10 @@ struct LetsLearnChineseApp: App {
     var body: some Scene {
         WindowGroup {
             MainMenu()
-//                .modelContainer(for: [Unit.self, ChineseCharacter.self])
         }
     }
     
     init() {
-//        print(URL.applicationSupportDirectory.path(percentEncoded: false))
-        DataBaseManager.shared
+        DataBaseManager.shared // ignore warning :)
     }
 }
