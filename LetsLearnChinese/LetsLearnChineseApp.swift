@@ -12,7 +12,8 @@ import SwiftData
 struct LetsLearnChineseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DBView()
+                .modelContainer(for: [Unit.self, ChineseCharacter.self])
         }
     }
     
