@@ -1,3 +1,1 @@
-1|Are you a lawyer?|ni shi lushi ma?|你是律师吗|What do you want?|ni xiang shenme?|你想什么？
-2|How are you?|ni hao ma?|你好吗|I am fine.|wo hen hao|我很好
-3|He is a teacher.|ta shi laoshi|他是老师|She is a doctor.|ta shi yisheng|她是医生
+
