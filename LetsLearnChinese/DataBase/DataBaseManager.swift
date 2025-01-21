@@ -184,5 +184,53 @@ class DataBaseManager {
         }
         sqlite3_finalize(statement)
     }
+    
+    
+    // AYAYA
+    // AYAYA
+    // AYAYA
+    // AYAYA
+    
+    func getRandomCharacter(fromUnits unitIDs: [Int]) -> String? {
+        guard !unitIDs.isEmpty else {
+            print("Unit IDs array is empty.")
+            return nil
+        }
+        
+        let unitIDList = unitIDs.map { String($0) }.joined(separator: ",")
+        
+        let query = """
+        SELECT Chinese, Pinyin, English
+        FROM ChineseCharacter
+        WHERE Unit_ID IN (\(unitIDList))
+        ORDER BY RANDOM()
+        LIMIT 1;
+        """
+        
+        var statement: OpaquePointer?
+        var result: String?
+        
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            if sqlite3_step(statement) == SQLITE_ROW {
+                if let chinese = sqlite3_column_text(statement, 0),
+                   let pinyin = sqlite3_column_text(statement, 1),
+                   let english = sqlite3_column_text(statement, 2) {
+                    let chineseText = String(cString: chinese)
+                    let pinyinText = String(cString: pinyin)
+                    let englishText = String(cString: english)
+                    
+                    result = "\(chineseText), \(pinyinText), \(englishText)"
+                }
+            } else {
+                print("No data found for the specified unit IDs.")
+            }
+        } else {
+            print("Error preparing query: \(query)")
+        }
+        
+        sqlite3_finalize(statement)
+        
+        return result
+    }
 
 }

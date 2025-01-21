@@ -17,6 +17,6 @@ struct LetsLearnChineseApp: App {
     }
     
     init() {
-        DataBaseManager.shared // ignore warning :)
+        let db = DataBaseManager.shared // ignore warning :)
     }
 }
