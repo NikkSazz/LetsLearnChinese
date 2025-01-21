@@ -26,6 +26,7 @@ class DataBaseManager {
     }
     
     func createTables() {
+        
         createTable(query: """
         CREATE TABLE IF NOT EXISTS ChineseCharacter (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -199,6 +200,8 @@ class DataBaseManager {
         
         let unitIDList = unitIDs.map { String($0) }.joined(separator: ",")
         
+        print("UnitIDLIST: \(unitIDList)")
+        
         let query = """
         SELECT Chinese, Pinyin, English
         FROM ChineseCharacter
@@ -206,6 +209,8 @@ class DataBaseManager {
         ORDER BY RANDOM()
         LIMIT 1;
         """
+        print("Query: \(query)")  // Add this to see the query being executed
+
         
         var statement: OpaquePointer?
         var result: String?
@@ -233,4 +238,4 @@ class DataBaseManager {
         return result
     }
 
-}
+} // class

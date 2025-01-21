@@ -12,7 +12,7 @@ struct DBView: View {
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {
-        VStack {
+        VStack (spacing: 15) {
             Text("Hello")
             
             Button("Press me to print random character in unit 1"){
