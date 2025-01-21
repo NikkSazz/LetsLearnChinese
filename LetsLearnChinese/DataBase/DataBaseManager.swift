@@ -129,6 +129,7 @@ class DataBaseManager {
 
         do {
             let content = try String(contentsOfFile: filePath, encoding: .utf8)
+            print("Getting File name of \(fileName)")
             return content.components(separatedBy: .newlines).filter { !$0.isEmpty && !$0.starts(with: "#") }
         } catch {
             print("Error reading file: \(error)")
@@ -189,8 +190,10 @@ class DataBaseManager {
             } else {
                 print("Failed to insert data")
             }
+            
         } else {
-            print("Error preparing insert statement")
+            let errmsg = String(cString: sqlite3_errmsg(DataBaseManager.shared.db))
+            print("Error preparing statement: \(errmsg)")
         }
         sqlite3_finalize(statement)
     }

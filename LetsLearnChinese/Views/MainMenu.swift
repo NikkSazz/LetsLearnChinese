@@ -25,7 +25,7 @@ struct MainMenu: View {
                     
                     ScrollView {
                         
-                        homeMenuButton(text: "DataBase", destination: DBView(), buttonHeight: buttonHeight)
+                       /* homeMenuButton(text: "DataBase", destination: DBView(), buttonHeight: buttonHeight) */
                         
                         homeMenuButton(text: "NoteCard", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
