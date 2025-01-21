@@ -11,21 +11,37 @@ import Foundation
 class DataBaseManager {
     static let shared = DataBaseManager()
     var db: OpaquePointer?
-    
+        
     private init() {
+        print("Starting database initialization.")
+        // Path setup
         let fileURL = try! FileManager.default
             .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("ChineseLearningDB.sqlite")
-        
+        print("Database path: \(fileURL.path)")
+
+        // Open database
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
-            db = nil // avoid acrashing
-            print("Error opening database")
+            print("Error opening database: \(String(cString: sqlite3_errmsg(db)))")
+            db = nil
         } else {
-            print("Database created/opened at \(fileURL.path)")
+            print("Database opened successfully.")
         }
+
+        guard db != nil else {
+            fatalError("Database initialization failed.")
+        }
+
+        // Create tables
         createTables()
+        print("Finished creating tables.")
+
+        // Populate data
         populateData()
+        print("Finished populating data.")
     }
+
+
     
 //    func getDatabasePath() -> String {
 //        let fileManager = FileManager.default
@@ -97,15 +113,16 @@ class DataBaseManager {
         var statement: OpaquePointer?
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE {
-//                print("Table created successfully")
+                print("Table created successfully.")
             } else {
-                print("Table could not be created")
+                print("Table could not be created: \(String(cString: sqlite3_errmsg(db)))")
             }
         } else {
-            print("Table creation preparation failed")
+            print("Error preparing table creation statement: \(String(cString: sqlite3_errmsg(db)))")
         }
         sqlite3_finalize(statement)
     }
+
     
     func populateData() {
         // Read data from text files
@@ -181,12 +198,15 @@ class DataBaseManager {
 
     func executeInsert(query: String, params: [String]) {
         var statement: OpaquePointer?
-        print("Got to line 183")
-        guard let db = DataBaseManager.shared.db else {
-            print("Database connection is nil")
-            return
-        }
-        print("Got to line 188")
+        print("Got to line 201")
+
+//        guard let db = DataBaseManager.shared.db else {
+//            print("Database connection is nil")
+//            return
+//        }
+
+
+        print("Got to line 206")
 
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             defer { sqlite3_finalize(statement) } // Ensure statement is finalized

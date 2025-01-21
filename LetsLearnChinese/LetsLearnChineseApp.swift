@@ -17,6 +17,9 @@ struct LetsLearnChineseApp: App {
     }
     
     init() {
-        let db = DataBaseManager.shared // ignore warning :)
+        DispatchQueue.main.async { // does nothing
+            _ = DataBaseManager.shared // Access safely
+        }
     }
+
 }
