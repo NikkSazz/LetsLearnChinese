@@ -18,6 +18,7 @@ class DataBaseManager {
             .appendingPathComponent("ChineseLearningDB.sqlite")
         
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            db = nil // avoid acrashing
             print("Error opening database")
         } else {
             print("Database created/opened at \(fileURL.path)")
@@ -96,7 +97,7 @@ class DataBaseManager {
         var statement: OpaquePointer?
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE {
-                print("Table created successfully")
+//                print("Table created successfully")
             } else {
                 print("Table could not be created")
             }
@@ -180,23 +181,36 @@ class DataBaseManager {
 
     func executeInsert(query: String, params: [String]) {
         var statement: OpaquePointer?
-        if sqlite3_prepare_v2(DataBaseManager.shared.db, query, -1, &statement, nil) == SQLITE_OK {
+        print("Got to line 183")
+        guard let db = DataBaseManager.shared.db else {
+            print("Database connection is nil")
+            return
+        }
+        print("Got to line 188")
+
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
+            defer { sqlite3_finalize(statement) } // Ensure statement is finalized
+
+            // Bind parameters
             for (index, param) in params.enumerated() {
-                sqlite3_bind_text(statement, Int32(index + 1), param, -1, nil)
+                if sqlite3_bind_text(statement, Int32(index + 1), param, -1, nil) != SQLITE_OK {
+                    print("Error binding parameter \(index + 1): \(String(cString: sqlite3_errmsg(db)))")
+                    return
+                }
             }
 
+            // Execute statement
             if sqlite3_step(statement) == SQLITE_DONE {
                 print("Successfully inserted data")
             } else {
-                print("Failed to insert data")
+                print("Failed to insert data: \(String(cString: sqlite3_errmsg(db)))")
             }
-            
         } else {
-            let errmsg = String(cString: sqlite3_errmsg(DataBaseManager.shared.db))
+            let errmsg = String(cString: sqlite3_errmsg(db))
             print("Error preparing statement: \(errmsg)")
         }
-        sqlite3_finalize(statement)
     }
+
     
     
     // AYAYA
