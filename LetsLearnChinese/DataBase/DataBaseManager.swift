@@ -16,14 +16,23 @@ class DataBaseManager {
         let fileURL = try! FileManager.default
             .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("ChineseLearningDB.sqlite")
-
+        
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("Error opening database")
         } else {
             print("Database created/opened at \(fileURL.path)")
         }
         createTables()
+//        populateData()
     }
+    
+//    func getDatabasePath() -> String {
+//        let fileManager = FileManager.default
+//        // Get the documents directory path
+//        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+//        let databaseURL = documentsDirectory.appendingPathComponent("chinese_character_data.db")
+//        return databaseURL.path
+//    }
     
     func createTables() {
         
@@ -35,7 +44,7 @@ class DataBaseManager {
             English TEXT NOT NULL,
             Unit_ID INTEGER NOT NULL
         );
-        """)
+        """) // You are going to have to add wether its a verb or noun or something else
         
         createTable(query: """
         CREATE TABLE IF NOT EXISTS UnitID (
