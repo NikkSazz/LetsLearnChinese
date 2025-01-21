@@ -23,7 +23,7 @@ class DataBaseManager {
             print("Database created/opened at \(fileURL.path)")
         }
         createTables()
-//        populateData()
+        populateData()
     }
     
 //    func getDatabasePath() -> String {
