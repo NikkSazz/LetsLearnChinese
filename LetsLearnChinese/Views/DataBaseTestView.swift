@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct DataBaseTestView: View {
+    @Environment(\.modelContext) private var modelContext
+    
     var body: some View {
         ZStack{
             DefaultBackground()
+                .onAppear {
+                    if !UserDefaults.standard.bool(forKey: "isDatabasePopulated") {
+                        populateDatabase()
+                        UserDefaults.standard.set(true, forKey: "isDatabasePopulated")
+                    }
+                }
             
             VStack (spacing: 20) {
                 Text("Hello World!")
@@ -20,8 +28,4 @@ struct DataBaseTestView: View {
             .frame(maxHeight: .infinity, alignment: .center)
         }
     }
-}
-
-#Preview {
-    DataBaseTestView()
 }

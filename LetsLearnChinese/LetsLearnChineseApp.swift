@@ -12,14 +12,17 @@ import SwiftData
 struct LetsLearnChineseApp: App {
     var body: some Scene {
         WindowGroup {
-            MainMenu()
+            DataBaseTestView()
+                .modelContainer(for: [
+                    Character.self
+                ])
         }
     }
     
     init() {
-        DispatchQueue.main.async { // does nothing
-            _ = DataBaseManager.shared // Access safely
-        }
+//        DispatchQueue.main.async { // does nothing
+//            _ = DataBaseManager.shared // Access safely
+//        }
     }
 
 }
