@@ -43,7 +43,9 @@ struct AboutMeView: View {
                         
                         AboutMeParagraph(text: "Swift,  SwiftUI,  XCode, Github, Git", fontSize: smallSize)
                         
-                        AboutMeParagraph(text: "Swift Data,  SQLite,  Swift Doc", fontSize: smallSize)
+                        AboutMeParagraph(text: "Swift Data,  SQLite,  Swift Core", fontSize: smallSize)
+                        
+                        AboutMeParagraph(text: "Core Data,  GRDB,  Swift Core", fontSize: smallSize)
                         
                         AboutMeParagraph(text: "SVG Repo,  StackOverflow,  Figma", fontSize: smallSize)
   
