@@ -12,7 +12,7 @@ import SwiftData
 struct LetsLearnChineseApp: App {
     var body: some Scene {
         WindowGroup {
-            DataBaseTestView()
+            MainMenu()
                 .modelContainer(for: [
                     Character.self
                 ])
