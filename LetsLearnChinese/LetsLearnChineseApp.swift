@@ -13,10 +13,16 @@ struct LetsLearnChineseApp: App {
     var body: some Scene {
         WindowGroup {
             MainMenu()
+                .modelContainer(for: [
+                    Character.self
+                ])
         }
     }
     
     init() {
-        let db = DataBaseManager.shared // ignore warning :)
+//        DispatchQueue.main.async { // does nothing
+//            _ = DataBaseManager.shared // Access safely
+//        }
     }
+
 }

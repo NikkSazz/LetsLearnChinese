@@ -25,7 +25,7 @@ struct MainMenu: View {
                     
                     ScrollView {
                         
-                       /* homeMenuButton(text: "DataBase", destination: DBView(), buttonHeight: buttonHeight) */
+                        homeMenuButton(text: "Enviornment", destination: EnviornmentObject(), buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "NoteCard", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
@@ -64,6 +64,3 @@ struct MainMenu: View {
     } // view body
 } // view struct
 
-#Preview {
-    MainMenu()
-}

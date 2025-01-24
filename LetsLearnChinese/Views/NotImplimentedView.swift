@@ -14,6 +14,9 @@ struct NotImplimentedView: View {
             
             Text("Sorry, this\npart of the app is\nnot yet implimented")
                 .foregroundStyle(.accent)
+            
+            Text(":(")
+                .foregroundStyle(.accent).opacity(0.5)
         }
     }
 }
