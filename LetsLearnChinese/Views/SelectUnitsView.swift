@@ -29,6 +29,9 @@ struct SelectUnitsView: View {
                 TopBar(title: title, subtitle: subtitle)
                     .frame(alignment: .top)
                 
+                /*
+                 * Old Version, given by chatGPT
+                 
                 ScrollView {
                     VStack(spacing: 20) {
                         ForEach(levels, id: \.0) { level in

@@ -13,9 +13,9 @@ struct LetsLearnChineseApp: App {
     var body: some Scene {
         WindowGroup {
             MainMenu()
-                .modelContainer(for: [
-                    Character.self
-                ])
+//                .modelContainer(for: [
+//                    Character.self
+//                ])
         }
     }
     

@@ -63,3 +63,6 @@ struct MainMenu: View {
     } // view body
 } // view struct
 
+#Preview {
+    MainMenu()
+}
