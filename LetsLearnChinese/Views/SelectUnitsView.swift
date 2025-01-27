@@ -83,10 +83,104 @@ struct SelectUnitsView: View {
                     }
                     .padding()
                 }
+                 */
                 
+                ScrollView {
+                    Text(":)")
+                        .foregroundStyle(.accent)
+                        .padding(.top, 40)
+                    
+                    ZStack{
+                        Rectangle()
+                            .frame(height: 200)
+                            .foregroundStyle(.accent)
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    Text(":)")
+                        .foregroundStyle(.accent)
+                    
+                    let size: CGFloat? = 100
+                    let height: CGFloat? = 80
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            VStack (spacing: 0){
+                                Text("Unit 1")
+                                    .foregroundStyle(.accent)
+//                                    .backgroundStyle(.background)
+                                Rectangle()
+                                    .frame(width: size, height: height)
+                                    .foregroundStyle(.accent)
+                            } // v
+                            .padding(.bottom, 10)
+                            
+                            VStack (spacing: 2){
+                                Text("Unit 2")
+                                    .foregroundStyle(.accent)
+//                                    .backgroundStyle(.background)
+                                Rectangle()
+                                    .frame(width: size, height: height)
+                                    .foregroundStyle(.accent)
+                            } // v
+                            .padding(.bottom, 10)
+                            
+                            VStack (spacing: 2){
+                                Text("Unit 3")
+                                    .foregroundStyle(.accent)
+//                                    .backgroundStyle(.background)
+                                Rectangle()
+                                    .frame(width: size, height: height)
+                                    .foregroundStyle(.accent)
+                            } // v
+                            .padding(.bottom, 10)
+                            
+                            VStack (spacing: 2){
+                                Text("Unit 4")
+                                    .foregroundStyle(.accent)
+//                                    .backgroundStyle(.background)
+                                Rectangle()
+                                    .frame(width: size, height: height)
+                                    .foregroundStyle(.accent)
+                            } // v
+                            .padding(.bottom, 10)
+                            
+                            VStack (spacing: 2){
+                                Text("Unit 5")
+                                    .foregroundStyle(.accent)
+//                                    .backgroundStyle(.background)
+                                Rectangle()
+                                    .frame(width: size, height: height)
+                                    .foregroundStyle(.accent)
+                            } // v
+                            .padding(.bottom, 10)
+                            
+                        } // h
+                        .padding(.horizontal)
+
+                    } // scroll
+                    .background(.gray.opacity(0.25))
+                    .frame(width: .infinity)
+                    
+                    Text(":)")
+                        .foregroundStyle(.accent)
+                    Text(":)")
+                        .foregroundStyle(.accent)
+                    Text(":)")
+                        .foregroundStyle(.accent)
+                    Text(":)")
+                        .foregroundStyle(.accent)
+                }
                 
+                Rectangle()
+                    .frame(height: 75)
+                    .padding(.bottom)
+                    .padding(.horizontal, 25)
+                    .padding(.top, -5)
+                    .foregroundStyle(.blue)
             } // v
             .frame(maxHeight: .infinity, alignment: .top)
+            
         } // z
     } // view body
 } // view struct
