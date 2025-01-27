@@ -12,8 +12,7 @@ struct SelectUnitsView: View {
     var subtitle: String = "Select Units"
     
     let levels = [
-            ("Level 1", ["Unit 1.1", "Unit 1.2", "Unit 1.3", "Unit 1.4", "Unit 1.5"]),
-            ("Level 2", ["Unit 2.1", "Unit 2.2", "Unit 2.3", "Unit 2.4", "Unit 2.5"]),
+            ("Level 1", ["Unit 1.1", "Unit 1.2", "Unit 1.3", "Unit 1.4", "Unit 1.5"])
             // Add more levels as needed
         ]
         
@@ -29,18 +28,30 @@ struct SelectUnitsView: View {
                 TopBar(title: title, subtitle: subtitle)
                     .frame(alignment: .top)
                 
-                /*
-                 * Old Version, given by chatGPT
+                
                  
                 ScrollView {
+                    Text("Units may include characters and words from previous units, even if those units are not selected.")
+                        .foregroundStyle(.accent)
+                        .padding(.top)
+                    
                     VStack(spacing: 20) {
                         ForEach(levels, id: \.0) { level in
                             VStack {
                                 // Large rectangle for the level
+                                
                                 Button(action: {
-                                    // Select all units for this level
-                                    level.1.forEach { selectedUnits.insert($0) }
-                                }) {
+                                    withAnimation(.easeInOut(duration: 0.5)){
+                                        // Check if all units in the level are already selected
+                                        let allSelected = level.1.allSatisfy { selectedUnits.contains($0) }
+                                        
+                                        if allSelected {
+                                            level.1.forEach { selectedUnits.remove($0) }
+                                        } else {
+                                            level.1.forEach { selectedUnits.insert($0) }
+                                        }
+                                    }
+                                }){
                                     VStack {
                                         Text(level.0) // Level number at the top
                                             .font(.title)
@@ -82,13 +93,10 @@ struct SelectUnitsView: View {
                         }
                     }
                     .padding()
-                }
-                 */
+                    // CHATGPT VERSION
                 
-                ScrollView {
                     Text(":)")
                         .foregroundStyle(.accent)
-                        .padding(.top, 40)
                     
                     ZStack{
                         Rectangle()
@@ -96,6 +104,7 @@ struct SelectUnitsView: View {
                             .foregroundStyle(.accent)
                     }
                     .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
                     
                     Text(":)")
                         .foregroundStyle(.accent)
@@ -108,7 +117,6 @@ struct SelectUnitsView: View {
                             VStack (spacing: 0){
                                 Text("Unit 1")
                                     .foregroundStyle(.accent)
-//                                    .backgroundStyle(.background)
                                 Rectangle()
                                     .frame(width: size, height: height)
                                     .foregroundStyle(.accent)
@@ -118,7 +126,6 @@ struct SelectUnitsView: View {
                             VStack (spacing: 2){
                                 Text("Unit 2")
                                     .foregroundStyle(.accent)
-//                                    .backgroundStyle(.background)
                                 Rectangle()
                                     .frame(width: size, height: height)
                                     .foregroundStyle(.accent)
@@ -128,7 +135,6 @@ struct SelectUnitsView: View {
                             VStack (spacing: 2){
                                 Text("Unit 3")
                                     .foregroundStyle(.accent)
-//                                    .backgroundStyle(.background)
                                 Rectangle()
                                     .frame(width: size, height: height)
                                     .foregroundStyle(.accent)
@@ -138,7 +144,6 @@ struct SelectUnitsView: View {
                             VStack (spacing: 2){
                                 Text("Unit 4")
                                     .foregroundStyle(.accent)
-//                                    .backgroundStyle(.background)
                                 Rectangle()
                                     .frame(width: size, height: height)
                                     .foregroundStyle(.accent)
@@ -148,7 +153,6 @@ struct SelectUnitsView: View {
                             VStack (spacing: 2){
                                 Text("Unit 5")
                                     .foregroundStyle(.accent)
-//                                    .backgroundStyle(.background)
                                 Rectangle()
                                     .frame(width: size, height: height)
                                     .foregroundStyle(.accent)
@@ -158,26 +162,25 @@ struct SelectUnitsView: View {
                         } // h
                         .padding(.horizontal)
 
-                    } // scroll
+                    } // scroll horizontal
                     .background(.gray.opacity(0.25))
                     .frame(width: .infinity)
                     
                     Text(":)")
                         .foregroundStyle(.accent)
-                    Text(":)")
-                        .foregroundStyle(.accent)
-                    Text(":)")
-                        .foregroundStyle(.accent)
-                    Text(":)")
-                        .foregroundStyle(.accent)
-                }
+                } // scroll
                 
-                Rectangle()
-                    .frame(height: 75)
-                    .padding(.bottom)
-                    .padding(.horizontal, 25)
-                    .padding(.top, -5)
-                    .foregroundStyle(.blue)
+                Button(action: {
+                    
+                }
+                ){
+                    Rectangle()
+                        .frame(height: 50)
+                        .padding(.bottom)
+//                        .padding(.horizontal, 25)
+                        .padding(.top, -5)
+                        .foregroundStyle(.blue)
+                }
             } // v
             .frame(maxHeight: .infinity, alignment: .top)
             
