@@ -121,3 +121,26 @@ struct Title: View{
         .padding(.bottom, -16)
     }
 }
+
+struct StrokedText: View {
+    var text: String
+    var font: Font
+    var strokeColor: Color
+    var strokeWidth: CGFloat
+    var fillColor: Color
+
+    var body: some View {
+        ZStack {
+            // Stroke text (outer)
+            Text(text)
+                .font(font)
+                .foregroundColor(strokeColor)
+                .offset(x: strokeWidth, y: strokeWidth) // Offset for outer stroke
+            
+            // Fill text (main)
+            Text(text)
+                .font(font)
+                .foregroundColor(fillColor)
+        }
+    }
+}
