@@ -41,7 +41,7 @@ struct MainMenu: View {
                         homeMenuButton(text: "Review Exam", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Emotional Duck", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "Emotional Duck", destination: duckieView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
                         homeMenuButton(text: "Statistics", destination: NotImplimentedView(), buttonHeight: buttonHeight)
