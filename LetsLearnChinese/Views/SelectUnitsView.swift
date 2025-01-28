@@ -13,7 +13,9 @@ struct SelectUnitsView: View {
     
     let levels = [
             ("Level 1 Part 1", ["Greetings", "Family", "Dates and Time", "Hobbies", "Visiting Friends"]),
-            ("Level 1 Part 2", ["Appointments", "Studying", "School Life", "Shopping", "Transportation"])
+            ("Level 1 Part 2", ["Appointments", "Studying", "School Life", "Shopping", "Transportation"]),
+            ("Level 2 Part 1", ["Thingt", "Thinge", "Another Thing", "Thinga", "Thingggssz"]),
+            ("Level 2 Part 2", ["Thing", "Thingz", "Anotherr Thing", "Thinking", "Thinggssz"])
         ]
         
         @State private var selectedUnits: Set<String> = []
@@ -43,9 +45,6 @@ struct SelectUnitsView: View {
                         .foregroundStyle(.accent)
                     
                     
-                    let width: CGFloat? = 100
-                    let height: CGFloat? = 80
-
                     VStack(spacing: 20) {
                         ForEach(levels, id: \.0) { level in
                             VStack {
@@ -59,6 +58,7 @@ struct SelectUnitsView: View {
                                             level.1.forEach { selectedUnits.remove($0) }
                                         } else {
                                             level.1.forEach { selectedUnits.insert($0) }
+//                                            unitColors[$0] = unitColors[$0] ?? RandomColor()
                                         }
                                     }
                                 }) {
@@ -70,43 +70,44 @@ struct SelectUnitsView: View {
                                             .frame(maxWidth: .infinity)
                                             .background(
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .fill(level.1.allSatisfy { selectedUnits.contains($0) } ? GetRandomColor() : Color.accent)
+                                                    .fill(level.1.allSatisfy { selectedUnits.contains($0) } ? RandomColor() : Color.accent)
                                                     .frame(height: 40)
                                             )
                                             .frame(height: 40)
                                         
                                         // Horizontal ScrollView of unit buttons inside the rectangle
                                         ScrollView(.horizontal, showsIndicators: false) {
-                                            HStack(spacing: 10) {
-                                                ForEach(level.1, id: \.self) { unit in
-                                                    VStack(spacing: 2) {
-                                                        Text("\(unit)") // Unit label
-                                                            .foregroundStyle(.accent)
-                                                        Button(action: {
-                                                            if selectedUnits.contains(unit) {
-                                                                selectedUnits.remove(unit) // Deselect if already selected
-                                                            } else {
-                                                                selectedUnits.insert(unit) // Select the unit
+                                                HStack(spacing: 10) {
+                                                    ForEach(level.1, id: \.self) { unit in
+//                                                        unitColors[unit] = RandomColor()
+                                                        VStack(spacing: 2) {
+                                                            Text("\(unit)") // Unit label
+                                                            Button(action: {
+                                                                if selectedUnits.contains(unit) {
+                                                                    selectedUnits.remove(unit) // Deselect if already selected
+                                                                } else {
+                                                                    selectedUnits.insert(unit) // Select the unit
+                                                                    unitColors[unit] = unitColors[unit] ?? RandomColor()
+                                                                }
+                                                            }) {
+                                                                Rectangle()
+                                                                    .frame(width: 100, height: 80)
+                                                                    .foregroundStyle(selectedUnits.contains(unit) ? (unitColors[unit] ?? Color.accent) : Color.accent) // Use the color from unitColors dictionary
+                                                                    .cornerRadius(5)
                                                             }
-                                                        }) {
-                                                            Rectangle()
-                                                                .frame(width: width, height: height)
-                                                                .foregroundStyle(selectedUnits.contains(unit) ? GetRandomColor() : Color.accent)
-                                                                .cornerRadius(5)
+                                                            .buttonStyle(PlainButtonStyle())
                                                         }
-                                                        .buttonStyle(PlainButtonStyle())
+                                                        .padding(.bottom, 10)
+                                                        Spacer(minLength: 5)
                                                     }
-                                                    .padding(.bottom, 10)
-                                                    Spacer(minLength: 5)
                                                 }
+                                                .padding(.horizontal)
                                             }
-                                            .padding(.horizontal)
+                                            .background(Color.gray.opacity(0.25))
+                                            .frame(maxWidth: .infinity)
                                         }
-                                        .background(Color.gray.opacity(0.25))
-                                        .frame(maxWidth: .infinity)
-                                    }
                                 }
-                                .buttonStyle(PlainButtonStyle()) // Disable default button style
+                                .buttonStyle(PlainButtonStyle())
                             }
                         }
                     }
@@ -124,7 +125,7 @@ struct SelectUnitsView: View {
                     Rectangle()
                         .frame(height: 50)
                         .padding(.bottom)
-//                        .padding(.horizontal, 25)
+                        .padding(.horizontal, 15)
                         .padding(.top, -5)
                         .foregroundStyle(.blue)
                 }
@@ -135,13 +136,14 @@ struct SelectUnitsView: View {
     } // view body
 } // view struct
 
-func GetRandomColor() -> Color {
-    let red = Double.random(in: 0...1)
-    let green = Double.random(in: 0...1)
-    let blue = Double.random(in: 0...1)
+func RandomColor() -> Color {
+    let red = Double.random(in: 0.1...0.75)
+    let green = Double.random(in: 0.1...0.75)
+    let blue = Double.random(in: 0.1...0.75)
     
     return Color(red: red, green: green, blue: blue)
 }
+
 
 #Preview {
     SelectUnitsView()
