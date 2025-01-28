@@ -35,6 +35,9 @@ struct MainMenu: View {
                         homeMenuButton(text: "Multiple Choice", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
+                        homeMenuButton(text: "Sentence Structure", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                        
                         homeMenuButton(text: "Fish Game", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
