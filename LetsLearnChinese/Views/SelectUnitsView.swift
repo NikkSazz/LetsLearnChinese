@@ -12,11 +12,12 @@ struct SelectUnitsView: View {
     var subtitle: String = "Select Units"
     
     let levels = [
-            ("Level 1", ["Unit 1.1", "Unit 1.2", "Unit 1.3", "Unit 1.4", "Unit 1.5"])
-            // Add more levels as needed
+            ("Level 1 Part 1", ["Greetings", "Family", "Dates and Time", "Hobbies", "Visiting Friends"]),
+            ("Level 1 Part 2", ["Appointments", "Studying", "School Life", "Shopping", "Transportation"])
         ]
         
         @State private var selectedUnits: Set<String> = []
+        @State private var unitColors: [String: Color] = [:]
     
     var body: some View {
         ZStack {
@@ -31,17 +32,26 @@ struct SelectUnitsView: View {
                 
                  
                 ScrollView {
-                    Text("Units may include characters and words from previous units, even if those units are not selected.")
+                    Text("May use characters, words, and sentences from previous unselected units.")
+                        .lineLimit(2)
                         .foregroundStyle(.accent)
                         .padding(.top)
+                        .padding(.horizontal, 20)
+                   
+               
+                    Text(":)")
+                        .foregroundStyle(.accent)
                     
+                    
+                    let width: CGFloat? = 100
+                    let height: CGFloat? = 80
+
                     VStack(spacing: 20) {
                         ForEach(levels, id: \.0) { level in
                             VStack {
                                 // Large rectangle for the level
-                                
                                 Button(action: {
-                                    withAnimation(.easeInOut(duration: 0.5)){
+                                    withAnimation(.easeInOut(duration: 0.5)) {
                                         // Check if all units in the level are already selected
                                         let allSelected = level.1.allSatisfy { selectedUnits.contains($0) }
                                         
@@ -51,120 +61,57 @@ struct SelectUnitsView: View {
                                             level.1.forEach { selectedUnits.insert($0) }
                                         }
                                     }
-                                }){
+                                }) {
                                     VStack {
                                         Text(level.0) // Level number at the top
-                                            .font(.title)
-                                            .fontWeight(.bold)
+                                            .font(.custom("InknutAntiqua-Black", size: 20))
+                                            .foregroundStyle(.black.opacity(0.8))
                                             .padding()
                                             .frame(maxWidth: .infinity)
                                             .background(
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .fill(Color.blue.opacity(0.4))
+                                                    .fill(level.1.allSatisfy { selectedUnits.contains($0) } ? GetRandomColor() : Color.accent)
+                                                    .frame(height: 40)
                                             )
+                                            .frame(height: 40)
                                         
-                                        // Horizontal row of unit buttons inside the rectangle
-                                        HStack(spacing: 10) {
-                                            ForEach(level.1, id: \.self) { unit in
-                                                Button(action: {
-                                                    if selectedUnits.contains(unit) {
-                                                        selectedUnits.remove(unit) // Deselect if already selected
-                                                    } else {
-                                                        selectedUnits.insert(unit) // Select the unit
+                                        // Horizontal ScrollView of unit buttons inside the rectangle
+                                        ScrollView(.horizontal, showsIndicators: false) {
+                                            HStack(spacing: 10) {
+                                                ForEach(level.1, id: \.self) { unit in
+                                                    VStack(spacing: 2) {
+                                                        Text("\(unit)") // Unit label
+                                                            .foregroundStyle(.accent)
+                                                        Button(action: {
+                                                            if selectedUnits.contains(unit) {
+                                                                selectedUnits.remove(unit) // Deselect if already selected
+                                                            } else {
+                                                                selectedUnits.insert(unit) // Select the unit
+                                                            }
+                                                        }) {
+                                                            Rectangle()
+                                                                .frame(width: width, height: height)
+                                                                .foregroundStyle(selectedUnits.contains(unit) ? GetRandomColor() : Color.accent)
+                                                                .cornerRadius(5)
+                                                        }
+                                                        .buttonStyle(PlainButtonStyle())
                                                     }
-                                                }) {
-                                                    Text(unit)
-                                                        .font(.subheadline)
-                                                        .padding(10)
-                                                        .frame(maxWidth: .infinity)
-                                                        .background(
-                                                            RoundedRectangle(cornerRadius: 5)
-                                                                .fill(selectedUnits.contains(unit) ? Color.green : Color.gray.opacity(0.3))
-                                                        )
+                                                    .padding(.bottom, 10)
+                                                    Spacer(minLength: 5)
                                                 }
-                                                .buttonStyle(PlainButtonStyle())
                                             }
+                                            .padding(.horizontal)
                                         }
+                                        .background(Color.gray.opacity(0.25))
+                                        .frame(maxWidth: .infinity)
                                     }
-                                    .padding()
                                 }
                                 .buttonStyle(PlainButtonStyle()) // Disable default button style
                             }
                         }
                     }
                     .padding()
-                    // CHATGPT VERSION
-                
-                    Text(":)")
-                        .foregroundStyle(.accent)
-                    
-                    ZStack{
-                        Rectangle()
-                            .frame(height: 200)
-                            .foregroundStyle(.accent)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal)
-                    
-                    Text(":)")
-                        .foregroundStyle(.accent)
-                    
-                    let size: CGFloat? = 100
-                    let height: CGFloat? = 80
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            VStack (spacing: 0){
-                                Text("Unit 1")
-                                    .foregroundStyle(.accent)
-                                Rectangle()
-                                    .frame(width: size, height: height)
-                                    .foregroundStyle(.accent)
-                            } // v
-                            .padding(.bottom, 10)
-                            
-                            VStack (spacing: 2){
-                                Text("Unit 2")
-                                    .foregroundStyle(.accent)
-                                Rectangle()
-                                    .frame(width: size, height: height)
-                                    .foregroundStyle(.accent)
-                            } // v
-                            .padding(.bottom, 10)
-                            
-                            VStack (spacing: 2){
-                                Text("Unit 3")
-                                    .foregroundStyle(.accent)
-                                Rectangle()
-                                    .frame(width: size, height: height)
-                                    .foregroundStyle(.accent)
-                            } // v
-                            .padding(.bottom, 10)
-                            
-                            VStack (spacing: 2){
-                                Text("Unit 4")
-                                    .foregroundStyle(.accent)
-                                Rectangle()
-                                    .frame(width: size, height: height)
-                                    .foregroundStyle(.accent)
-                            } // v
-                            .padding(.bottom, 10)
-                            
-                            VStack (spacing: 2){
-                                Text("Unit 5")
-                                    .foregroundStyle(.accent)
-                                Rectangle()
-                                    .frame(width: size, height: height)
-                                    .foregroundStyle(.accent)
-                            } // v
-                            .padding(.bottom, 10)
-                            
-                        } // h
-                        .padding(.horizontal)
 
-                    } // scroll horizontal
-                    .background(.gray.opacity(0.25))
-                    .frame(width: .infinity)
                     
                     Text(":)")
                         .foregroundStyle(.accent)
@@ -187,6 +134,14 @@ struct SelectUnitsView: View {
         } // z
     } // view body
 } // view struct
+
+func GetRandomColor() -> Color {
+    let red = Double.random(in: 0...1)
+    let green = Double.random(in: 0...1)
+    let blue = Double.random(in: 0...1)
+    
+    return Color(red: red, green: green, blue: blue)
+}
 
 #Preview {
     SelectUnitsView()
