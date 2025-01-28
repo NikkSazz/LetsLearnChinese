@@ -34,16 +34,18 @@ struct duckieView: View {
                 SceneView(
                     scene: {
                         let scene = SCNScene(named: "duck.obj")
+                        
+                        // Background Color
                         let mycolor = UIColor(red: 0x5A / 255.0, green: 0x54 / 255.0, blue: 0x54 / 255.0, alpha: 1.0)
                         scene?.background.contents = mycolor
+                        // /bg color
                         
-                        // Apply texture if available
-                        if let duckNode = scene?.rootNode.childNode(withName: "duck", recursively: true) {
-                            let material = SCNMaterial()
-                            material.diffuse.contents = UIImage(named: "duck.png")
-                            
-                            duckNode.geometry?.materials = [material]
-                        }
+                        // autorotate
+                        let rootNode = scene?.rootNode
+                        let rotateAction = SCNAction.rotateBy(x: 0, y: CGFloat(2 * Double.pi), z: 0, duration: 10)  // Slowly rotating over 10 seconds
+                        let repeatAction = SCNAction.repeatForever(rotateAction)  // Repeat indefinitely
+                        rootNode?.runAction(repeatAction)
+                        // / autorotate
                         
                         return scene
                     }(),
