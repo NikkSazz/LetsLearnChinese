@@ -1,0 +1,45 @@
+id,chinese,english,pinyin,unit_id,type
+1,你,ni,you,1,pronoun
+2,好,hao,good,1,adjective
+3,请,qing,please,1,verb
+4,问,wen,ask,1,verb
+5,贵,gui,honorable,1,adjective
+6,姓,xing,surname,1,noun
+7,我,wo,"I, me",1,pronoun
+8,呢,ne,question particle,1,particle
+9,小姐,xiaojie,miss,1,noun
+10,叫,jiao,to be called,1,verb
+11,什么,shenme,what,1,question word
+12,名字,mingzi,name,1,noun
+13,先生,xiansheng,"Mr., sir",1,noun
+14,是,shi,"is, am, are",1,verb
+15,老师,laoshi,teacher,1,noun
+16,吗,ma,question particle,1,particle
+17,不,bu,not,1,adverb
+18,学生,xuesheng,student,1,noun
+19,也,ye,also,1,adverb
+20,人,ren,person,1,noun
+21,中国,zhongguo,China,1,proper noun
+22,北京,beijing,Beijing,1,proper noun
+23,美国,meiguo,America,1,proper noun
+24,纽约,niuyue,New York,1,proper noun
+25,那,na,that,2,demonstrative
+26,的,de,possessive particle,2,particle
+27,照片,zhaopian,photo,2,noun
+28,这,zhe,this,2,demonstrative
+29,爸爸,baba,father,2,noun
+30,妈妈,mama,mother,2,noun
+31,个,ge,general measure word,2,measure word
+32,女,nu,female,2,adjective
+33,孩子,haizi,child,2,noun
+34,谁,shei,who,2,question word
+35,他,ta,he,2,pronoun
+36,姐姐,jiejie,older sister,2,noun
+37,男,nan,male,2,adjective
+38,弟弟,didi,younger brother,2,noun
+39,她,ta,she,2,pronoun
+40,大哥,dage,eldest brother,2,noun
+41,儿子,erzi,son,2,noun
+42,有,you,to have,2,verb
+43,女儿,nuer,daughter,2,noun
+44,没,mei,not,2,adverb
