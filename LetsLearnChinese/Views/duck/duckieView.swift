@@ -9,6 +9,13 @@ import SwiftUI
 import SceneKit
 
 struct duckieView: View {
+    @State var duckType: Int = 0
+    
+    let ducks = [
+        Model(id: 0, name: "Rubber Duck", modelName: "duck.obj", textureName: "duck.png"),
+            Model(id: 1, name: "Green Duck", modelName: "greenduck.obj", textureName: "greenduck.png"),
+            Model(id: 2, name: "Mandarin Duck", modelName: "duck.obj", textureName: "duck.png")
+        ]
     var body: some View{
         ZStack{
             DefaultBackground()
@@ -21,25 +28,22 @@ struct duckieView: View {
                     .padding(.bottom, -1) // so they merge well together
                 
                 
-                
-
-                
-                
                 SceneView(
                     scene: {
-                        let scene = SCNScene(named: "duck.obj")
+                        let selectedDuck = ducks[duckType]
+                        let scene = SCNScene(named: selectedDuck.modelName)
                         
                         // Background Color
                         let mycolor = UIColor(red: 0x5A / 255.0, green: 0x54 / 255.0, blue: 0x54 / 255.0, alpha: 1.0)
                         scene?.background.contents = mycolor
                         // /bg color
                         
-                        // Locate the texture and apply it to the first material
-                        let duckTexture = UIImage(named: "duck.png")
-                       let material = SCNMaterial()
-                       material.diffuse.contents = duckTexture
-                       scene?.rootNode.childNodes.forEach { $0.geometry?.materials = [material] }
-                        
+
+                        let duckTexture = UIImage(named: selectedDuck.textureName)
+                        let material = SCNMaterial()
+                        material.diffuse.contents = duckTexture
+                        scene?.rootNode.childNodes.forEach { $0.geometry?.materials = [material] }
+                            
                         // autorotate
                         let duration: TimeInterval = 30
                         let rootNode = scene?.rootNode
@@ -52,7 +56,7 @@ struct duckieView: View {
                     }(),
                     options: [.autoenablesDefaultLighting, .allowsCameraControl]
                 )
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2.25) // change for scale
                 
                 
                 ScrollView{
@@ -74,26 +78,45 @@ struct duckieView: View {
                                     RoundedRectangle(cornerRadius: 12)
                                         .fill(Color.blue.opacity(0.5))
                                 )
-                            
-                            Spacer()
-                            
-                            Text("   Duck   ")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.accent)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color.blue.opacity(0.5))
-                                )
                         } // h
                         .padding(.horizontal)
                         
-                        Text(
-                             "The humble RUBBER DUCKY, often associated with bath time and childhood, holds a unique and  vital role in programming and coding.\nThe  technique of \"rubber duck debugging\".\n\nAs you get a difficult error in your code, you take a mental break, talking to a rubber ducky, and literally explaining to it your error. As you explain your error to a physical object, you are more likely to understand and solve the problem in your head! No worries of being judged for bad code, it's a duck after all"
-                        )
-                            .foregroundStyle(.accent.opacity(0.8))
+                        Picker("Select Duck ¬¬", selection: $duckType) {
+                            ForEach(ducks) { duck in
+                                Text(duck.name).tag(duck.id)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .tint(.blue) // Use your preferred color here
+                        .padding(.horizontal)
+
+                       
                         
-                        Spacer()
+                        Text("The humble RUBBER DUCKY, often associated with bath time and childhood, holds a unique and  vital role in programming and coding.\nThe  technique of \"rubber duck debugging\".")
+                            .foregroundStyle(.accent.opacity(0.8))
+                            .padding(.horizontal)
+                        
+                        Text("As you get a difficult error in your code, you take a mental break, talking to a rubber ducky, and literally explaining to it your error. As you explain your error to a physical object, you are more likely to understand and solve the problem in your head! No worries of being judged for bad code, it's a duck after all")
+                            .foregroundStyle(.accent.opacity(0.8))
+                            .padding(.horizontal)
+                        
+                        Text("How can you use this for Chinese?")
+                            .font(.title2)
+                            .foregroundStyle(.accent)
+                        
+                        Text("Explaining what you've learned out loud to the duck. A new character, what's special about it, what should you keep in mind while using that character.")
+                            .foregroundStyle(.accent.opacity(0.8))
+                            .padding(.horizontal)
+                        
+                        Text("This helps reinforce your memory and understanding.")
+                            .foregroundStyle(.accent.opacity(0.8))
+                            .padding(.horizontal)
+                        
+                        Text("*Note some of the ducks may not be centerd.")
+                            .foregroundStyle(.gray.opacity(0.5))
+
+                        
+                        Spacer(minLength: 30)
                     } // v
                     .padding(.horizontal)
                 } // scroll view
@@ -117,5 +140,5 @@ struct Model : Identifiable {
     var id : Int
     var name : String
     var modelName : String
-    var details : String
+    var textureName : String
 }
