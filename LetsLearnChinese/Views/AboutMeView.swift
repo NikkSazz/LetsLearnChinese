@@ -23,7 +23,7 @@ struct AboutMeView: View {
                         
                         AboutMeHeader(text: "About Me", fontSize: bigSize)
                         
-                        AboutMeParagraph(text: "Hi,  I’m Nikolai Sazonov,   18-year-old Mathematics and Computer Science major at Hobart College,  Class of  2028.\nI’m also learning Chinese : )", fontSize: smallSize)
+                        AboutMeParagraph(text: "Hi,  I’m Nikolai Sazonov,   18-year-old Mathematics and Computer Science major at Hobart College,  Class of  2028.", fontSize: smallSize)
 
 
                         AboutMeHeader(text: "Why I built This App", fontSize: bigSize)
@@ -51,7 +51,7 @@ struct AboutMeView: View {
                         
                         AboutMeParagraph(text: "SVG Repo,  StackOverflow,  Figma", fontSize: smallSize)
                         
-                        AboutMeParagraph(text: "SceneKit,  UIKit,  Blender", fontSize: smallSize)
+                        AboutMeParagraph(text: "SceneKit,  UIKit,  Blender, SketchFab", fontSize: smallSize)
   
                         DividerStyle()
                         

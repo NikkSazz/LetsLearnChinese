@@ -41,7 +41,7 @@ struct duckieView: View {
                        scene?.rootNode.childNodes.forEach { $0.geometry?.materials = [material] }
                         
                         // autorotate
-                        let duration: TimeInterval = 60
+                        let duration: TimeInterval = 30
                         let rootNode = scene?.rootNode
                         let rotateAction = SCNAction.rotateBy(x: 0, y: CGFloat(2 * Double.pi), z: 0, duration: duration)  // Slowly rotating over 10 seconds
                         let repeatAction = SCNAction.repeatForever(rotateAction)  // Repeat indefinitely

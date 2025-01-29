@@ -10,6 +10,7 @@ import SwiftUI
 struct SelectUnitsView: View {
     var title: String = "Let's Learn Chinese"
     var subtitle: String = "Select Units"
+    var view: AnyView = AnyView(NotImplimentedView())
     
     let levels = [
             ("Level 1 Part 1", ["Greetings", "Family", "Dates and Time", "Hobbies", "Visiting Friends"]),
@@ -18,9 +19,9 @@ struct SelectUnitsView: View {
             ("Level 2 Part 2", ["Thing", "Thingz", "Anotherr Thing", "Thinking", "Thinggssz"])
         ]
         
-        @State private var selectedUnits: Set<String> = []
-        @State private var unitColors: [String: Color] = [:]
-    
+    @State private var selectedUnits: Set<String> = []
+    @State private var unitColors: [String: Color] = [:]
+
     var body: some View {
         ZStack {
             
@@ -82,6 +83,7 @@ struct SelectUnitsView: View {
 //                                                        unitColors[unit] = RandomColor()
                                                         VStack(spacing: 2) {
                                                             Text("\(unit)") // Unit label
+                                                                .foregroundStyle(.white)
                                                             Button(action: {
                                                                 if selectedUnits.contains(unit) {
                                                                     selectedUnits.remove(unit) // Deselect if already selected
@@ -118,10 +120,7 @@ struct SelectUnitsView: View {
                         .foregroundStyle(.accent)
                 } // scroll
                 
-                Button(action: {
-                    
-                }
-                ){
+                NavigationLink(destination: view){
                     Rectangle()
                         .frame(height: 50)
                         .padding(.bottom)
