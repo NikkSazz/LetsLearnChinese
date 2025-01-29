@@ -9,16 +9,6 @@ import SwiftUI
 import SceneKit
 
 struct duckieView: View {
-    
-    @State var models = [
-        
-        Model(id: 0, name: "Earth", modelName: "Earth.usdz", details: "Earth is the third planet from the Sun and the only astronomical object known to harbor life. According to radiometric dating estimation and other evidence, Earth formed over 4.5 billion years ago. Earth's gravity interacts with other objects in space, especially the Sun and the Moon, which is Earth's only natural satellite. Earth orbits around the Sun in 365.256 solar days.")
-    ]
-
-
-    @State var index = 0
-
-
     var body: some View{
         ZStack{
             DefaultBackground()
@@ -26,9 +16,13 @@ struct duckieView: View {
             VStack{
                 
 
-                TopBar(title: "DUCK", subtitle: "DuckieDuckie")
+                TopBar(title: "Therapist", subtitle: "Rubber Ducky")
                     .padding(.top, 50)
                     .padding(.bottom, -1) // so they merge well together
+                
+                
+                
+
                 
                 
                 SceneView(
@@ -40,9 +34,16 @@ struct duckieView: View {
                         scene?.background.contents = mycolor
                         // /bg color
                         
+                        // Locate the texture and apply it to the first material
+                        let duckTexture = UIImage(named: "duck.png")
+                       let material = SCNMaterial()
+                       material.diffuse.contents = duckTexture
+                       scene?.rootNode.childNodes.forEach { $0.geometry?.materials = [material] }
+                        
                         // autorotate
+                        let duration: TimeInterval = 60
                         let rootNode = scene?.rootNode
-                        let rotateAction = SCNAction.rotateBy(x: 0, y: CGFloat(2 * Double.pi), z: 0, duration: 10)  // Slowly rotating over 10 seconds
+                        let rotateAction = SCNAction.rotateBy(x: 0, y: CGFloat(2 * Double.pi), z: 0, duration: duration)  // Slowly rotating over 10 seconds
                         let repeatAction = SCNAction.repeatForever(rotateAction)  // Repeat indefinitely
                         rootNode?.runAction(repeatAction)
                         // / autorotate
@@ -55,7 +56,7 @@ struct duckieView: View {
                 
                 
                 ScrollView{
-                    VStack(alignment: .leading, spacing: 15, content: {
+                    VStack(alignment: .leading, spacing: 15) {
                         Spacer()
                         HStack{
                             Text("What is this?")
@@ -87,11 +88,15 @@ struct duckieView: View {
                         } // h
                         .padding(.horizontal)
                         
-                        Text(models[0].details)
+                        Text(
+                             "The humble RUBBER DUCKY, often associated with bath time and childhood, holds a unique and  vital role in programming and coding.\nThe  technique of \"rubber duck debugging\".\n\nAs you get a difficult error in your code, you take a mental break, talking to a rubber ducky, and literally explaining to it your error. As you explain your error to a physical object, you are more likely to understand and solve the problem in your head! No worries of being judged for bad code, it's a duck after all"
+                        )
                             .foregroundStyle(.accent.opacity(0.8))
-                    })
+                        
+                        Spacer()
+                    } // v
                     .padding(.horizontal)
-                }
+                } // scroll view
                 
                 Spacer(minLength: 0)
                 
