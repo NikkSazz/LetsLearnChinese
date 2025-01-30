@@ -9,18 +9,16 @@ import SwiftUI
 
 struct SelectUnitsView: View {
     var title: String = "Let's Learn Chinese"
-    var subtitle: String = "Select Units"
+    var subtitle: String = "Units"
     var view: AnyView = AnyView(NotImplimentedView())
+    var tutorialView: AnyView = AnyView(NotImplimentedView())
     
     let levels = [
-            ("Level 1 Part 1", ["Greetings", "Family", "Dates and Time", "Hobbies", "Visiting Friends"]),
-            ("Level 1 Part 2", ["Appointments", "Studying", "School Life", "Shopping", "Transportation"]),
-            ("Level 2 Part 1", ["Thingt", "Thinge", "Another Thing", "Thinga", "Thingggssz"]),
-            ("Level 2 Part 2", ["Thing", "Thingz", "Anotherr Thing", "Thinking", "Thinggssz"])
+            ("Units 1 - 5", ["Greetings", "Family", "Dates and Time", "Hobbies", "Visiting Friends"]),
+            ("Units 6 - 10", ["Appointments", "Studying", "School Life", "Shopping", "Transportation"]),
         ]
         
     @State private var selectedUnits: Set<String> = []
-    @State private var unitColors: [String: Color] = [:]
 
     var body: some View {
         ZStack {
@@ -29,20 +27,18 @@ struct SelectUnitsView: View {
             
             VStack {
                 
-                TopBar(title: title, subtitle: subtitle)
+                TopBar(title: title, subtitle: "Select \(subtitle)")
                     .frame(alignment: .top)
-                
-                
                  
                 ScrollView {
                     Text("May use characters, words, and sentences from previous unselected units.")
                         .lineLimit(2)
                         .foregroundStyle(.accent)
-                        .padding(.top)
                         .padding(.horizontal, 20)
                    
                
                     Text(":)")
+                        .padding(.top)
                         .foregroundStyle(.accent)
                     
                     
@@ -59,19 +55,18 @@ struct SelectUnitsView: View {
                                             level.1.forEach { selectedUnits.remove($0) }
                                         } else {
                                             level.1.forEach { selectedUnits.insert($0) }
-//                                            unitColors[$0] = unitColors[$0] ?? RandomColor()
                                         }
                                     }
                                 }) {
                                     VStack {
-                                        Text(level.0) // Level number at the top
-                                            .font(.custom("InknutAntiqua-Black", size: 20))
-                                            .foregroundStyle(.black.opacity(0.8))
+                                        Text("Select \(level.0)") // Level number at the top
+                                            .font(.custom("InknutAntiqua-Black", size: 24))
+                                            .foregroundStyle(level.1.allSatisfy { selectedUnits.contains($0) } ? .black : .black.opacity(0.75))
                                             .padding()
                                             .frame(maxWidth: .infinity)
                                             .background(
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .fill(level.1.allSatisfy { selectedUnits.contains($0) } ? RandomColor() : Color.accent)
+                                                    .fill(level.1.allSatisfy { selectedUnits.contains($0) } ? .accent : .white.opacity(0.1))
                                                     .frame(height: 40)
                                             )
                                             .frame(height: 40)
@@ -83,36 +78,40 @@ struct SelectUnitsView: View {
 //                                                        unitColors[unit] = RandomColor()
                                                         VStack(spacing: 2) {
                                                             Text("\(unit)") // Unit label
-                                                                .foregroundStyle(.white)
+                                                                .foregroundStyle(selectedUnits.contains(unit) ? .accent.opacity(0.75) : .black.opacity(0.75))
                                                             Button(action: {
                                                                 if selectedUnits.contains(unit) {
                                                                     selectedUnits.remove(unit) // Deselect if already selected
                                                                 } else {
                                                                     selectedUnits.insert(unit) // Select the unit
-                                                                    unitColors[unit] = unitColors[unit] ?? RandomColor()
                                                                 }
                                                             }) {
-                                                                Rectangle()
-                                                                    .frame(width: 100, height: 80)
-                                                                    .foregroundStyle(selectedUnits.contains(unit) ? (unitColors[unit] ?? Color.accent) : Color.accent) // Use the color from unitColors dictionary
-                                                                    .cornerRadius(5)
-                                                            }
+                                                                ZStack{
+                                                                    Rectangle()
+                                                                        .frame(width: 100, height: 80)
+                                                                        .foregroundStyle(selectedUnits.contains(unit) ? .accent : .accent.opacity(0.25))
+                                                                        .cornerRadius(5)
+                                                                    Text(unitChinese(unitName: unit))
+                                                                        .font(.system(size: 32))
+                                                                        .foregroundStyle(selectedUnits.contains(unit) ? .black : .black.opacity(0.75))
+                                                                }// z
+                                                            } // button
                                                             .buttonStyle(PlainButtonStyle())
-                                                        }
+                                                        } // v
                                                         .padding(.bottom, 10)
                                                         Spacer(minLength: 5)
-                                                    }
-                                                }
+                                                    } // for each
+                                                } // hstack
                                                 .padding(.horizontal)
-                                            }
+                                            } // scroll
                                             .background(Color.gray.opacity(0.25))
                                             .frame(maxWidth: .infinity)
-                                        }
-                                }
+                                        } // v
+                                } // button
                                 .buttonStyle(PlainButtonStyle())
-                            }
-                        }
-                    }
+                            } // v
+                        } // foreach level
+                    }// v
                     .padding()
 
                     
@@ -121,12 +120,20 @@ struct SelectUnitsView: View {
                 } // scroll
                 
                 NavigationLink(destination: view){
-                    Rectangle()
-                        .frame(height: 50)
-                        .padding(.bottom)
-                        .padding(.horizontal, 15)
-                        .padding(.top, -5)
-                        .foregroundStyle(.blue)
+                    ZStack{
+                        Rectangle()
+                            .frame(height: 50)
+                            .padding(.bottom)
+                            .padding(.horizontal, 15)
+                            .padding(.top, -5)
+                            .foregroundStyle(.blue)
+                        
+                        Text("Continue to \(subtitle)")
+                            .font(.custom("InknutAntiqua-Black", size: 24))
+                            .foregroundStyle(.white)
+                            .padding(.bottom, 25)
+                    }
+                    
                 }
             } // v
             .frame(maxHeight: .infinity, alignment: .top)
@@ -135,14 +142,22 @@ struct SelectUnitsView: View {
     } // view body
 } // view struct
 
-func RandomColor() -> Color {
-    let red = Double.random(in: 0.1...0.75)
-    let green = Double.random(in: 0.1...0.75)
-    let blue = Double.random(in: 0.1...0.75)
-    
-    return Color(red: red, green: green, blue: blue)
+func unitChinese(unitName: String) -> String {
+    switch unitName {
+    case "Greetings":
+        return "问好"
+    case "Family":
+        return "家庭"
+    case "Dates and Time":
+        return "时间"
+    case "Hobbies":
+        return "爱好"
+    case "Visiting Friends":
+        return "看朋友"
+    default:
+        return "你好"
+    }
 }
-
 
 #Preview {
     SelectUnitsView()
