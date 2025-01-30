@@ -27,7 +27,7 @@ struct MainMenu: View {
                         
                         homeMenuButton(text: "Enviornment", destination: EnviornmentObject(), buttonHeight: buttonHeight)
                         
-                        homeMenuButton(text: "NoteCard", destination: SelectUnitsView(title: "Note Cards", view: AnyView(NoteCardView())), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "NoteCard", destination: SelectUnitsView(title: "Note Cards", view: AnyView(NoteCardView()), tutorialView: AnyView(HowToNoteCard())), buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "Writing", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)

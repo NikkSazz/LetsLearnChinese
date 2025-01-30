@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-struct HowtoPlay: View {
+struct HowToNoteCard: View {
     var body: some View {
         ZStack {
             DefaultBackground()
-        }
-    }
-}
+            Text("How to note Card")
+        }// z
+    }// body
+}// struct
 
 #Preview {
-    HowtoPlay()
-}
+    HowToNoteCard()
+}// preview

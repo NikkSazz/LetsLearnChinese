@@ -8,13 +8,18 @@
 import SwiftUI
 import SceneKit
 
+
 struct duckieView: View {
+    init(){ // for picker style
+        UISegmentedControl.appearance().selectedSegmentTintColor = .accent
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)    }
+    
     @State var duckType: Int = 0
     
     let ducks = [
         Model(id: 0, name: "Rubber Duck", modelName: "duck.obj", textureName: "duck.png"),
-            Model(id: 1, name: "Green Duck", modelName: "greenduck.obj", textureName: "greenduck.png"),
-            Model(id: 2, name: "Mandarin Duck", modelName: "duck.obj", textureName: "duck.png")
+        Model(id: 1, name: "Green Duck", modelName: "greenduck.obj", textureName: "greenduck.png"),
         ]
     var body: some View{
         ZStack{
@@ -70,14 +75,18 @@ struct duckieView: View {
                             
                             Spacer()
                             
-                            Text("   Quack   ")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.accent)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color.blue.opacity(0.5))
-                                )
+                            Button {
+                                print("Quack!")
+                            } label: {
+                                Text("Quack       ")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.accent)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .fill(Color.black.opacity(0.5))
+                                    )
+                            }
                         } // h
                         .padding(.horizontal)
                         

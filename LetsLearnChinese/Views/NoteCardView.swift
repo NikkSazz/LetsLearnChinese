@@ -9,7 +9,12 @@ import SwiftUI
 
 struct NoteCardView: View {
     var body: some View {
-       Text("Hello World")
+        ZStack{
+            DefaultBackground()
+            
+            Text("Note Card View")
+                .foregroundStyle(.accent)
+        }
     }
 }
 
