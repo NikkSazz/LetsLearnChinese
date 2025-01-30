@@ -25,7 +25,7 @@ struct MainMenu: View {
                     
                     ScrollView {
                         
-                        homeMenuButton(text: "Enviornment", destination: EnviornmentObject(), buttonHeight: buttonHeight)
+                        
                         
                         homeMenuButton(text: "NoteCard", destination: SelectUnitsView(title: "Note Cards", view: AnyView(NoteCardView()), tutorialView: AnyView(HowToNoteCard())), buttonHeight: buttonHeight)
                         

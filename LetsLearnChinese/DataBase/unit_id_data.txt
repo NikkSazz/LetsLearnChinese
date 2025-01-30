@@ -1,2 +1,0 @@
-1|Greetings|你好|ni hao|1
-2|Occupations|你是|ni shi|2
