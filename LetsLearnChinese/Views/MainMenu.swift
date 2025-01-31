@@ -24,10 +24,20 @@ struct MainMenu: View {
                         .frame(alignment: .top)
                     
                     ScrollView {
+                        Spacer()
                         
+                        Text("↓ Scroll Down ↓")
+                            .foregroundStyle(.accent)
+                            .opacity(0.75)
+                            .padding(.top)
+                            
+                        Spacer()
                         
+                        homeMenuButton(text: "Characters by Unit", destination: ViewByUnit(), buttonHeight: buttonHeight)
                         
-                        homeMenuButton(text: "NoteCard", destination: SelectUnitsView(title: "Note Cards", view: AnyView(NoteCardView()), tutorialView: AnyView(HowToNoteCard())), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "NoteCards",
+                                       destination: SelectUnitsView(title: "Note Cards", view: AnyView(NoteCardView()), tutorialView: AnyView(HowToNoteCard())),
+                                       buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "Writing", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
@@ -54,7 +64,7 @@ struct MainMenu: View {
                         Spacer(minLength: 50)
                         Text(":)")
                             .foregroundStyle(.accent)
-                            .opacity(0.075)
+                            .opacity(0.175)
                         Spacer(minLength: 50)
                         
                     } // scroll
