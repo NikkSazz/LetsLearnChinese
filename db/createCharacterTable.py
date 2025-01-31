@@ -1,10 +1,11 @@
 import sqlite3
 import csv
 
-csv_file = "Characters.csv"
-connection = sqlite3.connect("mydatabase.sqlite")
+csv_file = "/Users/dmitrysazonov/Desktop/Characters.csv"
+dbfile = "llcdb.sqlite"
+connection = sqlite3.connect(dbfile)
 
-tableName = "CharacterTest"
+tableName = "Characters"
 cursor = connection.cursor()
 cursor.execute(f"""
 CREATE TABLE IF NOT EXISTS {tableName} (
@@ -29,4 +30,4 @@ connection.commit()
 
 connection.close()
 
-print("Data successfully imported into the Character table!")
+print(f"Data successfully imported into the {tableName} table!")
