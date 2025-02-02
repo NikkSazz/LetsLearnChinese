@@ -191,7 +191,7 @@ struct ViewByUnit: View {
                     let id = Int(sqlite3_column_int(statement, 3))
 
                     let character = Character(id: id, chinese: chinese, english: english, pinyin: pinyin)
-                    print("\t\(character.id)\t\(character.chinese)\t\(character.english)\t\(character.pinyin)")
+//                    print("\t\(character.id)\t\(character.chinese)\t\(character.english)\t\(character.pinyin)")
                     fetchedCharacters.append(character)
                 }
 

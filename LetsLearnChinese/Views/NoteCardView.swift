@@ -18,6 +18,8 @@ struct NoteCardView: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             
             ZStack {
+                let c: Character
+                
                 if isFlipped {
                     // Back side of the card
                     CardBack()
@@ -48,7 +50,7 @@ struct NoteCardView: View {
 struct CardFront: View {
     var body: some View {
         Text("图书馆")
-            .font(.title)
+            .font(.system(size: 50))
             .foregroundColor(.black)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.accentColor.gradient)
@@ -62,10 +64,11 @@ struct CardBack: View {
         VStack {
             Text("Library")
                 .padding(.bottom)
+                .font(.system(size: 65))
             Text("túshūguǎn")
+                .font(.system(size: 30))
         }
-        .scaleEffect(x: -1, y: 1)
-        .font(.title)
+        .scaleEffect(x: -1, y: 1) // flipped
         .foregroundColor(.accent)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.black.gradient.opacity(0.5))

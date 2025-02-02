@@ -154,6 +154,16 @@ func unitChinese(unitName: String) -> String {
         return "爱好"
     case "Visiting Friends":
         return "看朋友"
+    case "Appointments":
+        return "约时间"
+    case "Studying":
+        return "学中文"
+    case "School Life":
+        return "学校生活"
+    case "Shopping":
+        return "买东西"
+    case "Transportation":
+        return "交通"
     default:
         return "你好"
     }
