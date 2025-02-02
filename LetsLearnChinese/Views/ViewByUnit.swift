@@ -101,19 +101,7 @@ struct ViewByUnit: View {
                                     DividerStyle().opacity(0.2)
                                     
                                     ForEach(characters, id: \ .id) { character in
-                                        HStack {
-                                            Text(character.chinese)
-                                                .frame(maxWidth: .infinity, alignment: .leading)
-                                            Text(character.english)
-                                                .frame(maxWidth: .infinity, alignment: .center)
-                                            Text(character.pinyin)
-                                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                        }
-                                        .padding(.horizontal, 50)
-                                        .font(.subheadline)
-                                        .foregroundStyle(Color.accentColor)
-                                        
-                                        DividerStyle().opacity(0.2)
+                                        CharacterTriple(character: character) // view to show chinese english and pinyin of a Character
                                     } // for each
                                 } //v
                                 .transition(.opacity.combined(with: .move(edge: .trailing)))
