@@ -1,45 +1,251 @@
 id,chinese,english,pinyin,unit_id,type
-1,你,ni,you,1,pronoun
-2,好,hao,good,1,adjective
-3,请,qing,please,1,verb
-4,问,wen,ask,1,verb
-5,贵,gui,honorable,1,adjective
-6,姓,xing,surname,1,noun
-7,我,wo,"I, me",1,pronoun
-8,呢,ne,question particle,1,particle
-9,小姐,xiaojie,miss,1,noun
-10,叫,jiao,to be called,1,verb
-11,什么,shenme,what,1,question word
-12,名字,mingzi,name,1,noun
-13,先生,xiansheng,"Mr., sir",1,noun
-14,是,shi,"is, am, are",1,verb
-15,老师,laoshi,teacher,1,noun
-16,吗,ma,question particle,1,particle
-17,不,bu,not,1,adverb
-18,学生,xuesheng,student,1,noun
-19,也,ye,also,1,adverb
-20,人,ren,person,1,noun
-21,中国,zhongguo,China,1,proper noun
-22,北京,beijing,Beijing,1,proper noun
-23,美国,meiguo,America,1,proper noun
-24,纽约,niuyue,New York,1,proper noun
-25,那,na,that,2,demonstrative
-26,的,de,possessive particle,2,particle
-27,照片,zhaopian,photo,2,noun
-28,这,zhe,this,2,demonstrative
-29,爸爸,baba,father,2,noun
-30,妈妈,mama,mother,2,noun
-31,个,ge,general measure word,2,measure word
-32,女,nu,female,2,adjective
-33,孩子,haizi,child,2,noun
-34,谁,shei,who,2,question word
-35,他,ta,he,2,pronoun
-36,姐姐,jiejie,older sister,2,noun
-37,男,nan,male,2,adjective
-38,弟弟,didi,younger brother,2,noun
-39,她,ta,she,2,pronoun
-40,大哥,dage,eldest brother,2,noun
-41,儿子,erzi,son,2,noun
-42,有,you,to have,2,verb
-43,女儿,nuer,daughter,2,noun
-44,没,mei,not,2,adverb
+1,你,you,ni,1,pr
+2,好,good,hao,1,adj
+3,请,please,qing,1,v
+4,问,to ask,wen,1,v
+5,贵,honorable,gui,1,adj
+6,姓,surname,xing,1,v/n
+7,我,"I, me",wo,1,pr
+8,呢,qp,ne,1,qp
+9,小姐,miss,xiaojie,1,n
+10,叫,to be called,jiao,1,v
+11,什么,what,shenme,1,qpr
+12,名字,name,mingzi,1,n
+13,先生,"Mr., sir",xiansheng,1,n
+14,李友,Li You,lǐ yǒu,1,name
+15,王朋,Wang Peng,wáng péng,1,name
+16,是,is,shì,1,v
+17,老师,teacher,lǎoshī,1,n
+18,吗,question marker,ma,1,qp
+19,不,no,bù,1,adv
+20,学生,student,xuéshēng,1,n
+21,也,also,yě,1,adv
+22,人,person,rén,1,n
+23,中国,China,zhōngguó,1,loc
+24,北京,Beijing,Běijīng,1,loc
+25,美国,America,Měiguó,1,loc
+26,纽约,New York,Niǔyuē,1,loc
+27,英国,England,Yīngguó,1,loc
+28,法国,France,Fàguó,1,loc
+29,德国,Germany,Déguó,1,loc
+30,日本,Japan,Rìběn,1,loc
+31,韩国,South Korea,Hánguó,1,loc
+32,加拿大,Canada,Jiānádà,1,loc
+33,墨西哥,Mexico,Mòxīgē,1,loc
+34,印度,India,Yìndù,1,loc
+35,越南,Vietnam,Yuènán,1,loc
+36,加州,California,Jiāzhōu,1,loc
+37,夏威夷,Hawaii,Xiàwēiyí,1,loc
+38,上海,Shanghai,Shànghǎi,1,loc
+39,那,that,nà,2,pr
+40,的,posessive,de,2,pr
+41,照片,photo,zhàopiàn,2,n
+42,这,this,zhè,2,pr
+43,爸爸,father,bàba,2,n
+44,妈妈,mother,māmā,2,n
+45,个,measure word,gè,2,m
+46,孩子,child,háizi,2,n
+47,谁,who,shuí,2,qpr
+48,她,she,tā,2,pr
+49,他,he,tā,2,pr
+50,姐姐,older sister,jiějie,2,n
+51,男,male,nán,2,adj
+52,弟弟,younger brother,dìdi,2,n
+53,大哥,older brother,dàgē,2,n
+54,儿子,son,érzi,2,n
+55,有,have,yǒu,2,v
+56,没,not,méi,2,adv
+57,高文中,Gaowen Zhong,Gāo Wénzhōng,2,name
+58,家,family,jiā,2,n
+59,几,how many,jǐ,2,nu / qpr
+60,口,m for family,kǒu,2,m
+61,哥哥,older brother,gēge,2,n
+62,两,two / couple,liǎng,2,nu
+63,妹妹,young sister,mèimei,2,n
+64,和,and,hé,2,conj
+65,大姐,big sister,dàjiē,2,n
+66,二姐,second older sister,èr jiě,2,n
+67,做,to do,zuò,2,v
+68,工作,work,gōngzuò,2,n / v
+69,侓师,lawyer,lǜshī,2,n
+70,英文,English,yīngwén,2,n
+71,都,both,dōu,2,adv
+72,大学生,college student,dàxuéshēng,2,n
+73,大学,university,dàxué,2,n
+74,医生,doctor,yīshēng,2,n
+75,白英爱,Bai Ying'ai,Bái Yīng'ài,2,name
+76,时间,time,shíjiān,3,n
+77,九月,September,jiǔ yuè,3,n
+78,月,month,yuè,3,n
+79,十二,twelve,shí èr,3,nu
+80,号,date,hào,3,m
+81,星期,week,xīngqī,3,n
+82,星期四,Thursday,xīngqī sì,3,n
+83,天,day,tiān,3,n
+84,生日,birthday,shēngrì,3,n
+85,今年,this year,jīnnián,3,n
+86,年,year,nián,3,n
+87,多,more,duō,3,adv
+88,大,big,dà,3,adj
+89,十八,eighteen,shí bā,3,nu
+90,岁,years old,suì,3,n
+91,吃,to eat,chī,3,v
+92,饭,meal,fàn,3,n
+93,怎么样,how about,zěnme yàng,3,qpr
+94,太...了,too,tài...le,3,p
+95,谢谢,thank you,xièxiè,3,v
+96,喜欢,to like,xǐhuān,3,v
+97,菜,dish,cài,3,n
+98,还是,or,háishì,3,conj
+99,可是,but,kěshì,3,conj
+100,我们,we,wǒmen,3,pr
+101,点,order,diǎn,3,m
+102,半,half,bàn,3,nu
+103,晚上,evening,wǎnshàng,3,t / n
+104,见,to see,jiàn,3,v
+105,再见,goodbye,zàijiàn,3,v
+106,再,again,zài,3,adv
+107,现在,now,xiànzài,3,t
+108,刻,moment,kè,3,m
+109,事,thing,shì,3,n
+110,今天,today,jīntiān,3,t
+111,很,very,hěn,3,adv
+112,忙,busy,máng,3,adj
+113,明天,tomorrow,míngtiān,3,t
+114,晚饭,dinner,wǎnfàn,3,n
+115,为什么,why,wèishénme,3,qpr
+116,为,for,wèi,3,prep
+117,因为,because,yīnwèi,3,conj
+118,还,still,hái,3,adv
+119,同学,classmate,tóngxué,3,n
+120,认识,to know,rènshi,3,v
+121,朋友,friend,péngyǒu,3,n
+122,爱好,hobby,àihào,4,vo
+123,周末,weekend,zhōumò,4,n
+124,打球,to play ball,dǎ qiú,4,vo
+125,打,to hit,dǎ,4,v
+126,球,ball,qiú,4,n
+127,看,to watch,kàn,4,v
+128,电视,television,diànshì,4,n
+129,电,electricity,diàn,4,n
+130,视,vision,shì,4,n
+131,唱歌,to sing,chànggē,4,vo
+132,唱,to sing,chàng,4,v
+133,歌,song,gē,4,n
+134,跳舞,to dance,tiàowǔ,4,vo
+135,跳,to jump,tiào,4,v
+136,舞,dance,wǔ,4,n
+137,听,to listen,tīng,4,v
+138,音乐,music,yīnyuè,4,n
+139,书,book,shū,4,n
+140,对,right,duì,4,adj
+141,有的,some,yǒu de,4,pr
+142,时候,time,shíhòu,4,n
+143,电影,film,diànyǐng,4,n
+144,常常,often,chángcháng,4,adv
+145,那,in that case,nà,4,conj
+146,去,to go,qù,4,v
+147,外国,foreign country,wàiguó,4,n
+148,请客,to invite someone,qǐng kè,4,vo
+149,昨天,yesterday,zuótiān,4,t
+150,所以,therefore,suǒyǐ,4,conj
+151,小,small,xiǎo,4,adj
+152,好久,long time,hǎo jiǔ,4,w
+153,好,good,hǎo,4,adv
+154,久,long,jiǔ,4,adj
+155,不错,not bad,bùcuò,4,adj
+156,错,wrong,cuò,4,adj
+157,想,to think,xiǎng,4,mv
+158,觉得,to feel,juéde,4,v
+159,有意思,interesting,yǒu yìsi,4,adj
+160,意思,meaning,yìsi,4,n
+161,只,only,zhǐ,4,adv
+162,睡觉,to sleep,shuìjiào,4,vo
+163,睡,to sleep,shuì,4,v
+164,觉,bed,jiào,4,n
+165,算了,forget it,suàn le,4,w
+166,别人,other people,biérén,4,n
+167,别的,other,bié de,4,adj
+168,看朋友,to see friends,kàn péngyǒu,5,w
+169,呀,(exclamation),ya,5,p
+170,进,to enter,jìn,5,v
+171,快,quick,kuài,5,adv / adj
+172,进来,to come in,jìnlái,5,vc
+173,来,to come,lái,5,v
+174,介绍,to introduce,jièshào,5,v
+175,一下,once,yíxià,5,n + m
+176,高兴,glad,gāoxìng,5,adj
+177,漂亮,pretty,piàoliang,5,adj
+178,坐,to sit,zuò,5,v
+179,在,at,zai,5,prep
+180,哪,where,nǎ,5,qpr
+181,学校,school,xuéxiào,5,n
+182,和,and,hé,5,v
+183,咖啡,coffee,kāfēi,5,n
+184,吧,bar (place),ba,5,p
+185,要,to want,yào,5,v
+186,平,peaceful,píng,5,m / n
+187,可乐,cola,kělè,5,n
+188,可以,can,kěyǐ,5,mv
+189,对不起,sorry,duìbuqǐ,5,v
+190,给,to give,gěi,5,v
+191,杯,cup,bēi,5,m
+192,水,water,shuǐ,5,n
+193,高小音,Gaoxiao Yin,Gāo Xiǎoyīn,5,name
+194,玩,to play,wán,5,v
+195,了,completed action,le,5,p
+196,图书馆,library,túshūguǎn,5,n
+197,一起,together,yīqǐ,5,adv
+198,聊天,to chat,liáotiān,5,vo
+199,聊,to chat,liáo,5,v
+200,天,sky,tiān,5,n
+201,才,only,cái,5,adv
+202,回家,to return home,huí jiā,5,vo
+203,回,to return,huí,5,v
+204,给,to,gěi,6,prep
+205,打电话,to make a phone call,dǎ diànhuà,6,vo
+206,电话,telephone,diànhuà,6,n
+207,喂,hello (on phone),wèi,6,interj
+208,在,to be at,zài,6,v
+209,就,just,jiù,6,adv
+210,您,polite you,nín,6,pr
+211,位,(people),wèi,6,m
+212,下午,afternoon,xiàwǔ,6,t
+213,时间,time,shíjiān,6,n
+214,问题,problem,wèntí,6,n
+215,要,to want,yào,6,mv
+216,开会,to have a meeting,kāihuì,6,vo
+217,开,to open,kāi,6,v
+218,会,meeting,huì,6,n
+219,上午,morning,shàngwǔ,6,t
+220,节,measure word for classes,jié,6,m
+221,课,class,kè,6,n
+222,年级,grade,niánjí,6,n
+223,考试,exam,kǎoshì,6,vo / n
+224,考,to test,kǎo,6,v
+225,试,exam,shì,6,n / v
+226,以后,after,yǐhòu,6,t
+227,空,free,kòng,6,n
+228,方便,convenient,fāngbiàn,6,adj
+229,到,to arrive,dào,6,v
+230,办公室,office,bàngōngshì,6,n
+231,行,OK,xíng,6,v
+232,等,to wait,děng,6,v
+233,别,don’t,bié,6,adv
+234,客气,polite,kèqì,6,adj
+235,常老师,Teacher Chang,Cháng lǎoshī,6,name
+236,下个,next,xià gè,6,w
+237,下,down,xià,6,w
+238,中文,Chinese (language),zhōngwén,6,n
+239,文,culture,wén,6,n
+240,帮,to help,bāng,6,v
+241,准备,to prepare,zhǔnbèi,6,v
+242,练习,exercise,liànxí,6,v
+243,说,to speak,shuō,6,v
+244,啊,particle,a,6,p
+245,但是,but,dànshì,6,conj
+246,得,have to,děi,6,av
+247,跟,with,gēn,6,prep
+248,见面,to meet,jiànmiàn,6,vo
+249,面,face,miàn,6,n
+250,回来,to return,huílái,6,vc
