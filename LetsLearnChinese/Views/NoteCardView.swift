@@ -8,13 +8,68 @@
 import SwiftUI
 
 struct NoteCardView: View {
+    @State private var isFlipped = false
     var body: some View {
+        let animationDuration = 0.5
         ZStack{
             DefaultBackground()
             
-            Text("Note Card View")
-                .foregroundStyle(.accent)
+            TopBar(title: "NoteCards", subtitle: "学习")
+                .frame(maxHeight: .infinity, alignment: .top)
+            
+            ZStack {
+                if isFlipped {
+                    // Back side of the card
+                    CardBack()
+                } else {
+                    // Front side of the card
+                    CardFront()
+                }
+            } // z
+            .frame(width: .infinity, height: 300) // Adjust size as needed
+            .cornerRadius(16)
+            .shadow(radius: 5)
+            .rotation3DEffect(
+                .degrees(isFlipped ? 180 : 0),
+                axis: (x: 0, y: 1, z: 0)
+            )
+            .onTapGesture {
+                withAnimation(.easeInOut(duration: animationDuration)) {
+                    isFlipped.toggle()
+                }
+            } // ontapgesture
+            .padding(.horizontal, 75)
+            
+        }//z
+        
+    } // body
+} // notecardview
+
+struct CardFront: View {
+    var body: some View {
+        Text("图书馆")
+            .font(.title)
+            .foregroundColor(.black)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.accentColor.gradient)
+            .cornerRadius(16)
+    }
+}
+
+struct CardBack: View {
+    var body: some View {
+        
+        VStack {
+            Text("Library")
+                .padding(.bottom)
+            Text("túshūguǎn")
         }
+        .scaleEffect(x: -1, y: 1)
+        .font(.title)
+        .foregroundColor(.accent)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.black.gradient.opacity(0.5))
+        .cornerRadius(16)
     }
 }
 
