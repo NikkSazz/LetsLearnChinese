@@ -20,8 +20,8 @@ struct duckieView: View {
     let ducks = [
         Model(id: 0, name: "Rubber", modelName: "duck.obj", textureName: "duck.png"),
         Model(id: 1, name: "Green", modelName: "greenduck.obj", textureName: "greenduck.png"),
-        Model(id: 2, name: "Traveler ", modelName: "duck_fin_posed.obj", textureName: "greenduck.png"),
-        Model(id: 3, name: "Wooden", modelName: "wooden_duck_toy.obj", textureName: "greenduck.png")
+//        Model(id: 2, name: "Traveler ", modelName: "duck_fin_posed.obj", textureName: "greenduck.png"),
+//        Model(id: 3, name: "Wooden", modelName: "wooden_duck_toy.obj", textureName: "greenduck.png")
         ]
     var body: some View{
         ZStack{

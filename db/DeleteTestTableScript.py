@@ -1,8 +1,7 @@
 import sqlite3
 
-# Connect to the SQLite database
-# Replace 'database.db' with your actual database file
-connection = sqlite3.connect("mydatabase.sqlite")
+dbfile = "llcdb.sqlite"
+connection = sqlite3.connect(dbfile)
 cursor = connection.cursor()
 
 # Name of the table to delete
