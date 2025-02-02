@@ -9,7 +9,10 @@ import SwiftUI
 import SQLite3
 
 struct ViewByUnit: View {
+    
     @State private var units: [Unit] = []
+    @State private var expandedUnitID: Int? = nil // Tracks which unit is expanded
+
     var body: some View {
         ZStack {
             DefaultBackground()
@@ -42,20 +45,46 @@ struct ViewByUnit: View {
 
                     
                     ForEach(units, id: \.id) { unit in
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 15) {
-                                Text("\(unit.id):  \(unit.nameEnglish)")
-                                    .foregroundStyle(.accent)
-                                Spacer()
-                                Text("\(unit.nameChinese) \(unit.namePinyin)")
-                                    .foregroundStyle(.accent)
-                                Text("Level: \(unit.level_id) Part: \(unit.level_part)")
-                                    .foregroundStyle(.accent)
-                            } //h
-                            .padding()
+                        Button(action: {
+                            withAnimation {
+                                expandedUnitID = (expandedUnitID == unit.id) ? nil : unit.id
+                            }
+                        }) { // buton action
+                            HStack() {
+                                Text("\(unit.id)")
+                                Text("\(unit.nameEnglish)")
+                                    .padding(.leading)
+                                
+                                Spacer() // fills width to infinity
+                                
+                                VStack(alignment: .trailing) {
+                                    Text("\(unit.nameChinese)")
+                                    Text("\(unit.namePinyin)")
+                                }
+                                .multilineTextAlignment(.trailing)
+                                
+                            } // h
+                            .foregroundStyle(.accent)
+                            .frame(height: 50)
+                            .padding(.horizontal, 30) // inner padding
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(10)
-                        } // h scroll
+                            .padding(.horizontal, 30) // outer padding
+                        } // button label
+                        
+                        // Expanded Content
+                        if expandedUnitID == unit.id {
+                            VStack(alignment: .leading, spacing: 5) {
+                                ForEach(0..<unit.id, id: \ .self) { _ in
+                                    Text("Hello, world!")
+                                        .padding(.leading, 30)
+                                        .font(.subheadline)
+                                        .foregroundStyle(.accent)
+                                }
+                            }
+                            .transition(.opacity.combined(with: .move(edge: .top)))
+                        } // if expanded id
+                        
                     } // for each unit in units
                     
                 } // v
