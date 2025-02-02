@@ -18,8 +18,6 @@ struct Character: Identifiable {
     let chinese: String
     let english: String
     let pinyin: String
-    let unitId: Int
-    let type: String
 }
 
 #Preview {
