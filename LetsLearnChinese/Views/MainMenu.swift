@@ -33,7 +33,7 @@ struct MainMenu: View {
                             
                         Spacer()
                         
-                        homeMenuButton(text: "Characters by Unit", destination: ViewByUnit(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "Characters", destination: ViewByUnit(), buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "NoteCards",
                                        destination: SelectUnitsView(title: "Note Cards", view: AnyView(NoteCardView()), tutorialView: AnyView(HowToNoteCard())),
