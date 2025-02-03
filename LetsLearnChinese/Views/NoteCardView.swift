@@ -18,7 +18,7 @@ struct NoteCardView: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             
             ZStack {
-                let c: Character
+//                let c: Character
                 
                 if isFlipped {
                     // Back side of the card

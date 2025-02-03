@@ -16,7 +16,7 @@ struct AllCharView: View {
             DefaultBackground()
             VStack {
                 TopBar(title: "Character List", subtitle: "汉字表")
-                    
+                
                 ScrollView {
                     Spacer(minLength: 25)
                     
@@ -28,8 +28,8 @@ struct AllCharView: View {
                             Spacer()
                             Text("English")
                         }
-                        .padding(.horizontal, 50)
-                        .font(.subheadline)
+                        .padding(.horizontal, 30)
+                        .font(.system(size: 30))
                         .foregroundStyle(Color.accentColor)
                         
                         DividerStyle().opacity(0.2)
@@ -69,7 +69,7 @@ struct AllCharView: View {
                     let id = Int(sqlite3_column_int(statement, 3))
 
                     let character = Character(id: id, chinese: chinese, english: english, pinyin: pinyin)
-                    print("\t\(character.id)\t\(character.chinese)\t\(character.english)\t\(character.pinyin)")
+//                    print("\t\(character.id)\t\(character.chinese)\t\(character.english)\t\(character.pinyin)")
                     fetchedCharacters.append(character)
                 }
 
@@ -86,6 +86,13 @@ struct Character: Identifiable {
     let chinese: String
     let english: String
     let pinyin: String
+    
+    init(id: Int, chinese: String, english: String, pinyin: String) {
+        self.id = id
+        self.chinese = chinese
+        self.english = english
+        self.pinyin = pinyin
+    }
 }
 
 struct CharacterTriple: View {
@@ -93,6 +100,7 @@ struct CharacterTriple: View {
     var body: some View {
         HStack {
             Text("\(character.chinese)")
+                .font(.system(size: 22))
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text(character.english)
                 .frame(maxWidth: .infinity, alignment: .center)

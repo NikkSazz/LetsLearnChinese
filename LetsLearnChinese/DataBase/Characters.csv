@@ -249,3 +249,203 @@ id,chinese,english,pinyin,unit_id,type
 248,见面,to meet,jiànmiàn,6,vo
 249,面,face,miàn,6,n
 250,回来,to return,huílái,6,vc
+251,说话,to speak,shuōhuà,7,vo
+252,话,words,huà,7,n
+253,上个,previous,shàng gè,7,w
+254,得,structural particle,de,7,p
+255,复习,to review,fùxí,7,v
+256,写,to write,xiě,7,v
+257,字,character,zì,7,n
+258,慢,slow,màn,7,adj
+259,支,measure word (for pens),zhī,7,m
+260,笔,pen,bǐ,7,n
+261,张,measure word (for flat objects),zhāng,7,m
+262,纸,paper,zhǐ,7,n
+263,教,to teach,jiāo,7,v
+264,怎么,how,zěnme,7,qpr
+265,懂,to understand,dǒng,7,v
+266,真,really,zhēn,7,adv
+267,哪里,where,nǎlǐ,7,pr
+268,预习,to preview,yùxí,7,v
+269,学,to study,xué,7,v
+270,第,ordinal number prefix,dì,7,prefix
+271,语法,grammar,yǔfǎ,7,n
+272,容易,easy,róngyì,7,adj
+273,生词,new word,shēngcí,7,n
+274,多,many,duō,7,adj
+275,汉字,Chinese character,hànzì,7,n
+276,难,difficult,nán,7,adj
+277,平常,usually,píngcháng,7,adv
+278,早,early,zǎo,7,adj
+279,这么,so,zhème,7,pr
+280,晚,late,wǎn,7,adj
+281,早上,morning,zǎoshang,7,t
+282,功课,homework,gōngkè,7,n
+283,大家,everyone,dàjiā,7,pr
+284,上课,to attend class,shàngkè,7,vo
+285,开始,to begin,kāishǐ,7,v / n
+286,念,to read aloud,niàn,7,v
+287,课文,text,kèwén,7,n
+288,录音,recording,lùyīn,7,n / vo
+289,学习,to study,xuéxí,7,v
+290,帅,handsome,shuài,7,adj
+291,酷,cool,kù,7,adj
+292,铅笔,pencil,qiānbǐ,7,n
+293,圆珠笔,ballpoint pen,yuánzhūbǐ,7,n
+294,本子,notebook,běnzi,7,n
+295,课本,textbook,kèběn,7,n
+296,字典,dictionary,zìdiǎn,7,n
+297,篇,essay,piān,8,m
+298,日记,diary,rìjì,8,n
+299,累,tired,lèi,8,adj
+300,起床,to get up,qǐchuáng,8,vo
+301,床,bed,chuáng,8,n
+302,洗澡,to take a shower,xǐzǎo,8,vo
+303,早饭,breakfast,zǎofàn,8,n
+304,一边,while doing something,yībiān,8,adv
+305,教室,classroom,jiàoshì,8,n
+306,发音,pronunciation,fāyīn,8,n
+307,新,new,xīn,8,adj
+308,电脑,computer,diànnǎo,8,n
+309,脑,brain,nǎo,8,n
+310,中午,noon,zhōngwǔ,8,n
+311,餐厅,restaurant,cāntīng,8,n
+312,午饭,lunch,wǔfàn,8,n
+313,上网,to go online,shàng wǎng,8,vo
+314,宿舍,dormitory,sùshè,8,n
+315,哪,there,nǎ,8,pr
+316,正在,currently,zhèngzài,8,adv
+317,以前,before,yǐqián,8,t
+318,告诉,to tell,gàosù,8,v
+319,已经,already,yǐjīng,8,adv
+320,知道,to know,zhīdào,8,v
+321,封,measure word for letters,fēng,8,m
+322,信,letter,xìn,8,n
+323,最近,recently,zuìjìn,8,t
+324,最,most,zuì,8,adv
+325,近,near,jìn,8,adj
+326,学期,semester,xuéqī,8,n
+327,除了...以外,except for,chúle... yǐwài,8,conj
+328,专业,major,zhūānyè,8,n
+329,会,meeting,huì,8,av
+330,后来,later,hòulái,8,t
+331,音乐会,concert,yīnyuèhuì,8,n
+332,希望,to hope,xīwàng,8,v / n
+333,能,can,néng,8,av
+334,用,to use,yòng,8,v
+335,笑,to smile,xiào,8,v
+336,祝,to wish,zhù,8,v
+337,商店,store,shāngdiàn,9,n
+338,买,to buy,mǎi,9,v
+339,东西,thing,dōngxi,9,n
+340,售货员,salesperson,shòuhuòyuán,9,n
+341,衣服,clothes,yīfú,9,n
+342,件,measure word for clothes,jiàn,9,m
+343,衬衫,shirt,chènshān,9,n
+344,颜色,color,yánsè,9,n
+345,黄,yellow,huáng,9,adj
+346,红,red,hóng,9,adj
+347,穿,to wear,chuān,9,v
+348,条,measure word for pants,tiáo,9,m
+349,裤子,pants,kùzi,9,n
+350,号,size,hào,9,n
+351,中,medium,zhōng,9,adj
+352,便宜,cheap,piányí,9,adj
+353,如果...的话,if...then,rúguǒ... de huà,9,conj
+354,长短,length,chángduǎn,9,n
+355,长,long,cháng,9,adj
+356,短,short,duǎn,9,adj
+357,合适,suitable,héshì,9,adj
+358,试,to try,shì,9,v
+359,不用,no need,bùyòng,9,w
+360,一共,total,yígòng,9,adv
+361,多少,how much,duōshao,9,qpr
+362,钱,money,qián,9,n
+363,块,yuan (measure word for money),kuài,9,m
+364,毛,mao (measure word for money),máo,9,m
+365,分,cent,fēn,9,m
+366,百,hundred,bǎi,9,nu
+367,找,to give change,zhǎo,9,vo
+368,双,pair,shuāng,9,m
+369,鞋,shoes,xié,9,n
+370,换,to exchange,huàn,9,v
+371,一样,the same,yīyàng,9,adj
+372,虽然,although,suīrán,9,conj
+373,大小,size,dàxiǎo,9,n
+374,咖啡色,coffee color,kāfēisè,9,n
+375,种,type,zhǒng,9,m
+376,黑,black,hēi,9,adj
+377,样子,appearance,yàngzi,9,n
+378,挺,quite,tǐng,9,adv
+379,它,it,tā,9,pr
+380,这儿,here,zhèr,9,pr
+381,刷卡,to swipe a card,shuā kǎ,9,vo
+382,刷,to swipe,shuā,9,v
+383,卡,card,kǎ,9,n
+384,收,to receive,shōu,9,v
+385,信用卡,credit card,xìnyòngkǎ,9,n
+386,不过,but,bùguò,9,conj
+387,再,again,zài,9,adv
+388,付钱,to pay,fu qián,9,vo
+389,付,to pay,fù,9,v
+390,蓝色,blue,lánsè,9,n
+391,绿色,green,lǜsè,9,n
+392,紫色,purple,zǐsè,9,n
+393,粉红色,pink,fěnhóngsè,9,n
+394,桔红色,orange,jué hóng sè,9,n
+395,灰色,gray,huīsè,9,n
+396,上衣,top,shàngyī,9,n
+397,大衣,overcoat,dàyī,9,n
+398,毛衣,sweater,máoyī,9,n
+399,裙子,skirt,qúnzi,9,n
+400,夹克,jacket,jiákè,9,n
+401,外套,coat,wàitào,9,n
+402,西装,suit,xīzhuāng,9,n
+403,T恤衫,T-shirt,T xù shān,9,n
+404,帽子,hat,màozi,9,n
+405,袜子,socks,wàzi,9,n
+406,交通,traffic,jiāotōng,10,w
+407,寒假,winter vacation,hánjià,10,n
+408,飞机,airplane,fēijī,10,n
+409,飞,to fly,fēi,10,v
+410,机票,plane ticket,jīpiào,10,n
+411,机场,airport,jīchǎng,10,n
+412,坐,to travel by,zuò,10,v
+413,公共汽车,bus,gōnggòng qìchē,10,n
+414,公共,public,gōnggòng,10,adj
+415,汽车,car,qìchē,10,n
+416,车,vehicle,chē,10,n
+417,或者,or,huòzhě,10,conj
+418,地铁,subway,dìtiě,10,n
+419,走,to walk,zǒu,10,v
+420,先,first,xiān,10,adv
+421,下车,to get off,xià chē,10,v
+422,然后,then,ránhòu,10,adv
+423,绿,green,lǜ,10,adj
+424,线,line,xiàn,10,n
+425,最后,last,zuìhòu,10,w
+426,打车,to take a taxi,dǎ chē,10,vo
+427,出租汽车,taxi,chūzū qìchē,10,n
+428,出租,to rent,chūzū,10,v
+429,租,to rent,zū,10,v
+430,开车,to drive,kāichē,10,vo
+431,开,to drive,kāi,10,v
+432,送,to send,sòng,10,v
+433,电子邮件,email,diànzǐ yóujiàn,10,n
+434,电子,electronic,diànzǐ,10,n
+435,让,to let,ràng,10,v
+436,花,to spend,huā,10,v
+437,不好意思,excuse me,bù hǎo yìsi,10,w
+438,每,every,měi,10,pr
+439,城市,city,chéngshì,10,n
+440,特别,especially,tèbié,10,adv
+441,高速公路,highway,gāosù gōnglù,10,n
+442,高速,high speed,gāosù,10,adj
+443,公路,road,gōnglù,10,n
+444,路,road,lù,10,n
+445,紧张,nervous,jǐnzhāng,10,adj
+446,自己,self,zìjǐ,10,pr
+447,手机,cell phone,shǒujī,10,n
+448,发短信,to send a text message,fā duǎnxìn,10,vo
+449,新年,New Year,xīnnián,10,n
+450,快乐,happy,kuàilè,10,adj
