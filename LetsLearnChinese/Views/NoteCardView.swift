@@ -8,40 +8,38 @@
 import SwiftUI
 
 struct NoteCardView: View {
+    var selectedUnits: Set<String> = []
     @State private var isFlipped = false
     var body: some View {
         let animationDuration = 0.5
         ZStack{
             DefaultBackground()
-            
-            TopBar(title: "NoteCards", subtitle: "学习")
-                .frame(maxHeight: .infinity, alignment: .top)
-            
-            ZStack {
-//                let c: Character
+                TopBar(title: "NoteCards", subtitle: "学习")
+                    .frame(maxHeight: .infinity, alignment: .top)
                 
-                if isFlipped {
-                    // Back side of the card
-                    CardBack()
-                } else {
-                    // Front side of the card
-                    CardFront()
-                }
-            } // z
-            .frame(width: .infinity, height: 300) // Adjust size as needed
-            .cornerRadius(16)
-            .shadow(radius: 5)
-            .rotation3DEffect(
-                .degrees(isFlipped ? 180 : 0),
-                axis: (x: 0, y: 1, z: 0)
-            )
-            .onTapGesture {
-                withAnimation(.easeInOut(duration: animationDuration)) {
-                    isFlipped.toggle()
-                }
-            } // ontapgesture
-            .padding(.horizontal, 75)
-            
+                ZStack {
+                    
+                    if isFlipped {
+                        // Back side of the card
+                        CardBack()
+                    } else {
+                        // Front side of the card
+                        CardFront()
+                    }
+                } // z
+                .frame(width: .infinity, height: 300) // Adjust size as needed
+                .cornerRadius(16)
+                .shadow(radius: 5)
+                .rotation3DEffect(
+                    .degrees(isFlipped ? 180 : 0),
+                    axis: (x: 0, y: 1, z: 0)
+                )
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: animationDuration)) {
+                        isFlipped.toggle()
+                    }
+                } // ontapgesture of z stack
+                .padding(.horizontal, 75)
         }//z
         
     } // body

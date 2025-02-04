@@ -36,7 +36,8 @@ struct MainMenu: View {
                         homeMenuButton(text: "Characters", destination: ViewByUnit(), buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "NoteCards",
-                                       destination: SelectUnitsView(title: "Note Cards", view: AnyView(NoteCardView()), tutorialView: AnyView(HowToNoteCard())),
+                                       destination: SelectUnitsView(title: "Note Cards", view: AnyView(NoteCardView()), tutorialView: AnyView(HowToNoteCard()),
+                                            continueTo: "Note Cards"),
                                        buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "Writing", destination: NotImplimentedView(), buttonHeight: buttonHeight)

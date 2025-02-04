@@ -12,6 +12,7 @@ struct SelectUnitsView: View {
     var subtitle: String = "Units"
     var view: AnyView = AnyView(NotImplimentedView())
     var tutorialView: AnyView = AnyView(NotImplimentedView())
+    var continueTo: String = "Next"
     
     let levels = [
             ("Units 1 - 5", ["Greetings", "Family", "Dates and Time", "Hobbies", "Visiting Friends"]),
@@ -92,7 +93,7 @@ struct SelectUnitsView: View {
                                                                         .foregroundStyle(selectedUnits.contains(unit) ? .accent : .accent.opacity(0.25))
                                                                         .cornerRadius(5)
                                                                     Text(unitChinese(unitName: unit))
-                                                                        .font(.system(size: 32))
+                                                                        .font(.system(size: 26))
                                                                         .foregroundStyle(selectedUnits.contains(unit) ? .black : .black.opacity(0.75))
                                                                 }// z
                                                             } // button
@@ -118,7 +119,6 @@ struct SelectUnitsView: View {
                     Text(":)")
                         .foregroundStyle(.accent)
                 } // scroll
-                
                 NavigationLink(destination: view){
                     ZStack{
                         Rectangle()
@@ -128,7 +128,7 @@ struct SelectUnitsView: View {
                             .padding(.top, -5)
                             .foregroundStyle(.blue)
                         
-                        Text("Continue to \(subtitle)")
+                        Text("Continue to \(continueTo)")
                             .font(.custom("InknutAntiqua-Black", size: 24))
                             .foregroundStyle(.white)
                             .padding(.bottom, 25)
