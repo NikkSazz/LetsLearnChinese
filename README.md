@@ -5,13 +5,7 @@ Developer: Nikolai Sazonov
 
 ---
 
-<iframe width="560" height="315" 
-src="https://youtube.com/shorts/5GDm-WZKY4A" 
-title="Video Title" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen>
-</iframe>
-
+[Watch the video on YouTube](https://youtube.com/shorts/5GDm-WZKY4A)
 
 ## Features
 
