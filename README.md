@@ -5,6 +5,8 @@ Developer: Nikolai Sazonov
 
 ---
 
+[Watch the video on YouTube](https://youtube.com/shorts/5GDm-WZKY4A)
+
 ## Features
 
 Let's Learn Chinese has the following features:
