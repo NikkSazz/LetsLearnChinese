@@ -126,6 +126,9 @@ struct NoteCardView: View {
                     }
                 } // Scroll View
                 
+                Text("True Random randomly selects a character from the available list, removes it to prevent repeats, and resets the list when all characters have been displayed.")
+                    .foregroundStyle(.accent)
+                
                 Spacer()
                 
             } // v
