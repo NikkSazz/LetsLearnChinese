@@ -48,9 +48,7 @@ struct NoteCardView: View {
                 
                 HStack {
                     
-                    Button {
-                        
-                    } label: {
+                    NavigationLink (destination: DictionarySingleCharacterView(character: character)){
                         ZStack{
                             Rectangle()
                                 .foregroundStyle(.buttonFill.opacity(0.75))
@@ -63,11 +61,11 @@ struct NoteCardView: View {
                         } // Z
                         .frame(height: 50)
                         .cornerRadius(10)
-                    } // Dictionary button
+                    } // Dictionary label
                     
                     Button {
-                        print("Previous Button Pressed")
-                        character = previousCharStack.popLast() ?? Character(id: 1, chinese: "没有", english: "Doesnt Have", pinyin: "méi yǒu")
+//                        print("Previous Button Pressed")
+                        character = previousCharStack.popLast() ?? Character(id: 56, chinese: "没有", english: "Doesnt Have", pinyin: "méi yǒu")
                     } label: {
                         ZStack{
                             Rectangle()
@@ -167,7 +165,7 @@ func fetchRandomCharacter(from selectedUnits: Set<Int>) -> Character {
         
         // Convert the selected units to a comma-separated string
         let unitsList = selectedUnits.map { "\($0)" }.joined(separator: ",")
-        print("UnitsList: \(unitsList)")
+//        print("UnitsList: \(unitsList)")
         
         // SQLite query
         let query = """
