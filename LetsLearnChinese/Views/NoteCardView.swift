@@ -10,9 +10,9 @@ import SQLite3
 
 struct NoteCardView: View {
     
-    @Binding var selectedUnits: Set<String>    
+    @Binding var selectedUnits: Set<Int>    
     @State private var isFlipped = false
-    @State private var character: Character = Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
+    @State var character: Character = Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
     
     var body: some View {
         let animationDuration = 0.5
@@ -28,13 +28,13 @@ struct NoteCardView: View {
                     
                     if isFlipped {
                         // Back side of the card
-                        CardBack()
+                        CardBack(c: character)
                     } else {
                         // Front side of the card
-                        CardFront()
+                        CardFront(c: character)
                     }
                 } // z
-                .frame(width: .infinity, height: 300) // Adjust size as needed
+                .frame(/*width: .infinity,*/ height: 300)
                 .cornerRadius(16)
                 .shadow(radius: 5)
                 .rotation3DEffect(
@@ -74,7 +74,7 @@ struct NoteCardView: View {
                         .font(.title)
                         .foregroundStyle(.black.opacity(0.75))
                     ForEach(Array(selectedUnits), id: \.self) { level in
-                        Text(level)
+                        Text("\(level)")
                             .foregroundStyle(.accent)
                     }
                 }
@@ -103,7 +103,7 @@ struct CardFront: View {
     } // view
 } // CardFront View
 
-func fetchRandomCharacter(from selectedUnits: Set<String>) -> Character {
+func fetchRandomCharacter(from selectedUnits: Set<Int>) -> Character {
     let error = Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
     
     guard let dbPath = Bundle.main.path(forResource: "llcdb", ofType: "sqlite") else {
@@ -116,7 +116,7 @@ func fetchRandomCharacter(from selectedUnits: Set<String>) -> Character {
         defer { sqlite3_close(db) }
         
         // Convert the selected units to a comma-separated string
-        let unitsList = selectedUnits.joined(separator: ",")
+        let unitsList = selectedUnits.map { "\($0)" }.joined(separator: ",")
         print("UnitsList: \(unitsList)")
         
         // SQLite query
@@ -170,5 +170,5 @@ struct CardBack: View {
 } // CardBack View
 
 #Preview {
-    NoteCardView(selectedUnits: .constant(["Greetings", "Family", "Dates and Time", "Hobbies", "Visiting Friends", "Appointments"]))
+    NoteCardView(selectedUnits: .constant([1,2,3,4,5,6]))
 }

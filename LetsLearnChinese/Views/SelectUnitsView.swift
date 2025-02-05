@@ -11,17 +11,17 @@ struct SelectUnitsView: View {
     var title: String = "Let's Learn Chinese"
     var subtitle: String = "Units"
 //    var view: AnyView = AnyView(NotImplimentedView())
-    var view: (Binding<Set<String>>) -> AnyView = { _ in
+    var view: (Binding<Set<Int>>) -> AnyView = { _ in
         AnyView(Text("Not Implemented View")) }
         //    var tutorialView: AnyView = AnyView(NotImplimentedView())
     var continueTo: String = "Next"
     
     let levels = [
-            ("Units 1 - 5", ["Greetings", "Family", "Dates and Time", "Hobbies", "Visiting Friends"]),
-            ("Units 6 - 10", ["Appointments", "Studying", "School Life", "Shopping", "Transportation"]),
+            ("Units 1 - 5", [1,2,3,4,5]),
+            ("Units 6 - 10", [6,7,8,9,10]),
         ]
         
-    @State private var selectedUnits: Set<String> = []
+    @State private var selectedUnits: Set<Int> = []
 
     var body: some View {
         ZStack {
@@ -76,7 +76,7 @@ struct SelectUnitsView: View {
                                                     ForEach(level.1, id: \.self) { unit in
 //                                                        unitColors[unit] = RandomColor()
                                                         VStack(spacing: 2) {
-                                                            Text("\(unit)") // Unit label
+                                                            Text("\(unitEnglish(unit_id: unit))") // Unit label
                                                                 .foregroundStyle(selectedUnits.contains(unit) ? .accent.opacity(0.75) : .black.opacity(0.75))
                                                             Button(action: {
                                                                 if selectedUnits.contains(unit) {
@@ -90,7 +90,7 @@ struct SelectUnitsView: View {
                                                                         .frame(width: 100, height: 80)
                                                                         .foregroundStyle(selectedUnits.contains(unit) ? .accent : .accent.opacity(0.25))
                                                                         .cornerRadius(5)
-                                                                    Text(unitChinese(unitName: unit))
+                                                                    Text(unitChinese(unitName: unitEnglish(unit_id: unit)))
                                                                         .font(.system(size: 26))
                                                                         .foregroundStyle(selectedUnits.contains(unit) ? .black : .black.opacity(0.75))
                                                                 }// z
@@ -139,6 +139,33 @@ struct SelectUnitsView: View {
         } // z
     } // view body
 } // view struct
+
+func unitEnglish(unit_id: Int) -> String {
+    switch unit_id {
+    case 1:
+        return "Greetings"
+    case 2:
+        return "Family"
+    case 3:
+        return "Dates and Time"
+    case 4:
+        return "Hobbies"
+    case 5:
+        return "Visiting Friends"
+    case 6:
+        return "Appointments"
+    case 7:
+        return "Studying"
+    case 8:
+        return "School Life"
+    case 9:
+        return "Shopping"
+    case 10:
+        return "Transportation"
+    default:
+        return "Unit"
+    }
+}
 
 func unitChinese(unitName: String) -> String {
     switch unitName {
