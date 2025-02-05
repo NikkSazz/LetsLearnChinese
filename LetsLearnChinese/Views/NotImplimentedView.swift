@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NotImplimentedView: View {
+    
     var body: some View {
         ZStack{
             DefaultBackground()

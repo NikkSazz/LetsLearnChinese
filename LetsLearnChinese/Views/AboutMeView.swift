@@ -51,7 +51,9 @@ struct AboutMeView: View {
                         
                         AboutMeParagraph(text: "SVG Repo,  StackOverflow,  Figma", fontSize: smallSize)
                         
-                        AboutMeParagraph(text: "SceneKit,  UIKit,  Blender, SketchFab", fontSize: smallSize)
+                        AboutMeParagraph(text: "SceneKit,  UIKit,  Blender,  SketchFab", fontSize: smallSize)
+                        
+                        AboutMeParagraph(text: "SF Symbols,  SF Symbols,  SF Symbols", fontSize: smallSize)
   
                         DividerStyle()
                         

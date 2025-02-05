@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct NoteCardView: View {
-    var selectedUnits: Set<String> = []
+    
+    @Binding var selectedUnits: Set<String>
+    
+    let levels = [ "Greetings", "Family", "Dates and Time", "Hobbies", "Visiting Friends",
+            "Appointments", "Studying", "School Life", "Shopping", "Transportation" ]
+    
     @State private var isFlipped = false
+    
     var body: some View {
         let animationDuration = 0.5
         ZStack{
             DefaultBackground()
+                
+            VStack {
                 TopBar(title: "NoteCards", subtitle: "学习")
-                    .frame(maxHeight: .infinity, alignment: .top)
+                
+                Spacer()
                 
                 ZStack {
                     
@@ -40,6 +49,22 @@ struct NoteCardView: View {
                     }
                 } // ontapgesture of z stack
                 .padding(.horizontal, 75)
+                .padding(.vertical, 30)
+                
+                
+                ScrollView {
+                    Text("Selected Units:")
+                        .font(.title)
+                        .foregroundStyle(.black.opacity(0.75))
+                    ForEach(Array(selectedUnits), id: \.self) { level in
+                        Text(level)
+                            .foregroundStyle(.accent)
+                    }
+                }
+                
+            } // v
+            .padding(.bottom, 1)
+                
         }//z
         
     } // body
@@ -75,5 +100,5 @@ struct CardBack: View {
 }
 
 #Preview {
-    NoteCardView()
+    NoteCardView(selectedUnits: .constant(["Greetings", "Family", "Dates and Time", "Hobbies", "Visiting Friends", "Appointments"]))
 }

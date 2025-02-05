@@ -36,8 +36,11 @@ struct MainMenu: View {
                         homeMenuButton(text: "Characters", destination: ViewByUnit(), buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "NoteCards",
-                                       destination: SelectUnitsView(title: "Note Cards", view: AnyView(NoteCardView()), tutorialView: AnyView(HowToNoteCard()),
-                                            continueTo: "Note Cards"),
+                                       destination: SelectUnitsView(title: "Note Cards",
+                                        view: { binding in  // 'binding' is the placeholder for the closure parameter
+                                                    AnyView(NoteCardView(selectedUnits: binding)) // Pass the binding correctly
+                                                },
+                                        continueTo: "Note Cards"),
                                        buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "Writing", destination: NotImplimentedView(), buttonHeight: buttonHeight)
