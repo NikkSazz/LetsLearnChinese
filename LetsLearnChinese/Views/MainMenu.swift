@@ -113,5 +113,5 @@ func homeMenuButton<Destination: View>(
 
 
 #Preview {
-    MainMenu()
+        MainMenu()
 }

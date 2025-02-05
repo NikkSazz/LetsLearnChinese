@@ -10,10 +10,10 @@ import SwiftUI
 struct SelectUnitsView: View {
     var title: String = "Let's Learn Chinese"
     var subtitle: String = "Units"
-//    var view: AnyView = AnyView(NotImplimentedView())
+    
     var view: (Binding<Set<Int>>) -> AnyView = { _ in
         AnyView(Text("Not Implemented View")) }
-        //    var tutorialView: AnyView = AnyView(NotImplimentedView())
+    
     var continueTo: String = "Next"
     
     let levels = [
@@ -117,6 +117,7 @@ struct SelectUnitsView: View {
                     Text(":)")
                         .foregroundStyle(.accent)
                 } // scroll
+                
                 NavigationLink(destination: view($selectedUnits)){
                     ZStack{
                         Rectangle()
@@ -130,9 +131,11 @@ struct SelectUnitsView: View {
                             .font(.custom("InknutAntiqua-Black", size: 24))
                             .foregroundStyle(.white)
                             .padding(.bottom, 25)
-                    }
+                    } // Z
                     
-                }
+                } // navlink
+                .opacity(selectedUnits.isEmpty ? 0.5 : 1.0)
+                .disabled(selectedUnits.isEmpty)
             } // v
             .frame(maxHeight: .infinity, alignment: .top)
             

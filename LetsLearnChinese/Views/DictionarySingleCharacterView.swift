@@ -16,14 +16,14 @@ struct DictionarySingleCharacterView: View {
             DefaultBackground()
             
             VStack(spacing: 10) {
-                Text("Dictionary Signle Character View")
+                Text("Dictionary Signle Character View, ID: \(character.id)")
                 
                 Text("Character: \(character.chinese)")
                 
                 Text("Pinyin: \(character.pinyin)")
             
                 Text("English: \(character.english)")
-            }
+            } // v
             .foregroundStyle(.accent)
         } // Z
     } // body some view

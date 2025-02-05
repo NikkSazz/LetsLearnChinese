@@ -10,8 +10,13 @@ import SQLite3
 
 struct NoteCardView: View {
     
+    /// Binding given by SelectUnits() gets random character from selectedUnits
     @Binding var selectedUnits: Set<Int>
+    
+    /// Current Character used in the NoteCard
     @State var character: Character = Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
+    
+    /// Stack to ctrl+z back to previous Character
     @State var previousCharStack: [Character] = []
     
     var body: some View {
