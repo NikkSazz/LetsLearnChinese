@@ -15,7 +15,7 @@ struct NoteCardView: View {
     
     @State var character: Character = Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
     @State private var trueRandom = false
-    @State var previousChar: [Character] = [Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn"), Character(id: 2, chinese: "学校", english: "School", pinyin: "xuéxiào")]
+    @State var previousCharStack: [Character] = []
     
     var body: some View {
         let animationDuration = 0.3
@@ -53,9 +53,10 @@ struct NoteCardView: View {
                 .padding(.vertical, 30)
                 
                 
-                Button {
+                Button { // next random char
+                    previousCharStack.append(character)
                     character = fetchRandomCharacter(from: selectedUnits)
-                    print("Character: \(character.chinese), English: \(character.english)")
+//                    print("Character: \(character.chinese), English: \(character.english)")
                 } label: {
                     ZStack{
                         Rectangle()
@@ -96,7 +97,7 @@ struct NoteCardView: View {
                     
                     Button {
                         print("Previous Button Pressed")
-                        character = previousChar.popLast() ?? Character(id: 1, chinese: "不是", english: "Doesnt Have", pinyin: "BuShi")
+                        character = previousCharStack.popLast() ?? Character(id: 1, chinese: "没有", english: "Doesnt Have", pinyin: "méi yǒu")
                     } label: {
                         ZStack{
                             Rectangle()
@@ -126,7 +127,8 @@ struct NoteCardView: View {
                     }
                 } // Scroll View
                 
-                Text("True Random randomly selects a character from the available list, removes it to prevent repeats, and resets the list when all characters have been displayed.")
+                Text("selecting *True Random* may repeat characters more often.")
+                    .font(.caption2)
                     .foregroundStyle(.accent)
                 
                 Spacer()
@@ -222,5 +224,5 @@ struct CardBack: View {
 } // CardBack View
 
 #Preview {
-    NoteCardView(selectedUnits: .constant([6, 4, 2, 3]))
+    NoteCardView(selectedUnits: .constant([6, 7]))
 }
