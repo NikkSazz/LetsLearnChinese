@@ -15,7 +15,7 @@ struct NoteCardView: View {
     @State var character: Character = Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
     
     var body: some View {
-        let animationDuration = 0.5
+        let animationDuration = 0.3
         ZStack{
             DefaultBackground()
                 
@@ -34,7 +34,7 @@ struct NoteCardView: View {
                         CardFront(c: character)
                     }
                 } // z
-                .frame(/*width: .infinity,*/ height: 300)
+                .frame(height: 300)
                 .cornerRadius(16)
                 .shadow(radius: 5)
                 .rotation3DEffect(
@@ -66,18 +66,20 @@ struct NoteCardView: View {
                         .padding(.horizontal, 50)
                         .frame(height: 50)
                     } // button label
-                } // H
+                } // H, doesnt do anything yet
 
                 
                 ScrollView {
                     Text("Selected Units:")
                         .font(.title)
                         .foregroundStyle(.black.opacity(0.75))
-                    ForEach(Array(selectedUnits), id: \.self) { level in
+                    ForEach(Array(selectedUnits).sorted(), id: \.self) { level in
                         Text("\(level)")
                             .foregroundStyle(.accent)
                     }
-                }
+                } // Scroll View
+                
+                Spacer()
                 
             } // v
             .padding(.bottom, 1)
@@ -157,7 +159,7 @@ struct CardBack: View {
         VStack {
             Text(c.english)
                 .padding(.bottom)
-                .font(.system(size: 65))
+                .font(.system(size: 50))
             Text(c.pinyin)
                 .font(.system(size: 30))
         }
@@ -170,5 +172,5 @@ struct CardBack: View {
 } // CardBack View
 
 #Preview {
-    NoteCardView(selectedUnits: .constant([1,2,3,4,5,6]))
+    NoteCardView(selectedUnits: .constant([6]))
 }
