@@ -12,7 +12,10 @@ struct NoteCardView: View {
     
     @Binding var selectedUnits: Set<Int>    
     @State private var isFlipped = false
+    
     @State var character: Character = Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
+    @State private var trueRandom = false
+    @State var previousChar: [Character] = [Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn"), Character(id: 2, chinese: "学校", english: "School", pinyin: "xuéxiào")]
     
     var body: some View {
         let animationDuration = 0.3
@@ -49,24 +52,68 @@ struct NoteCardView: View {
                 .padding(.horizontal, 75)
                 .padding(.vertical, 30)
                 
+                
+                Button {
+                    character = fetchRandomCharacter(from: selectedUnits)
+                    print("Character: \(character.chinese), English: \(character.english)")
+                } label: {
+                    ZStack{
+                        Rectangle()
+                            .foregroundStyle(.buttonFill.opacity(0.75))
+                        HStack{
+                            Image(systemName: "arrowshape.right")
+                            Text("Next Random Char")
+                        } // H
+                        .foregroundStyle(.black)
+                    } // Z
+                    .frame(height: 50)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                } // next rand char button label
+                
                 HStack {
+                    
                     Button {
-                        character = fetchRandomCharacter(from: selectedUnits)
-                        print("Character: \(character.chinese), English: \(character.english)")
+                        print("Button Pressed")
+                        trueRandom = !trueRandom
+                    } label: {
+                        ZStack{
+                            Rectangle()
+                                .foregroundStyle(
+                                    trueRandom ?
+                                        .accent.opacity(0.9) :
+                                    .buttonFill.opacity(0.75))
+                            HStack{
+                                Image(systemName: "arrow.trianglehead.counterclockwise.rotate.90")
+                                
+                                Text("True Random")
+                            } // H
+                            .foregroundStyle(.black)
+                        } // Z
+                        .frame(height: 50)
+                        .cornerRadius(10)
+                    } // true random button
+                    
+                    Button {
+                        print("Previous Button Pressed")
+                        character = previousChar.popLast() ?? Character(id: 1, chinese: "不是", english: "Doesnt Have", pinyin: "BuShi")
                     } label: {
                         ZStack{
                             Rectangle()
                                 .foregroundStyle(.buttonFill.opacity(0.75))
                             HStack{
-                                Image(systemName: "arrow.right")
-                                Text("Next Random Char")
+                                Image(systemName: "arrowshape.left")
+                                
+                                Text("Previous")
                             } // H
                             .foregroundStyle(.black)
                         } // Z
-                        .padding(.horizontal, 50)
                         .frame(height: 50)
-                    } // button label
-                } // H, doesnt do anything yet
+                        .cornerRadius(10)
+                    } // true random button
+                    
+                } // H
+                .padding(.horizontal)
 
                 
                 ScrollView {
@@ -87,7 +134,7 @@ struct NoteCardView: View {
         }//z
         .onAppear(){
             character = fetchRandomCharacter(from: selectedUnits)
-        }
+        } // on appear Z
         
     } // body
 } // notecardview
@@ -172,5 +219,5 @@ struct CardBack: View {
 } // CardBack View
 
 #Preview {
-    NoteCardView(selectedUnits: .constant([6]))
+    NoteCardView(selectedUnits: .constant([6, 4, 2, 3]))
 }
