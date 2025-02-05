@@ -19,6 +19,8 @@ struct NoteCardView: View {
     /// Stack to ctrl+z back to previous Character
     @State var previousCharStack: [Character] = []
     
+    @State var showUnit = true
+    
     var body: some View {
         let animationDuration = 0.3
         ZStack{
@@ -90,15 +92,56 @@ struct NoteCardView: View {
                 .padding(.horizontal)
 
                 
-                ScrollView {
+                VStack {
                     Text("Selected Units:")
                         .font(.title)
                         .foregroundStyle(.black.opacity(0.75))
-                    ForEach(Array(selectedUnits).sorted(), id: \.self) { level in
-                        Text("\(level)")
-                            .foregroundStyle(.accent)
-                    } // display level for each
-                } // Scroll View units
+                    HStack {
+                        ForEach(Array(selectedUnits).sorted(), id: \.self) { level in
+                            Text("\(level)")
+                        } // display level for each
+                    } // H
+                    .foregroundStyle(.accent)
+                    Spacer()
+                    HStack {
+                    
+                        Button {
+                            showUnit.toggle()
+                        } label: {
+                            ZStack{
+                                Rectangle()
+                                    .foregroundStyle(
+                                        showUnit ?
+                                            .accent :
+                                        .buttonFill.opacity(0.75))
+                                HStack{
+                                    Text("Show Unit")
+                                } // H
+                                .foregroundStyle(.black)
+                            } // Z
+                            .frame(height: 50)
+                            .cornerRadius(10)
+                            .padding(.leading, 50)
+                            .padding(.trailing, showUnit ? 20 : 50)
+                        } // Button ShowUnit
+                        if showUnit{
+                            if character.unit_id != nil {
+                                Text("Unit: \(character.unit_id ?? 0)")
+                                    .font(.system(size: 20))
+                                    .frame(width: 75, alignment: .leading)
+                            }
+                            Text("ID: \(character.id)")
+                                .frame(width: 75, alignment: .leading)
+//                                .padding()
+                            Spacer(minLength: 50)
+                        }
+                        
+                    } // H
+                        .foregroundStyle(.accent)
+                    
+                    Spacer(minLength: 30)
+                    
+                } // V View units
                 
             } // v
             .padding(.bottom, 1)
@@ -174,7 +217,7 @@ func fetchRandomCharacter(from selectedUnits: Set<Int>) -> Character {
         
         // SQLite query
         let query = """
-      SELECT id, chinese, english, pinyin
+      SELECT id, chinese, english, pinyin, unit_id
       FROM Characters
       WHERE unit_id IN (\(unitsList))
       ORDER BY RANDOM()
@@ -189,10 +232,11 @@ func fetchRandomCharacter(from selectedUnits: Set<Int>) -> Character {
                 let chinese = String(cString: sqlite3_column_text(statement, 1))
                 let english = String(cString: sqlite3_column_text(statement, 2))
                 let pinyin = String(cString: sqlite3_column_text(statement, 3))
+                let uId = Int(sqlite3_column_int(statement, 4))
                 
                 sqlite3_finalize(statement)
                 
-                return Character(id: id, chinese: chinese, english: english, pinyin: pinyin)
+                return Character(id: id, chinese: chinese, english: english, pinyin: pinyin, unit_id: uId)
             }
         }
         
@@ -223,5 +267,5 @@ struct CardBack: View {
 } // CardBack View
 
 #Preview {
-    NoteCardView(selectedUnits: .constant([6]))
+    NoteCardView(selectedUnits: .constant([10, 9 , 8, 7, 5, 4, 3, 2, 1, 6]))
 }

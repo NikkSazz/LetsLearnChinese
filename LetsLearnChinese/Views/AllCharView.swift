@@ -86,13 +86,16 @@ struct Character: Identifiable {
     let chinese: String
     let english: String
     let pinyin: String
+    let unit_id: Int?
     
-    init(id: Int, chinese: String, english: String, pinyin: String) {
+    init(id: Int, chinese: String, english: String, pinyin: String, unit_id: Int? = nil) {
         self.id = id
         self.chinese = chinese
         self.english = english
         self.pinyin = pinyin
+        self.unit_id = unit_id
     }
+    
 }
 
 struct CharacterTriple: View {
