@@ -10,11 +10,8 @@ import SQLite3
 
 struct NoteCardView: View {
     
-    @Binding var selectedUnits: Set<Int>    
-    @State private var isFlipped = false
-    
+    @Binding var selectedUnits: Set<Int>
     @State var character: Character = Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
-    @State private var trueRandom = false
     @State var previousCharStack: [Character] = []
     
     var body: some View {
@@ -27,30 +24,7 @@ struct NoteCardView: View {
                 
                 Spacer()
                 
-                ZStack {
-                    
-                    if isFlipped {
-                        // Back side of the card
-                        CardBack(c: character)
-                    } else {
-                        // Front side of the card
-                        CardFront(c: character)
-                    }
-                } // z
-                .frame(height: 300)
-                .cornerRadius(16)
-                .shadow(radius: 5)
-                .rotation3DEffect(
-                    .degrees(isFlipped ? 180 : 0),
-                    axis: (x: 0, y: 1, z: 0)
-                )
-                .onTapGesture {
-                    withAnimation(.easeInOut(duration: animationDuration)) {
-                        isFlipped.toggle()
-                    }
-                } // ontapgesture of z stack
-                .padding(.horizontal, 75)
-                .padding(.vertical, 30)
+                NoteCard(character: character, animationDuration: animationDuration)
                 
                 
                 Button { // next random char
@@ -70,30 +44,26 @@ struct NoteCardView: View {
                     .frame(height: 50)
                     .cornerRadius(10)
                     .padding(.horizontal)
-                } // next rand char button label
+                } // next rand char button
                 
                 HStack {
                     
                     Button {
-                        print("Button Pressed")
-                        trueRandom = !trueRandom
+                        
                     } label: {
                         ZStack{
                             Rectangle()
-                                .foregroundStyle(
-                                    trueRandom ?
-                                        .accent.opacity(0.9) :
-                                    .buttonFill.opacity(0.75))
+                                .foregroundStyle(.buttonFill.opacity(0.75))
                             HStack{
-                                Image(systemName: "arrow.trianglehead.counterclockwise.rotate.90")
+                                Image(systemName: "book.pages.fill")
                                 
-                                Text("True Random")
+                                Text("Go to Dictionary")
                             } // H
                             .foregroundStyle(.black)
                         } // Z
                         .frame(height: 50)
                         .cornerRadius(10)
-                    } // true random button
+                    } // Dictionary button
                     
                     Button {
                         print("Previous Button Pressed")
@@ -111,7 +81,7 @@ struct NoteCardView: View {
                         } // Z
                         .frame(height: 50)
                         .cornerRadius(10)
-                    } // true random button
+                    } // Previous button
                     
                 } // H
                 .padding(.horizontal)
@@ -124,14 +94,8 @@ struct NoteCardView: View {
                     ForEach(Array(selectedUnits).sorted(), id: \.self) { level in
                         Text("\(level)")
                             .foregroundStyle(.accent)
-                    }
-                } // Scroll View
-                
-                Text("selecting *True Random* may repeat characters more often.")
-                    .font(.caption2)
-                    .foregroundStyle(.accent)
-                
-                Spacer()
+                    } // display level for each
+                } // Scroll View units
                 
             } // v
             .padding(.bottom, 1)
@@ -144,8 +108,40 @@ struct NoteCardView: View {
     } // body
 } // notecardview
 
+struct NoteCard: View {
+    var character: Character
+    var animationDuration: TimeInterval
+    @State private var isFlipped = false
+    var body: some View {
+        ZStack {
+            
+            if isFlipped {
+                // Back side of the card
+                CardBack(c: character)
+            } else {
+                // Front side of the card
+                CardFront(c: character)
+            }
+        } // z
+        .frame(height: 300)
+        .cornerRadius(16)
+        .shadow(radius: 5)
+        .rotation3DEffect(
+            .degrees(isFlipped ? 180 : 0),
+            axis: (x: 0, y: 1, z: 0)
+        )
+        .onTapGesture {
+            withAnimation(.easeInOut(duration: animationDuration)) {
+                isFlipped.toggle()
+            }
+        } // ontapgesture of z stack
+        .padding(.horizontal, 75)
+        .padding(.vertical, 30)
+    }
+}
+
 struct CardFront: View {
-    var c: Character = Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
+    var c: Character
     
     var body: some View {
         Text(c.chinese)
@@ -224,5 +220,5 @@ struct CardBack: View {
 } // CardBack View
 
 #Preview {
-    NoteCardView(selectedUnits: .constant([6, 7]))
+    NoteCardView(selectedUnits: .constant([6]))
 }
