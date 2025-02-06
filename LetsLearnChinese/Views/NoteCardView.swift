@@ -19,7 +19,8 @@ struct NoteCardView: View {
     /// Stack to ctrl+z back to previous Character
     @State var previousCharStack: [Character] = []
     
-    @State var showUnit = true
+    /// Bottom button to hide the Character's Unit and ID
+    @State var showUnit = false
     
     var body: some View {
         let animationDuration = 0.3
@@ -95,7 +96,7 @@ struct NoteCardView: View {
                 VStack {
                     Text("Selected Units:")
                         .font(.title)
-                        .foregroundStyle(.black.opacity(0.75))
+                        .foregroundStyle(.black.opacity(0.5))
                     HStack {
                         ForEach(Array(selectedUnits).sorted(), id: \.self) { level in
                             Text("\(level)")
@@ -103,6 +104,7 @@ struct NoteCardView: View {
                     } // H
                     .foregroundStyle(.accent)
                     Spacer()
+                    
                     HStack {
                     
                         Button {
@@ -115,7 +117,8 @@ struct NoteCardView: View {
                                             .accent :
                                         .buttonFill.opacity(0.75))
                                 HStack{
-                                    Text("Show Unit")
+                                    Text(showUnit ? "Hide" : "Show Unit and ID")
+//                                    Text("Show Unit") // Old Version
                                 } // H
                                 .foregroundStyle(.black)
                             } // Z
@@ -136,7 +139,7 @@ struct NoteCardView: View {
                             Spacer(minLength: 50)
                         }
                         
-                    } // H
+                    } // H showunit and id
                         .foregroundStyle(.accent)
                     
                     Spacer(minLength: 30)
@@ -267,5 +270,5 @@ struct CardBack: View {
 } // CardBack View
 
 #Preview {
-    NoteCardView(selectedUnits: .constant([10, 9 , 8, 7, 5, 4, 3, 2, 1, 6]))
+    NoteCardView(selectedUnits: .constant([6]))
 }
