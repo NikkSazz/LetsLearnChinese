@@ -113,9 +113,6 @@ struct SelectUnitsView: View {
                     }// v
                     .padding()
 
-                    
-                    Text(":)")
-                        .foregroundStyle(.accent)
                 } // scroll
                 
                 NavigationLink(destination: view($selectedUnits)){
