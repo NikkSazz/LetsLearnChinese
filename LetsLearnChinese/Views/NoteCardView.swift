@@ -37,6 +37,10 @@ struct NoteCardView: View {
                 
                 Button { // next random char
                     previousCharStack.append(character)
+                    if previousCharStack.count > 10 {
+                        previousCharStack.removeFirst()
+                    }
+                    
                     character = fetchRandomCharacter(from: selectedUnits)
 //                    print("Character: \(character.chinese), English: \(character.english)")
                 } label: {
