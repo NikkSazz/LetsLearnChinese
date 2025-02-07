@@ -98,16 +98,30 @@ struct NoteCardView: View {
 
                 
                 VStack {
-                    Text("Selected Units:")
-                        .font(.title)
-                        .foregroundStyle(.black.opacity(0.5))
+                    
+                    Toggle("Don't Repeat", isOn: $showUnit)
+                        .toggleStyle(CustomToggleStyle())
+
+                    
                     HStack {
+                        Text("Selected Units:")
+                            .font(.title)
+                            .foregroundStyle(.black.opacity(0.5))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                        
                         ForEach(Array(selectedUnits).sorted(), id: \.self) { level in
                             Text("\(level)")
                         } // display level for each
-                    } // H
+                        
+                        Spacer()
+//                            .padding(.leading)
+                    } // H Selected Units: 6 7 8
                     .foregroundStyle(.accent)
-                    Spacer()
+                    
+                    Spacer() // Barely does anything
                     
                     HStack {
                     
@@ -161,6 +175,38 @@ struct NoteCardView: View {
     } // body
 } // notecardview
 
+
+struct CustomToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        HStack {
+            configuration.label
+                .font(.body)
+                .foregroundColor(.accent)
+
+//            Spacer() // uncomment this, if you want the doesnt repeat and the rounded rectangle to be spaced
+
+            RoundedRectangle(cornerRadius: 16)
+                .fill(configuration.isOn ? Color.accentColor : Color.gray.opacity(0.4)) // Track color
+                .frame(width: 50, height: 30)
+                .overlay(
+                    Circle()
+                        .fill(configuration.isOn ?
+                              Color.white :
+                                Color.white.opacity(0.75)) // Thumb color
+                        .shadow(radius: 1)
+                        .padding(2)
+                        .offset(x: configuration.isOn ? 10 : -10)
+                        .animation(.easeInOut(duration: 0.4), value: configuration.isOn)
+                ) // circle overlay
+                .onTapGesture {
+                    configuration.isOn.toggle()
+                } // ontap of overlay
+        } // H label, and toggle
+        .padding(.horizontal)
+    } // view
+} // Custom Toggle Style Struct
+
+
 struct NoteCard: View {
     var character: Character
     var animationDuration: TimeInterval
@@ -190,8 +236,8 @@ struct NoteCard: View {
         } // ontapgesture of z stack
         .padding(.horizontal, 75)
         .padding(.vertical, 30)
-    }
-}
+    } // body view
+} // NoteCard View
 
 struct CardFront: View {
     var c: Character
