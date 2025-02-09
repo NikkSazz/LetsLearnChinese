@@ -124,8 +124,8 @@ struct duckieView: View {
                             .foregroundStyle(.accent.opacity(0.8))
                             .padding(.horizontal)
                         
-                        Text("*Note some of the ducks may not be centerd.")
-                            .foregroundStyle(.gray.opacity(0.5))
+//                        Text("*Note some of the ducks may not be centerd.")
+//                            .foregroundStyle(.gray.opacity(0.5))
 
                         
                         Spacer(minLength: 30)

@@ -18,18 +18,19 @@ struct AllCharView: View {
                 TopBar(title: "Character List", subtitle: "汉字表")
                 
                 ScrollView {
-                    Spacer(minLength: 25)
+                    Spacer(minLength: 15)
                     
                     VStack(alignment: .leading, spacing: 5) {
                         HStack {
                             Text("Chinese")
                             Spacer()
-                            Text("Pinyin")
-                            Spacer()
                             Text("English")
+                            Spacer()
+                            Text("Pinyin")
                         }
                         .padding(.horizontal, 30)
-                        .font(.system(size: 30))
+                        .font(.custom("InknutAntiqua-Bold", size: 22))
+                        .shadow(radius: 2)
                         .foregroundStyle(Color.accentColor)
                         
                         DividerStyle().opacity(0.2)

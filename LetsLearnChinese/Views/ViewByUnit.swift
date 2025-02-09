@@ -22,6 +22,7 @@ struct ViewByUnit: View {
                 ScrollView {
                     VStack (alignment: .leading, spacing: 10) {
                         
+                        /*
                         NavigationLink(destination: AllCharView()){
                             ZStack {
                                 Rectangle()
@@ -45,7 +46,8 @@ struct ViewByUnit: View {
                         } // navlink
                         .padding()
                         .padding(.bottom, -25)
-                        
+                         */
+                        Spacer(minLength: 10)
                         
                         ForEach(units, id: \.id) { unit in
                             Button(action: {
@@ -90,12 +92,13 @@ struct ViewByUnit: View {
                                     HStack {
                                         Text("Chinese")
                                         Spacer()
-                                        Text("Pinyin")
-                                        Spacer()
                                         Text("English")
-                                    }
+                                        Spacer()
+                                        Text("Pinyin")
+                                    } // top HStack
                                     .padding(.horizontal, 50)
-                                    .font(.subheadline)
+                                    .font(.custom("InknutAntiqua-Bold", size: 20))
+                                    .shadow(radius: 2)
                                     .foregroundStyle(Color.accentColor)
                                     
                                     DividerStyle().opacity(0.2)
@@ -110,6 +113,7 @@ struct ViewByUnit: View {
                         } // for each unit in units
                         
                     } // v
+                    Spacer(minLength: 50)
                 } // scrollview
                 .padding(.bottom, 1)
                 .onAppear {
