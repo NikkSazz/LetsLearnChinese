@@ -37,5 +37,7 @@ struct DictionarySingleCharacterView: View {
 } // dictionary Signle Character View struct
 
 #Preview {
-    DictionarySingleCharacterView(character: Character(id: 9, chinese: "您想什么", english: "miss", pinyin: "xiaojie"))
+    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
 }
+
+// 「 你是谁？」《我是俄国人》 二零二五年 二月 十一日 
