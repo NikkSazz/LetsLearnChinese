@@ -96,7 +96,7 @@ struct ViewByUnit: View {
                                         Spacer()
                                         Text("Pinyin")
                                     } // top HStack
-                                    .padding(.horizontal, 50)
+                                    .padding(.horizontal, 25)
                                     .font(.custom("InknutAntiqua-Bold", size: 20))
                                     .shadow(radius: 2)
                                     .foregroundStyle(Color.accentColor)
@@ -104,7 +104,10 @@ struct ViewByUnit: View {
                                     DividerStyle().opacity(0.2)
                                     
                                     ForEach(characters, id: \ .id) { character in
-                                        CharacterTriple(character: character) // view to show chinese english and pinyin of a Character
+                                        NavigationLink(destination: DictionarySingleCharacterView(character: character)) {
+                                                CharacterTriple(character: character)
+                                                .foregroundStyle(Color.accentColor)
+                                        } // navlink to dictionary
                                     } // for each
                                 } //v
                                 .transition(.opacity.combined(with: .move(edge: .trailing)))

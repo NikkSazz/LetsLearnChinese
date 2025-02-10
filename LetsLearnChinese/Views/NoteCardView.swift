@@ -22,6 +22,8 @@ struct NoteCardView: View {
     /// Bottom button to hide the Character's Unit and ID
     @State var showUnit = false
     
+    @State var dontRepeat = false
+    
     var body: some View {
         let animationDuration = 0.3
         ZStack{
@@ -99,8 +101,10 @@ struct NoteCardView: View {
                 
                 VStack {
                     
-                    Toggle("Don't Repeat", isOn: $showUnit)
+                    Toggle("Don't Repeat", isOn: $dontRepeat)
                         .toggleStyle(CustomToggleStyle())
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading)
 
                     
                     HStack {
