@@ -10,6 +10,8 @@ import SwiftUI
 struct DictionarySingleCharacterView: View {
     
     let character: Character
+    @State private var oldExpandedEachChar = false
+    @State private var expandedEachChar = false
     
     
     var body: some View {
@@ -30,11 +32,51 @@ struct DictionarySingleCharacterView: View {
                     .shadow(color: .black, radius: 3, x: -5, y: 5)
 //                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                 
-                Text(character.english)
-                    .padding(.top, 100)
-                Text(character.pinyin)
                 
-                Spacer(minLength: 100)
+                // Old
+                Button {
+                    withAnimation {
+                        oldExpandedEachChar.toggle()
+                    }
+                } label: {
+                    HStack() {
+                        Text("\(character.id)")
+                        Text("\(character.english)")
+                            .padding(.leading)
+                        
+                        Spacer()
+                        
+                        VStack(alignment: .trailing) {
+                            Text("\(character.chinese)")
+                            Text("\(character.pinyin)")
+                        }
+                        .multilineTextAlignment(.trailing)
+                        
+                    } // h
+                    .foregroundStyle(.accent)
+                    .frame(height: 50)
+                    .padding(.horizontal, 30) // inner padding
+                    .padding(.vertical, 2)
+                    .background(oldExpandedEachChar ?
+                                Color.black.opacity(0.4) : Color.gray.opacity(0.2))
+                    .cornerRadius(10)
+                    .padding(.horizontal, 30) // outer padding
+                } // expandedEachChar Button
+                
+                if oldExpandedEachChar {
+                    VStack {
+                        ForEach(character.chinese.map { String($0) }, id: \.self) { char in
+//                            let charAsString = String(char)
+                            Text(char)
+                        }
+                    } // v
+                } // if expandedEachChar
+                // \Old
+                
+                //New
+                // \new
+
+                
             } // v
             .foregroundStyle(.accent)
         } // Z
@@ -42,7 +84,8 @@ struct DictionarySingleCharacterView: View {
 } // dictionary Signle Character View struct
 
 #Preview {
-    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
+//    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
+    DictionarySingleCharacterView(character: Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
 }
 
 // 「 你是谁？」《我是俄国人》 二零二五年 二月 十一日 
