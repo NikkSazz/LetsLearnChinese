@@ -10,8 +10,10 @@ import SwiftUI
 struct DictionarySingleCharacterView: View {
     
     let character: Character
+    
     @State private var oldExpandedEachChar = false
     @State private var expandedEachChar = false
+    @State private var expandedChar = "я"
     
     
     var body: some View {
@@ -73,9 +75,38 @@ struct DictionarySingleCharacterView: View {
                 } // if expandedEachChar
                 // \Old
                 
+                
+                
                 //New
-                // \new
+                ForEach(character.chinese.map { String($0) }, id: \.self) { char in
+                    Button {
+                        expandedEachChar.toggle()
+                        expandedChar = expandedChar == char ? "я" : char
+                    } label: {
+                        
+                        HStack {
+                            Text("More Words with \(char)")
+                            
+                            Text(char)
+                                .font(.system(size: 30))
+                        }
+                        .frame(height: 50)
+                        .padding(.horizontal, 30)
+                        .padding(.vertical, 2)
+                        .background(expandedEachChar &&
+                                    expandedChar == char ?
+                                    Color.black.opacity(0.4) : Color.gray.opacity(0.2))
+                        .cornerRadius(10)
+                        .padding(.horizontal, 30)
+                        
+                        Spacer() // move text to leading
+                        
+                    }
 
+                    
+                } // for each char in Dictionary Character
+                // \new
+                Text("\(expandedChar)")
                 
             } // v
             .foregroundStyle(.accent)
