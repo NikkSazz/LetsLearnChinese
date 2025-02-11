@@ -18,18 +18,23 @@ struct DictionarySingleCharacterView: View {
             
             VStack(spacing: 10) {
                     
-                    Text(character.chinese)
-                        .font(.system(size: 65))
-                        .padding()
-                        .background(
-                            LinearGradient(gradient: Gradient(colors: [.cyan.opacity(0.2), .purple.opacity(0.2)]),
-                                           startPoint: .bottomLeading,
-                                           endPoint: .topTrailing)
-                            .cornerRadius(10) // Rounded edges for the background
-                        ) // background
-                        .shadow(color: .black, radius: 3, x: -5, y: 5)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-//                        .padding(.vertical)
+                Text(character.chinese)
+                    .font(.system(size: 65))
+                    .padding()
+                    .background(
+                        LinearGradient(gradient: Gradient(colors: [.cyan.opacity(0.2), .purple.opacity(0.2)]),
+                                       startPoint: .bottomLeading,
+                                       endPoint: .topTrailing)
+                        .cornerRadius(10)
+                    ) // background
+                    .shadow(color: .black, radius: 3, x: -5, y: 5)
+//                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                
+                Text(character.english)
+                    .padding(.top, 100)
+                Text(character.pinyin)
+                
+                Spacer(minLength: 100)
             } // v
             .foregroundStyle(.accent)
         } // Z
