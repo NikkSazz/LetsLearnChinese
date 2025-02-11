@@ -1,7 +1,7 @@
 -- Select for the "More words with (?)" in Dictionary
 SELECT * 
 FROM characters 
-WHERE chinese LIKE ? 
+WHERE chinese LIKE "%(\?)%" 
 ORDER BY (chinese = ?) DESC;
 
 
