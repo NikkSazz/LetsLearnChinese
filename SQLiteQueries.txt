@@ -1,0 +1,25 @@
+-- Select for the "More words with (?)" in Dictionary
+SELECT * 
+FROM characters 
+WHERE chinese LIKE "%(\?)%" 
+ORDER BY (chinese = ?) DESC;
+
+
+-- For all char view
+SELECT chinese, english, pinyin, id FROM Characters
+
+
+-- Select all characters from a selected Unit List
+SELECT id, chinese, english, pinyin, unit_id
+      FROM Characters
+      WHERE unit_id IN (\(unitsList))
+      ORDER BY RANDOM()
+      LIMIT 1;
+
+
+-- Load Units
+SELECT * FROM Units
+
+
+-- load characters for one unit
+SELECT chinese, english, pinyin, id FROM Characters WHERE unit_id = ?
