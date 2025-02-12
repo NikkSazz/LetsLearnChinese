@@ -14,7 +14,6 @@ struct DictionarySingleCharacterView: View {
     @State private var oldExpandedEachChar = false // delete when removing the old version
 //    @State private var expandedEachChar = false // redundant due to expandedChar
     @State private var expandedChar = "я"
-    @State private var expandedCharList: [Character]
     
     
     var body: some View {
@@ -57,38 +56,24 @@ struct DictionarySingleCharacterView: View {
                     } // button label
 
                     if expandedChar == char {
-                        let arr = findExactAndRelatedCharacters(character: char)
                         VStack{
-                            ForEach(arr, id: \.self) { element in
-                                CharacterTriple(character: element)
-                            }
-                        } // V
+                            Text("Hello")
+                            Text("Hello2")
+                            Text("Hello3")
+                            Text("Hello4")
+                        }
                         .transition(.opacity.combined(with: .move(edge: .trailing)))
                     } // if expandedChar == char
                     
                 } // for each char in Dictionary Character
-                
+                // \new
                 Text("\(expandedChar)")
                     .font(.system(size: 50))
-                // \new
                 
             } // v
             .foregroundStyle(.accent)
         } // Z
     } // body some view
-    
-    func findExactAndRelatedCharacters(character: String) -> [Character] {
-        var arr: [Character] = []
-        var c: Character
-        c = Character(id: 1, chinese: "你好", english: "Hello", pinyin: "NiHao")
-        arr.append(c)
-        c = Character(id: 2, chinese: "爱好", english: "Hobbies", pinyin: "AiHao")
-        arr.append(c)
-        c = Character(id: 3, chinese: "图书馆", english: "Library", pinyin: "TuShuGuan")
-        arr.append(c)
-        return arr
-    }
-    
 } // dictionary Signle Character View struct
 
 struct coolDictText: View {
@@ -161,8 +146,8 @@ struct oldThing: View {
 }
 
 #Preview {
-    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
-//    DictionarySingleCharacterView(character: Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
+//    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
+    DictionarySingleCharacterView(character: Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
 }
 
-// 「 你是谁？」《我是俄国人》 二零二五年 二月 十一日 
+// 「 你是谁？」《我是俄国人》 二零二五年 二月 十一日
