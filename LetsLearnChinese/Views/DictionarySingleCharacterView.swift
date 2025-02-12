@@ -13,7 +13,10 @@ struct DictionarySingleCharacterView: View {
     
     @State private var oldExpandedEachChar = false // delete when removing the old version
 //    @State private var expandedEachChar = false // redundant due to expandedChar
-    @State private var expandedChar = "я"
+    @State private var expandedChar: String? = nil
+    @State private var expandedList: [Character] = []
+    
+    @State private var isUpdating = false
     
     
     var body: some View {
@@ -32,7 +35,8 @@ struct DictionarySingleCharacterView: View {
                     Button {
                         withAnimation {
                             //                        expandedEachChar.toggle()
-                            expandedChar = expandedChar == char ? "я" : char
+                            expandedChar = expandedChar == char ? nil : char
+//                            updateExpandedList(with: expandedChar)
                         } // withAnimation
                     } label: {
                         
@@ -56,6 +60,7 @@ struct DictionarySingleCharacterView: View {
                     } // button label
 
                     if expandedChar == char {
+                        
                         VStack{
                             Text("Hello")
                             Text("Hello2")
@@ -66,14 +71,52 @@ struct DictionarySingleCharacterView: View {
                     } // if expandedChar == char
                     
                 } // for each char in Dictionary Character
+                
+//                ForEach(expandedList, id: \.id) { character in
+//                    Text(character.chinese)
+//                }
+//
+//                if isUpdating {
+//                    ProgressView("Loading...")
+//                        .progressViewStyle(CircularProgressViewStyle())
+//                }
+
                 // \new
-                Text("\(expandedChar)")
+                
+                Text("\(expandedChar ?? "∅")")
                     .font(.system(size: 50))
                 
             } // v
             .foregroundStyle(.accent)
         } // Z
     } // body some view
+    
+    func updateExpandedList(with char: String) {
+        
+        guard !isUpdating else { return }
+                
+        isUpdating = true
+
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            let newCharacters = otherCharWith(with: char)  // Get the new characters
+            expandedList = newCharacters  // Directly assign to the state variable
+            
+            // Optionally, delay the UI update slightly
+            DispatchQueue.main.async {
+                isUpdating = false
+            }
+        }
+    } // func
+    
+    func otherCharWith(with component: String) -> [Character] {
+        
+        // preview return
+        return [Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"),
+                Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"),
+                Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn")]
+    } // func otherCharWith
+    
 } // dictionary Signle Character View struct
 
 struct coolDictText: View {
