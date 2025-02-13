@@ -11,8 +11,6 @@ struct DictionarySingleCharacterView: View {
     
     let character: Character
     
-    @State private var oldExpandedEachChar = false // delete when removing the old version
-//    @State private var expandedEachChar = false // redundant due to expandedChar
     @State private var expandedChar: String? = nil
     @State private var expandedList: [Character] = []
     
@@ -26,13 +24,10 @@ struct DictionarySingleCharacterView: View {
                 
                 coolDictText(character)
                 
-                oldThing(character: character)
-                
                 //New
                 ForEach(character.chinese.map { String($0) }, id: \.self) { char in
                     Button {
                         withAnimation {
-                            //                        expandedEachChar.toggle()
                             expandedChar = expandedChar == char ? nil : char
                             updateExpandedList(with: expandedChar)
                             print("Button with \(char) pressed")
@@ -59,12 +54,11 @@ struct DictionarySingleCharacterView: View {
                     } // button label
 
                     if expandedChar == char {
-                        
                         VStack{
                             ForEach(expandedList, id: \.id) { character in
                                 Text(character.chinese)
-                            }
-                        }
+                            } // For each in expandedList
+                        } // V
                         .transition(.opacity.combined(with: .move(edge: .trailing)))
                     } // if expandedChar == char
                     
@@ -73,20 +67,19 @@ struct DictionarySingleCharacterView: View {
                 
                 // \new
                 
-                Text("\(expandedChar ?? "∅")")
-                    .font(.system(size: 50))
+                Text("Expanded \(expandedChar ?? "∅")")
+                    .font(.system(size: 30))
                 
             } // v
             .foregroundStyle(.accent)
         } // Z
     } // body some view
     
-    func updateExpandedList(with char: String) {
-        
+    func updateExpandedList(with char: String?) {
+        expandedList.removeAll()
         expandedList.append(Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
         expandedList.append(Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
-        expandedList.append(Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
-    } // func
+    } // func updateExpandedList
     
 } // dictionary Signle Character View struct
 
@@ -109,53 +102,6 @@ struct coolDictText: View {
             ) // background
             .shadow(color: .black, radius: 3, x: -5, y: 5)
 //                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-    }
-}
-
-struct oldThing: View {
-    @State var oldExpandedEachChar = false
-    let character: Character
-    
-    var body: some View {
-        //old
-        Button {
-            withAnimation {
-                oldExpandedEachChar.toggle()
-            }
-        } label: {
-            HStack() {
-                Text("\(character.id)")
-                Text("\(character.english)")
-                    .padding(.leading)
-                
-                Spacer()
-                
-                VStack(alignment: .trailing) {
-                    Text("\(character.chinese)")
-                    Text("\(character.pinyin)")
-                }
-                .multilineTextAlignment(.trailing)
-                
-            } // h
-            .foregroundStyle(.accent)
-            .frame(height: 50)
-            .padding(.horizontal, 30) // inner padding
-            .padding(.vertical, 2)
-            .background(oldExpandedEachChar ?
-                        Color.black.opacity(0.4) : Color.gray.opacity(0.2))
-            .cornerRadius(10)
-            .padding(.horizontal, 30) // outer padding
-        } // expandedEachChar Button
-        
-        if oldExpandedEachChar {
-            VStack {
-                ForEach(character.chinese.map { String($0) }, id: \.self) { char in
-//                            let charAsString = String(char)
-                    Text(char)
-                }
-            } // v
-        } // if expandedEachChar
-        // \old
     }
 }
 
