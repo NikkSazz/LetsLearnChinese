@@ -16,8 +16,6 @@ struct DictionarySingleCharacterView: View {
     @State private var expandedChar: String? = nil
     @State private var expandedList: [Character] = []
     
-    @State private var isUpdating = false
-    
     
     var body: some View {
         ZStack{
@@ -36,7 +34,8 @@ struct DictionarySingleCharacterView: View {
                         withAnimation {
                             //                        expandedEachChar.toggle()
                             expandedChar = expandedChar == char ? nil : char
-//                            updateExpandedList(with: expandedChar)
+                            updateExpandedList(with: expandedChar)
+                            print("Button with \(char) pressed")
                         } // withAnimation
                     } label: {
                         
@@ -62,25 +61,16 @@ struct DictionarySingleCharacterView: View {
                     if expandedChar == char {
                         
                         VStack{
-                            Text("Hello")
-                            Text("Hello2")
-                            Text("Hello3")
-                            Text("Hello4")
+                            ForEach(expandedList, id: \.id) { character in
+                                Text(character.chinese)
+                            }
                         }
                         .transition(.opacity.combined(with: .move(edge: .trailing)))
                     } // if expandedChar == char
                     
                 } // for each char in Dictionary Character
                 
-//                ForEach(expandedList, id: \.id) { character in
-//                    Text(character.chinese)
-//                }
-//
-//                if isUpdating {
-//                    ProgressView("Loading...")
-//                        .progressViewStyle(CircularProgressViewStyle())
-//                }
-
+                
                 // \new
                 
                 Text("\(expandedChar ?? "∅")")
@@ -93,29 +83,10 @@ struct DictionarySingleCharacterView: View {
     
     func updateExpandedList(with char: String) {
         
-        guard !isUpdating else { return }
-                
-        isUpdating = true
-
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let newCharacters = otherCharWith(with: char)  // Get the new characters
-            expandedList = newCharacters  // Directly assign to the state variable
-            
-            // Optionally, delay the UI update slightly
-            DispatchQueue.main.async {
-                isUpdating = false
-            }
-        }
+        expandedList.append(Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
+        expandedList.append(Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
+        expandedList.append(Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
     } // func
-    
-    func otherCharWith(with component: String) -> [Character] {
-        
-        // preview return
-        return [Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"),
-                Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"),
-                Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn")]
-    } // func otherCharWith
     
 } // dictionary Signle Character View struct
 
