@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SQLite3
 
 struct DictionarySingleCharacterView: View {
     
@@ -24,13 +25,12 @@ struct DictionarySingleCharacterView: View {
                 
                 coolDictText(character)
                 
-                //New
                 ForEach(character.chinese.map { String($0) }, id: \.self) { char in
                     Button {
+                        print("Button with \(char) pressed")
                         withAnimation {
                             expandedChar = expandedChar == char ? nil : char
-                            updateExpandedList(with: expandedChar)
-                            print("Button with \(char) pressed")
+                            updateExpandedList(for: char)
                         } // withAnimation
                     } label: {
                         
@@ -65,8 +65,6 @@ struct DictionarySingleCharacterView: View {
                 } // for each char in Dictionary Character
                 
                 
-                // \new
-                
                 Text("Expanded \(expandedChar ?? "∅")")
                     .font(.system(size: 30))
                 
@@ -75,10 +73,51 @@ struct DictionarySingleCharacterView: View {
         } // Z
     } // body some view
     
-    func updateExpandedList(with char: String?) {
+    func updateExpandedList(for orderBy_Argument: String) {
+        
         expandedList.removeAll()
-        expandedList.append(Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
-        expandedList.append(Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
+        
+        guard let dbPath = Bundle.main.path(forResource: "llcdb", ofType: "sqlite") else {
+            print("Database not found")
+            return
+        }
+        
+        var db: OpaquePointer? = nil
+        
+        if sqlite3_open(dbPath, &db) != SQLITE_OK {
+            print("Unable to open database.")
+            return
+        }
+        defer { sqlite3_close(db) } // runs when the function ends
+        
+        let query = "SELECT * FROM characters WHERE chinese LIKE ? ORDER BY (chinese = ?) DESC"
+        
+        var statement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) != SQLITE_OK {
+            print("Failed to prepare statement: \(String(cString: sqlite3_errmsg(db)))")
+            return
+        }
+        defer { sqlite3_finalize(statement) }
+        
+        let like_Argument = "%" + orderBy_Argument + "%"
+        if sqlite3_bind_text(statement, 1, (like_Argument as NSString).utf8String, -1, nil) != SQLITE_OK ||
+            sqlite3_bind_text(statement, 2, (orderBy_Argument as NSString).utf8String, -1, nil) != SQLITE_OK {
+            print("Failed to bind argument: \(String(cString: sqlite3_errmsg(db)))")
+            return
+        }
+        
+        while sqlite3_step(statement) == SQLITE_ROW {
+            let id = Int(sqlite3_column_int(statement, 0))
+            let chinese = String(cString: sqlite3_column_text(statement, 1))
+            let english = String(cString: sqlite3_column_text(statement, 2))
+            let pinyin = String(cString: sqlite3_column_text(statement, 3))
+
+            let character = Character(id: id, chinese: chinese, english: english, pinyin: pinyin)
+//            print("Appended \(character.chinese) \(character.english)")
+            expandedList.append(character)
+        }
+
+        
     } // func updateExpandedList
     
 } // dictionary Signle Character View struct
@@ -106,8 +145,8 @@ struct coolDictText: View {
 }
 
 #Preview {
-//    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
-    DictionarySingleCharacterView(character: Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
+    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
+//    DictionarySingleCharacterView(character: Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
 }
 
 // 「 你是谁？」《我是俄国人》 二零二五年 二月 十一日
