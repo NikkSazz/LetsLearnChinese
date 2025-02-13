@@ -25,6 +25,8 @@ struct DictionarySingleCharacterView: View {
                 
                 coolDictText(character)
                 
+                moreWordsWith()
+                
                 ForEach(character.chinese.filter { $0 != "." }.map { String($0) }, id: \.self) { char in
                     Button {
                         print("Button with \(char) pressed")
@@ -130,6 +132,26 @@ struct DictionarySingleCharacterView: View {
     
 } // dictionary Signle Character View struct
 
+struct moreWordsWith: View {
+    var body: some View {
+        ZStack{
+            
+            Text("More words with:")
+                .foregroundStyle(.black)
+                .offset(x: 2, y: 1)
+                .shadow(radius: 1)
+            
+            Text("More words with:")
+                
+        }
+        .font(.custom("InknutAntiqua-Bold", size: 18))
+        .shadow(radius: 10)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading, 30)
+        .padding(.bottom, -10)
+    }
+}
+
 struct coolDictText: View {
     let character: Character
     
@@ -153,9 +175,9 @@ struct coolDictText: View {
 }
 
 #Preview {
-    MainMenu()
+//    MainMenu()
 //    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
-//    DictionarySingleCharacterView(character: Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
+    DictionarySingleCharacterView(character: Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
 }
 
 // 「 你是谁？」《我是俄国人》 二零二五年 二月 十一日
