@@ -25,12 +25,12 @@ struct DictionarySingleCharacterView: View {
                 
                 coolDictText(character)
                 
-                ForEach(character.chinese.map { String($0) }, id: \.self) { char in
+                ForEach(character.chinese.filter { $0 != "." }.map { String($0) }, id: \.self) { char in
                     Button {
                         print("Button with \(char) pressed")
                         withAnimation {
                             expandedChar = expandedChar == char ? nil : char
-                            updateExpandedList(for: char)
+                            updateExpandedList(for: char, not: character.chinese)
                         } // withAnimation
                     } label: {
                         
@@ -55,8 +55,12 @@ struct DictionarySingleCharacterView: View {
 
                     if expandedChar == char {
                         VStack{
+                            if expandedList.isEmpty {
+                                Text("No other words with \(char)")
+                            }
+                            
                             ForEach(expandedList, id: \.id) { character in
-                                Text(character.chinese)
+                                CharacterTriple(character: character)
                             } // For each in expandedList
                         } // V
                         .transition(.opacity.combined(with: .move(edge: .trailing)))
@@ -65,15 +69,17 @@ struct DictionarySingleCharacterView: View {
                 } // for each char in Dictionary Character
                 
                 
-                Text("Expanded \(expandedChar ?? "∅")")
-                    .font(.system(size: 30))
+//                Text("Expanded \(expandedChar ?? "∅")")
+//                    .font(.system(size: 30))
                 
             } // v
             .foregroundStyle(.accent)
         } // Z
     } // body some view
     
-    func updateExpandedList(for orderBy_Argument: String) {
+    func updateExpandedList(for orderBy_Argument: String, not exclude: String) {
+        
+        print("for \(orderBy_Argument)\tnot\(exclude)")
         
         expandedList.removeAll()
         
@@ -90,7 +96,7 @@ struct DictionarySingleCharacterView: View {
         }
         defer { sqlite3_close(db) } // runs when the function ends
         
-        let query = "SELECT * FROM characters WHERE chinese LIKE ? ORDER BY (chinese = ?) DESC"
+        let query = "SELECT * FROM characters WHERE chinese LIKE ? AND chinese != ? ORDER BY (chinese = ?) DESC"
         
         var statement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, query, -1, &statement, nil) != SQLITE_OK {
@@ -101,7 +107,8 @@ struct DictionarySingleCharacterView: View {
         
         let like_Argument = "%" + orderBy_Argument + "%"
         if sqlite3_bind_text(statement, 1, (like_Argument as NSString).utf8String, -1, nil) != SQLITE_OK ||
-            sqlite3_bind_text(statement, 2, (orderBy_Argument as NSString).utf8String, -1, nil) != SQLITE_OK {
+            sqlite3_bind_text(statement, 2, (exclude as NSString).utf8String, -1, nil) != SQLITE_OK ||
+            sqlite3_bind_text(statement, 3, (orderBy_Argument as NSString).utf8String, -1, nil) != SQLITE_OK {
             print("Failed to bind argument: \(String(cString: sqlite3_errmsg(db)))")
             return
         }
@@ -113,7 +120,8 @@ struct DictionarySingleCharacterView: View {
             let pinyin = String(cString: sqlite3_column_text(statement, 3))
 
             let character = Character(id: id, chinese: chinese, english: english, pinyin: pinyin)
-//            print("Appended \(character.chinese) \(character.english)")
+            print("Appended \(character.chinese) \(character.english)")
+            
             expandedList.append(character)
         }
 
@@ -145,7 +153,8 @@ struct coolDictText: View {
 }
 
 #Preview {
-    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
+    MainMenu()
+//    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
 //    DictionarySingleCharacterView(character: Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
 }
 
