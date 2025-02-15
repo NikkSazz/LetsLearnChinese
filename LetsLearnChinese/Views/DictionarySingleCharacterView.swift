@@ -156,11 +156,11 @@ struct newMoreWordsWith: View {
                     
                     Button(action: {
                         withAnimation{
-                            expandedChar = expandedChar == char ? nil : char
                             updateExpandedList(for: char, not: fullWord)
+                            expandedChar = expandedChar == char ? nil : char
                         }
                     }) {
-                        Text(char)
+                        Text("\(char)")
                             .font(.system(size: 40))
                             .foregroundStyle(expandedChar == char ? .black : .accent)
                             .frame(height: 50)
@@ -186,7 +186,7 @@ struct newMoreWordsWith: View {
                             CharacterTriple(character: character)
                         } // For each in expandedList
                     } // V
-                    .transition(.opacity.combined(with: .move(edge: .trailing)))
+//                    .transition(.opacity.combined(with: .move(edge: .trailing)))
                 }
 //                .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
@@ -289,8 +289,8 @@ struct coolDictText: View {
 
 #Preview {
 //    MainMenu()
-//    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
-    DictionarySingleCharacterView(character: Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
+    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiaojie"))
+//    DictionarySingleCharacterView(character: Character(id: 196, chinese: "图书馆", english: "library", pinyin: "túshūguǎn"))
 }
 
 // 「 你是谁？」《我是俄国人》 二零二五年 二月 十一日
