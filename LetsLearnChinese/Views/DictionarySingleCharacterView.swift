@@ -27,6 +27,7 @@ struct DictionarySingleCharacterView: View {
                 
                 moreWordsWith()
                 
+                // Old
                 ForEach(character.chinese.filter { $0 != "." }.map { String($0) }, id: \.self) { char in
                     Button {
                         print("Button with \(char) pressed")
@@ -69,7 +70,9 @@ struct DictionarySingleCharacterView: View {
                     } // if expandedChar == char
                     
                 } // for each char in Dictionary Character
+                // \Old
                 
+                newMoreWordsWith(character.chinese)
                 
 //                Text("Expanded \(expandedChar ?? "∅")")
 //                    .font(.system(size: 30))
@@ -131,6 +134,53 @@ struct DictionarySingleCharacterView: View {
     } // func updateExpandedList
     
 } // dictionary Signle Character View struct
+
+
+struct newMoreWordsWith: View {
+    let fullWord: String
+    
+    init(_ fullWord: String){
+        self.fullWord = fullWord
+    }
+    
+    @State private var expandedChar: String? = nil
+    @State private var expandedList: [Character] = []
+    
+    var body: some View {
+        VStack {
+            moreWordsWith()
+            HStack{
+
+                Spacer()
+                ForEach(fullWord.filter { $0 != "." }.map { String($0) }, id: \.self) { char in
+                    
+                    Button(action: {
+                        expandedChar = expandedChar == char ? nil : char
+                    }) {
+                        Text(char)
+                            .font(.system(size: 40))
+                            .foregroundStyle(expandedChar == char ? .black : .accent)
+                            .frame(height: 50)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 2)
+                            .background(expandedChar == char ?
+                                        Color.accentColor.opacity(0.9) : Color.gray.opacity(0.2))
+                    }
+                        .cornerRadius(10)
+                    Spacer()
+                }
+            }
+            .frame(maxWidth: .infinity)
+            
+            if expandedChar != nil {
+                VStack{
+                    Text("Expanded: \(expandedChar ?? "Error")")
+                }
+                .transition(.opacity.combined(with: .move(edge: .bottom)))
+            }
+        }
+    }
+} // struct
 
 struct moreWordsWith: View {
     var body: some View {
