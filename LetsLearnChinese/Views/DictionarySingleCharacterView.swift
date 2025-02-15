@@ -46,9 +46,10 @@ struct DictionarySingleCharacterView: View {
                         .frame(height: 50)
                         .padding(.horizontal, 30)
                         .padding(.vertical, 2)
-                        .background(/*expandedEachChar &&*/
-                                    expandedChar == char ?
-                                    Color.black.opacity(0.4) : Color.gray.opacity(0.2))
+//                        .foregroundStyle(expandedChar == char ?
+//                            Color.black : Color.accentColor)
+                        .background(expandedChar == char ?
+                                    Color.accentColor.opacity(0.9) : Color.gray.opacity(0.2))
                         .cornerRadius(10)
                         .padding(.horizontal, 30)
                         
@@ -63,7 +64,10 @@ struct DictionarySingleCharacterView: View {
                             }
                             
                             ForEach(expandedList, id: \.id) { character in
-                                CharacterTriple(character: character)
+                                NavigationLink(destination: DictionarySingleCharacterView(character: character)) {
+                                        CharacterTriple(character: character)
+                                        .foregroundStyle(Color.accentColor)
+                                } // navlink to dictionary
                             } // For each in expandedList
                         } // V
                         .transition(.opacity.combined(with: .move(edge: .trailing)))
@@ -162,7 +166,7 @@ struct newMoreWordsWith: View {
                     }) {
                         Text("\(char)")
                             .font(.system(size: 40))
-                            .foregroundStyle(expandedChar == char ? .black : .accent)
+                            .foregroundStyle(.black)
                             .frame(height: 50)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 2)
