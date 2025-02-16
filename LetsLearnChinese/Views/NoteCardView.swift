@@ -45,6 +45,10 @@ struct NoteCardView: View {
                         previousCharStack.removeFirst()
                     }
                     
+                    if dontRepeat {
+                        progress += 0.1
+                    }
+                    
                     character = fetchRandomCharacter(from: selectedUnits)
 //                    print("Character: \(character.chinese), English: \(character.english)")
                 } label: {
