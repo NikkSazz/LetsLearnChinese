@@ -23,8 +23,17 @@ struct NoteCardView: View {
     @State var showUnit = false
     
     @State var dontRepeat = false
-    
-    @State var progress = 0.0
+    @State private var progress: Double = 0.0 {
+        didSet {
+            // Restrict the value between 0.0 and 1.0
+            if progress < 0.0 {
+                progress = 0.0
+            } else if progress > 1.0 {
+                progress = 1.0
+            }
+        }
+    }
+    @State var progressList: [Character] = []
     
     var body: some View {
         let animationDuration = 0.3
@@ -40,17 +49,14 @@ struct NoteCardView: View {
                 
                 
                 Button { // next random char
-                    previousCharStack.append(character)
-                    if previousCharStack.count > 10 {
-                        previousCharStack.removeFirst()
-                    }
-                    
+                    appendToPrevStack(character)
+                                        
                     if dontRepeat {
                         progress += 0.1
                     }
                     
                     character = fetchRandomCharacter(from: selectedUnits)
-//                    print("Character: \(character.chinese), English: \(character.english)")
+
                 } label: {
                     ZStack{
                         Rectangle()
@@ -86,9 +92,11 @@ struct NoteCardView: View {
                         .cornerRadius(10)
                     } // Dictionary label
                     
-                    Button {
-//                        print("Previous Button Pressed")
+                    Button { // back button
                         character = previousCharStack.popLast() ?? Character(id: 56, chinese: "没有", english: "Doesnt Have", pinyin: "méi yǒu")
+                        if dontRepeat {
+                            progress -= 0.1
+                        }
                     } label: {
                         ZStack{
                             Rectangle()
@@ -188,7 +196,7 @@ struct NoteCardView: View {
                         }
                         
                     } // H showunit and id
-                        .foregroundStyle(.accent)
+                    .foregroundStyle(.accent)
                     
                     Spacer(minLength: 30)
                     
@@ -203,6 +211,13 @@ struct NoteCardView: View {
         } // on appear Z
         
     } // body
+    
+    func appendToPrevStack(_ c: Character) {
+        previousCharStack.append(character)
+        if previousCharStack.count > 10 {
+            previousCharStack.removeFirst()
+        }
+    } // func appendToPrevStack
 } // notecardview
 
 
