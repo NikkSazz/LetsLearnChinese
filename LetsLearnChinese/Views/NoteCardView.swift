@@ -219,10 +219,8 @@ struct NoteCard: View {
         ZStack {
             
             if isFlipped {
-                // Back side of the card
                 CardBack(c: character)
             } else {
-                // Front side of the card
                 CardFront(c: character)
             }
         } // z
@@ -237,7 +235,16 @@ struct NoteCard: View {
             withAnimation(.easeInOut(duration: animationDuration)) {
                 isFlipped.toggle()
             }
-        } // ontapgesture of z stack
+        } // ontapgesture
+        .gesture( // on swipe
+            DragGesture()
+                .onChanged { value in
+                    // Detect if the swipe is left to right
+                    withAnimation(.easeInOut(duration: animationDuration)) {
+                        isFlipped.toggle()
+                    }
+                }
+        ) // swipe gesture
         .padding(.horizontal, 75)
         .padding(.vertical, 30)
     } // body view
