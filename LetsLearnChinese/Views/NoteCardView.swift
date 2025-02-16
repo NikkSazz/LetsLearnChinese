@@ -24,6 +24,8 @@ struct NoteCardView: View {
     
     @State var dontRepeat = false
     
+    @State var progress = 0.0
+    
     var body: some View {
         let animationDuration = 0.3
         ZStack{
@@ -51,7 +53,10 @@ struct NoteCardView: View {
                             .foregroundStyle(.buttonFill.opacity(0.75))
                         HStack{
                             Image(systemName: "arrowshape.right")
-                            Text("Next Random Char")
+                            let text = dontRepeat ? "Next Char" : "Next Random Char"
+                            Text(text)
+                                .transition(.slide) // Adds a fade-in/out transition
+                                .animation(.bouncy(duration: 0.3), value: dontRepeat)
                         } // H
                         .foregroundStyle(.black)
                     } // Z
@@ -101,10 +106,27 @@ struct NoteCardView: View {
                 
                 VStack {
                     
-                    Toggle("Don't Repeat", isOn: $dontRepeat)
-                        .toggleStyle(CustomToggleStyle())
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading)
+                    HStack{
+                        Toggle("Don't Repeat", isOn: $dontRepeat)
+                            .toggleStyle(AccentToggleStyle())
+                            .frame(alignment: .trailing)
+                            .padding(.leading)
+                            .onChange(of: dontRepeat) {
+                               progress = 0.0
+                           }
+                        
+                        
+                        VStack {
+                            ProgressView(value: progress)
+                                .frame(width: 170, alignment: .trailing)
+                                
+                            Text("Progression...")
+                                .foregroundStyle(.accent.opacity(0.9))
+                                .frame(width: 170, alignment: .leading)
+                                .font(.custom("Inknut-Antiqua-Bold", size: 10))
+                        }
+                        .padding(.trailing)
+                    }
 
                     
                     HStack {
@@ -180,7 +202,7 @@ struct NoteCardView: View {
 } // notecardview
 
 
-struct CustomToggleStyle: ToggleStyle {
+struct AccentToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label
