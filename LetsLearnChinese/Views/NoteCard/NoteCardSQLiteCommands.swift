@@ -63,8 +63,5 @@ func getAllCharacters(from selectedUnits: Set<Int>) -> [Character] {
             Character(id: 4, chinese: "超市", english: "Supermarket", pinyin: "chāoshì"),
             Character(id: 5, chinese: "餐厅", english: "Restaurant", pinyin: "cāntīng"),
             Character(id: 6, chinese: "银行", english: "Bank", pinyin: "yínháng"),
-            Character(id: 7, chinese: "公园", english: "Park", pinyin: "gōngyuán"),
-            Character(id: 8, chinese: "火车站", english: "Train Station", pinyin: "huǒchēzhàn"),
-            Character(id: 9, chinese: "电影院", english: "Cinema", pinyin: "diànyǐngyuàn"),
-            Character(id: 10, chinese: "邮局", english: "Post Office", pinyin: "yóujú"),]
+            Character(id: 7, chinese: "公园", english: "Park", pinyin: "gōngyuán")]
 }

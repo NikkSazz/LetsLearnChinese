@@ -57,9 +57,13 @@ class ProgressViewModel: ObservableObject {
         didSet {
             if listLen == 0 {
                 listLen = progressList.count
+                print("list Length is now \(listLen)")
+
             }
-            print("list Length is now \(listLen)")
-            listDoneAmount += 1
+            else {
+                listDoneAmount += 1
+                print("Done amount incremented to \(listDoneAmount)")
+            }
         }
     }
     
