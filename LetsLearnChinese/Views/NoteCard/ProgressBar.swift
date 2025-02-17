@@ -10,6 +10,7 @@ import SwiftUI
 import SwiftUI
 
 class ProgressViewModel: ObservableObject {
+    @Published public var dontRepeat = false
     @Published public var progress: Double {
         didSet {
             // Restrict the value between 0.0 and 1.0
@@ -20,11 +21,13 @@ class ProgressViewModel: ObservableObject {
             }
         }
     }
+    @Published public var percentage: Int = 0
     
-    @Published var progressList: [Character] = []
+    @Published public var progressList: [Character] = []
     
     init() {
         self.progress = 0.0
+        self.percentage = Int(self.progress * 100)
     }
 }
 

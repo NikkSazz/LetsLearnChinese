@@ -10,7 +10,7 @@ import SQLite3
 
 struct NoteCardView: View {
     
-    /// Binding given by SelectUnits() gets random character from selectedUnits
+    /// list of selected Units to get characters from
     @Binding var selectedUnits: Set<Int>
     
     /// Current Character used in the NoteCard
@@ -20,9 +20,7 @@ struct NoteCardView: View {
     @State var previousCharStack: [Character] = []
     
     /// Bottom button to hide the Character's Unit and ID
-    @State var showUnit = false
-    
-    @State var dontRepeat = false
+    @State var showUnit = true
     
     @StateObject private var viewModel = ProgressViewModel()
     
@@ -43,7 +41,7 @@ struct NoteCardView: View {
                 Button { // next random char
                     appendToPrevStack(character)
                                         
-                    if dontRepeat {
+                    if viewModel.dontRepeat {
                         viewModel.progress += 0.1
                     }
                     
@@ -55,10 +53,10 @@ struct NoteCardView: View {
                             .foregroundStyle(.buttonFill.opacity(0.75))
                         HStack{
                             Image(systemName: "arrowshape.right")
-                            let text = dontRepeat ? "Next Char" : "Next Random Char"
+                            let text = viewModel.dontRepeat ? "Next Char" : "Next Random Char"
                             Text(text)
                                 .transition(.slide) // Adds a fade-in/out transition
-                                .animation(.bouncy(duration: 0.3), value: dontRepeat)
+                                .animation(.bouncy(duration: 0.3), value: viewModel.dontRepeat)
                         } // H
                         .foregroundStyle(.black)
                     } // Z
@@ -86,7 +84,7 @@ struct NoteCardView: View {
                     
                     Button { // back button
                         character = previousCharStack.popLast() ?? Character(id: 56, chinese: "没有", english: "Doesnt Have", pinyin: "méi yǒu")
-                        if dontRepeat {
+                        if viewModel.dontRepeat {
                             viewModel.progress -= 0.1
                         }
                     } label: {
@@ -111,11 +109,11 @@ struct NoteCardView: View {
                 VStack {
                     
                     HStack{
-                        Toggle("Don't Repeat", isOn: $dontRepeat)
+                        Toggle("Don't Repeat", isOn: $viewModel.dontRepeat)
                             .toggleStyle(AccentToggleStyle())
                             .frame(alignment: .trailing)
                             .padding(.leading)
-                            .onChange(of: dontRepeat) {
+                            .onChange(of: viewModel.dontRepeat) {
                                 viewModel.progress = 0.0
                            }
                         
@@ -124,10 +122,25 @@ struct NoteCardView: View {
                             ProgressView(value: viewModel.progress)
                                 .frame(width: 170, alignment: .trailing)
                                 
-                            Text("Progression...")
-                                .foregroundStyle(.accent.opacity(0.9))
-                                .frame(width: 170, alignment: .leading)
-                                .font(.custom("Inknut-Antiqua-Bold", size: 10))
+                            HStack {
+                                Text("Progression...")
+                                    .foregroundStyle(.accent.opacity(0.9))
+                                    .font(.custom("Inknut-Antiqua-Bold", size: 10))
+                                    .frame(alignment: .leading)
+                                    .padding(.leading)
+                               
+                                Spacer()
+                                
+                                if viewModel.dontRepeat {
+//                                    let formatted = String(format: "%.1f", viewModel.progress) // "0.8"
+                                    Text("\(Int(viewModel.progress * 100))%")
+                                        .foregroundStyle(.accent.opacity(0.9))
+                                        .font(.custom("Inknut-Antiqua-Bold", size: 10))
+                                        .frame(alignment: .trailing)
+                                        .padding(.trailing)
+                                }
+                            } // h
+                            .frame(width: 170)
                         }
                         .padding(.trailing)
                     }
@@ -213,5 +226,5 @@ struct NoteCardView: View {
 } // notecardview
 
 #Preview {
-    NoteCardView(selectedUnits: .constant([6]))
+    NoteCardView(selectedUnits: .constant([7]))
 }
