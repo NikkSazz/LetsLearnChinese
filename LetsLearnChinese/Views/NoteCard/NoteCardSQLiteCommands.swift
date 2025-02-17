@@ -54,3 +54,8 @@ func fetchRandomCharacter(from selectedUnits: Set<Int>) -> Character {
     return error
         
 } // fetchRandomCharacter Func
+
+func getAllCharacters(from selectedUnits: Set<Int>) -> [Character] {
+    // write code here
+    return []
+}

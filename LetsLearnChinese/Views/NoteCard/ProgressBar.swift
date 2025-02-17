@@ -13,8 +13,7 @@ class ProgressViewModel: ObservableObject {
     public let selectedUnits: Set<Int>
     
     init(units selectedUnits: Set<Int>) {
-        print("In progressViewModel")
-        print("Selected Units:\(selectedUnits)")
+        print("In progressViewModel \n Selected Units:\(selectedUnits)")
         self.selectedUnits = selectedUnits
     }
     
@@ -23,6 +22,9 @@ class ProgressViewModel: ObservableObject {
             if dontRepeat {
                 print("dontRepeat is now true")
                 setListFor(units: selectedUnits)
+            }
+            else {
+                print("dontRepeat is now false")
             }
         }
     }
@@ -40,6 +42,7 @@ class ProgressViewModel: ObservableObject {
             print("Changed percentage to \(percentage)")
         }
     }
+    
     @Published public var percentage: Int = 0
     
     @Published public var listDoneAmount: Int = 0 {
@@ -53,11 +56,14 @@ class ProgressViewModel: ObservableObject {
     @Published public var progressList: [Character] = [] {
         didSet {
             listLen = progressList.count
+            print("listLen Count is now \(listLen)")
         }
     }
     
     func setListFor(units : Set<Int>) {
-        print("Yooo")
+        print("func 'setListFor' called")
+        
+        // write code here to get each character
     }
 }
 
@@ -67,8 +73,6 @@ struct AccentToggleStyle: ToggleStyle {
             configuration.label
                 .font(.body)
                 .foregroundColor(.accent)
-
-//            Spacer() // uncomment this, if you want the doesnt repeat and the rounded rectangle to be spaced
 
             RoundedRectangle(cornerRadius: 16)
                 .fill(configuration.isOn ? Color.accentColor : Color.gray.opacity(0.4)) // Track color

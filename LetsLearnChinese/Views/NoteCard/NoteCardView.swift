@@ -11,8 +11,11 @@ import SQLite3
 struct NoteCardView: View {
     
     @Binding var selectedUnits: Set<Int>
+    
+    /// StateObject Containing doesntRepeate boolean state, list of Characters in the selectedUnits, amount of characters already looked at, amount left, and percentage
     @StateObject private var viewModel: ProgressViewModel
 
+    /// Binds Selected Units to the StateObject for creating a list of avaliable characters to present
     init(selectedUnits: Binding<Set<Int>>) {
         self._selectedUnits = selectedUnits
         self._viewModel = StateObject(wrappedValue: ProgressViewModel(units: selectedUnits.wrappedValue))
