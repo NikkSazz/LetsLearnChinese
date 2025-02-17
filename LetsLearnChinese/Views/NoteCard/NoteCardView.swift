@@ -25,7 +25,7 @@ struct NoteCardView: View {
     @State var dontRepeat = false
     
     @StateObject private var viewModel = ProgressViewModel()
-    @State var progressList: [Character] = []
+    
     
     var body: some View {
         let animationDuration = 0.3

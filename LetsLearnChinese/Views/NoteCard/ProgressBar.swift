@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftUI
 
 class ProgressViewModel: ObservableObject {
-    @Published public var progress: Double = 0.0 {
+    @Published public var progress: Double {
         didSet {
             // Restrict the value between 0.0 and 1.0
             if progress < 0.0 {
@@ -19,6 +19,12 @@ class ProgressViewModel: ObservableObject {
                 progress = 1.0
             }
         }
+    }
+    
+    @Published var progressList: [Character] = []
+    
+    init() {
+        self.progress = 0.0
     }
 }
 
