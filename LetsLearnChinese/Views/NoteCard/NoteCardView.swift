@@ -23,16 +23,8 @@ struct NoteCardView: View {
     @State var showUnit = false
     
     @State var dontRepeat = false
-    @State private var progress: Double = 0.0 {
-        didSet {
-            // Restrict the value between 0.0 and 1.0
-            if progress < 0.0 {
-                progress = 0.0
-            } else if progress > 1.0 {
-                progress = 1.0
-            }
-        }
-    }
+    
+    @StateObject private var viewModel = ProgressViewModel()
     @State var progressList: [Character] = []
     
     var body: some View {
@@ -52,7 +44,7 @@ struct NoteCardView: View {
                     appendToPrevStack(character)
                                         
                     if dontRepeat {
-                        progress += 0.1
+                        viewModel.progress += 0.1
                     }
                     
                     character = fetchRandomCharacter(from: selectedUnits)
@@ -95,7 +87,7 @@ struct NoteCardView: View {
                     Button { // back button
                         character = previousCharStack.popLast() ?? Character(id: 56, chinese: "没有", english: "Doesnt Have", pinyin: "méi yǒu")
                         if dontRepeat {
-                            progress -= 0.1
+                            viewModel.progress -= 0.1
                         }
                     } label: {
                         ZStack{
@@ -124,12 +116,12 @@ struct NoteCardView: View {
                             .frame(alignment: .trailing)
                             .padding(.leading)
                             .onChange(of: dontRepeat) {
-                               progress = 0.0
+                                viewModel.progress = 0.0
                            }
                         
                         
                         VStack {
-                            ProgressView(value: progress)
+                            ProgressView(value: viewModel.progress)
                                 .frame(width: 170, alignment: .trailing)
                                 
                             Text("Progression...")
@@ -219,37 +211,6 @@ struct NoteCardView: View {
         }
     } // func appendToPrevStack
 } // notecardview
-
-
-struct AccentToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        HStack {
-            configuration.label
-                .font(.body)
-                .foregroundColor(.accent)
-
-//            Spacer() // uncomment this, if you want the doesnt repeat and the rounded rectangle to be spaced
-
-            RoundedRectangle(cornerRadius: 16)
-                .fill(configuration.isOn ? Color.accentColor : Color.gray.opacity(0.4)) // Track color
-                .frame(width: 50, height: 30)
-                .overlay(
-                    Circle()
-                        .fill(configuration.isOn ?
-                              Color.white :
-                                Color.white.opacity(0.75)) // Thumb color
-                        .shadow(radius: 1)
-                        .padding(2)
-                        .offset(x: configuration.isOn ? 10 : -10)
-                        .animation(.easeInOut(duration: 0.4), value: configuration.isOn)
-                ) // circle overlay
-                .onTapGesture {
-                    configuration.isOn.toggle()
-                } // ontap of overlay
-        } // H label, and toggle
-        .padding(.horizontal)
-    } // view
-} // Custom Toggle Style Struct
 
 #Preview {
     NoteCardView(selectedUnits: .constant([6]))
