@@ -10,8 +10,13 @@ import SQLite3
 
 struct NoteCardView: View {
     
-    /// list of selected Units to get characters from
     @Binding var selectedUnits: Set<Int>
+    @StateObject private var viewModel: ProgressViewModel
+
+    init(selectedUnits: Binding<Set<Int>>) {
+        self._selectedUnits = selectedUnits
+        self._viewModel = StateObject(wrappedValue: ProgressViewModel(units: selectedUnits.wrappedValue))
+    }
     
     /// Current Character used in the NoteCard
     @State var character: Character = Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
@@ -21,9 +26,6 @@ struct NoteCardView: View {
     
     /// Bottom button to hide the Character's Unit and ID
     @State var showUnit = true
-    
-    @StateObject private var viewModel = ProgressViewModel()
-    
     
     var body: some View {
         let animationDuration = 0.3

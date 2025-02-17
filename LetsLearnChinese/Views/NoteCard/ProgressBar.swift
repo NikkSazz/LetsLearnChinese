@@ -10,8 +10,24 @@ import SwiftUI
 import SwiftUI
 
 class ProgressViewModel: ObservableObject {
-    @Published public var dontRepeat = false
-    @Published public var progress: Double {
+    public let selectedUnits: Set<Int>
+    
+    init(units selectedUnits: Set<Int>) {
+        print("In progressViewModel")
+        print("Selected Units:\(selectedUnits)")
+        self.selectedUnits = selectedUnits
+    }
+    
+    @Published public var dontRepeat = false {
+        didSet {
+            if dontRepeat {
+                print("dontRepeat is now true")
+                setListFor(units: selectedUnits)
+            }
+        }
+    }
+    
+    @Published public var progress: Double = 0.0 {
         didSet {
             // Restrict the value between 0.0 and 1.0
             if progress < 0.0 {
@@ -19,6 +35,9 @@ class ProgressViewModel: ObservableObject {
             } else if progress > 1.0 {
                 progress = 1.0
             }
+            
+            percentage = Int(progress * 100)
+            print("Changed percentage to \(percentage)")
         }
     }
     @Published public var percentage: Int = 0
@@ -37,9 +56,8 @@ class ProgressViewModel: ObservableObject {
         }
     }
     
-    init() {
-        self.progress = 0.0
-        self.percentage = Int(self.progress * 100)
+    func setListFor(units : Set<Int>) {
+        print("Yooo")
     }
 }
 
