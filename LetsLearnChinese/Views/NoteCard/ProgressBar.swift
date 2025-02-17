@@ -55,15 +55,21 @@ class ProgressViewModel: ObservableObject {
     
     @Published public var progressList: [Character] = [] {
         didSet {
-            listLen = progressList.count
-            print("listLen Count is now \(listLen)")
+            if listLen == 0 {
+                listLen = progressList.count
+            }
+            print("list Length is now \(listLen)")
+            listDoneAmount += 1
         }
     }
     
     func setListFor(units : Set<Int>) {
         print("func 'setListFor' called")
+            //temporary code
+        let newList = getAllCharacters(from: units)
+        progressList.removeAll()
+        progressList.append(contentsOf: newList)
         
-        // write code here to get each character
     }
 }
 

@@ -47,10 +47,11 @@ struct NoteCardView: View {
                     appendToPrevStack(character)
                                         
                     if viewModel.dontRepeat {
-                        viewModel.progress += 0.1
+                        character = viewModel.progressList.removeFirst()
                     }
-                    
-                    character = fetchRandomCharacter(from: selectedUnits)
+                    else {
+                        character = fetchRandomCharacter(from: selectedUnits)
+                    }
 
                 } label: {
                     ZStack{
@@ -120,6 +121,10 @@ struct NoteCardView: View {
                             .padding(.leading)
                             .onChange(of: viewModel.dontRepeat) {
                                 viewModel.progress = 0.0
+                                if viewModel.dontRepeat {
+                                    previousCharStack.removeAll()
+                                    prevStack()
+                                }
                            }
                         
                         
@@ -220,6 +225,12 @@ struct NoteCardView: View {
         } // on appear Z
         
     } // body
+    
+    func prevStack() {
+        let oldChar = viewModel.progressList.removeFirst()
+        character = oldChar
+        previousCharStack.append(oldChar)
+    }
     
     func appendToPrevStack(_ c: Character) {
         previousCharStack.append(character)
