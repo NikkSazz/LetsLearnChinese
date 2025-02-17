@@ -25,7 +25,8 @@ struct NoteCard: View {
         .shadow(radius: 5)
         .rotation3DEffect(
             .degrees(isFlipped ? 180 : 0),
-            axis: (x: 0, y: 1, z: 0)
+            axis: (x: 0, y: 1, z: 0),
+            perspective: 0.8 // idk
         )
         .onTapGesture {
             withAnimation(.easeInOut(duration: animationDuration)) {
@@ -35,7 +36,6 @@ struct NoteCard: View {
         .gesture( // on swipe
             DragGesture()
                 .onChanged { value in
-                    // Detect if the swipe is left to right
                     withAnimation(.easeInOut(duration: animationDuration)) {
                         isFlipped.toggle()
                     }

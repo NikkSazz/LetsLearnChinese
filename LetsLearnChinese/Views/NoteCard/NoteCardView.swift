@@ -70,6 +70,7 @@ struct NoteCardView: View {
                     .cornerRadius(10)
                     .padding(.horizontal)
                 } // next rand char button
+                .disabled(viewModel.dontRepeat && viewModel.progressList.count == 0)
                 
                 HStack {
                     
@@ -89,9 +90,12 @@ struct NoteCardView: View {
                     } // Dictionary label
                     
                     Button { // back button
-                        character = previousCharStack.popLast() ?? Character(id: 56, chinese: "没有", english: "Doesnt Have", pinyin: "méi yǒu")
+                        let poppedC = previousCharStack.popLast()
+                        character = poppedC ?? Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
+                        
                         if viewModel.dontRepeat {
-                            viewModel.progress -= 0.1
+                            viewModel.progressList.insert(poppedC!, at: 0)
+//                            viewModel.progress -= 0.1
                         }
                     } label: {
                         ZStack{
@@ -107,6 +111,7 @@ struct NoteCardView: View {
                         .frame(height: 50)
                         .cornerRadius(10)
                     } // Previous button
+                    .disabled(previousCharStack.isEmpty)
                     
                 } // H
                 .padding(.horizontal)
@@ -123,7 +128,7 @@ struct NoteCardView: View {
                                 viewModel.progress = 0.0
                                 if viewModel.dontRepeat {
                                     previousCharStack.removeAll()
-                                    prevStack()
+//                                    prevStack()
                                 }
                            }
                         
@@ -152,7 +157,7 @@ struct NoteCardView: View {
                             .frame(width: 170)
                         }
                         .padding(.trailing)
-                    }
+                    } // hstack dont repeat
 
                     
                     HStack {

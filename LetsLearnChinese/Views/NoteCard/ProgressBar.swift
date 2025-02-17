@@ -15,12 +15,15 @@ class ProgressViewModel: ObservableObject {
     init(units selectedUnits: Set<Int>) {
         print("In progressViewModel \n Selected Units:\(selectedUnits)")
         self.selectedUnits = selectedUnits
+        self.progress = 0.0 // will this fix it?
     }
     
     @Published public var dontRepeat = false {
         didSet {
             if dontRepeat {
                 print("dontRepeat is now true")
+                listDoneAmount = 0
+                progressList.removeAll()
                 setListFor(units: selectedUnits)
             }
             else {
@@ -37,7 +40,7 @@ class ProgressViewModel: ObservableObject {
             } else if progress > 1.0 {
                 progress = 1.0
             }
-            
+            print("Progress: \(progress)")
             percentage = Int(progress * 100)
             print("Changed percentage to \(percentage)")
         }
@@ -47,7 +50,12 @@ class ProgressViewModel: ObservableObject {
     
     @Published public var listDoneAmount: Int = 0 {
         didSet {
-            progress = Double(listDoneAmount) / Double(listLen)
+            if(listLen > 0){
+                progress = Double(listDoneAmount) / Double(listLen)
+            }
+            else {
+                progress = 0.0
+            }
         }
     }
     
