@@ -132,7 +132,6 @@ struct NoteCardView: View {
                                 Spacer()
                                 
                                 if viewModel.dontRepeat {
-//                                    let formatted = String(format: "%.1f", viewModel.progress) // "0.8"
                                     Text("\(Int(viewModel.progress * 100))%")
                                         .foregroundStyle(.accent.opacity(0.9))
                                         .font(.custom("Inknut-Antiqua-Bold", size: 10))

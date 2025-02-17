@@ -23,7 +23,19 @@ class ProgressViewModel: ObservableObject {
     }
     @Published public var percentage: Int = 0
     
-    @Published public var progressList: [Character] = []
+    @Published public var listDoneAmount: Int = 0 {
+        didSet {
+            progress = Double(listDoneAmount) / Double(listLen)
+        }
+    }
+    
+    @Published public var listLen: Int = 0
+    
+    @Published public var progressList: [Character] = [] {
+        didSet {
+            listLen = progressList.count
+        }
+    }
     
     init() {
         self.progress = 0.0
