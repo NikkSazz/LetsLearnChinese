@@ -82,12 +82,15 @@ class ProgressViewModel: ObservableObject {
         }
     }
 
+    /// Ran when 'previous' button was pressed.
     func appendBack(_ character: Character) {
         progressList.insert(character, at: 0)
         print("Inserted \(character.chinese)")
 //        listDoneAmount -= 2 // going to increase by one anyway
     }
     
+    
+    /// Ran at the Start of the program.
     func setListFor(units : Set<Int>) {
         print("func 'setListFor' called")
             //temporary code
