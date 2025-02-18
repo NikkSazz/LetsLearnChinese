@@ -14,9 +14,12 @@ struct duckieView: View {
     init(){ // for picker style
         UISegmentedControl.appearance().selectedSegmentTintColor = .accent
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)    }
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+    }
     
     @State var duckType: Int = 0
+    
+    @State private var audioPlayer: AVAudioPlayer?
     
     let ducks = [
         Duck(id: 0, name: "Rubber", modelName: "duck.obj", textureName: "duck.png"),
@@ -144,17 +147,26 @@ struct duckieView: View {
     }// body
     
     func playQuackSound() {
-        var audioPlayer: AVAudioPlayer?
+        // Ensure the audio session is set up for playback
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.playback, mode: .default, options: .mixWithOthers)
+            try audioSession.setActive(true)
+        } catch {
+            print("Error setting up audio session: \(error.localizedDescription)")
+            return
+        }
 
+        // Try loading the sound file
         guard let url = Bundle.main.url(forResource: "quack", withExtension: "mp3") else {
             print("Sound file not found")
             return
         }
 
+        // Play the sound
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.play()
-            print("Quack played")
         } catch {
             print("Failed to play sound: \(error.localizedDescription)")
         }
