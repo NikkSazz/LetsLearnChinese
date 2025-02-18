@@ -57,11 +57,11 @@ func fetchRandomCharacter(from selectedUnits: Set<Int>) -> Character {
 
 func getAllCharacters(from selectedUnits: Set<Int>) -> [Character] {
     // write code here
-    return [Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn"),
-            Character(id: 2, chinese: "学校", english: "School", pinyin: "xuéxiào"),
-            Character(id: 3, chinese: "医院", english: "Hospital", pinyin: "yīyuàn"),
-            Character(id: 4, chinese: "超市", english: "Supermarket", pinyin: "chāoshì"),
-            Character(id: 5, chinese: "餐厅", english: "Restaurant", pinyin: "cāntīng"),
-            Character(id: 6, chinese: "银行", english: "Bank", pinyin: "yínháng"),
-            Character(id: 7, chinese: "公园", english: "Park", pinyin: "gōngyuán")]
+    return [Character(id: 1, chinese: "1", english: "Library", pinyin: "túshūguǎn"),
+            Character(id: 2, chinese: "2", english: "School", pinyin: "xuéxiào"),
+            Character(id: 3, chinese: "3", english: "Hospital", pinyin: "yīyuàn"),
+            Character(id: 4, chinese: "4", english: "Supermarket", pinyin: "chāoshì"),
+            Character(id: 5, chinese: "5", english: "Restaurant", pinyin: "cāntīng"),
+            Character(id: 6, chinese: "6", english: "Bank", pinyin: "yínháng"),
+            Character(id: 7, chinese: "7", english: "Park", pinyin: "gōngyuán")]
 }

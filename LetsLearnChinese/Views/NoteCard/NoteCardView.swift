@@ -90,13 +90,13 @@ struct NoteCardView: View {
                     } // Dictionary label
                     
                     Button { // back button
-                        let poppedC = previousCharStack.popLast()
-                        character = poppedC ?? Character(id: 1, chinese: "图书馆", english: "Library", pinyin: "túshūguǎn")
                         
                         if viewModel.dontRepeat {
-                            viewModel.progressList.insert(poppedC!, at: 0)
-//                            viewModel.progress -= 0.1
+                            viewModel.appendBack(character)
                         }
+                        
+                        character = previousCharStack.popLast()!
+                        
                     } label: {
                         ZStack{
                             Rectangle()

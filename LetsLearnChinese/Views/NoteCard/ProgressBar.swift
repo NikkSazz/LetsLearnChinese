@@ -40,9 +40,9 @@ class ProgressViewModel: ObservableObject {
             } else if progress > 1.0 {
                 progress = 1.0
             }
-            print("Progress: \(progress)")
+//            print("Progress: \(progress)")
             percentage = Int(progress * 100)
-            print("Changed percentage to \(percentage)")
+//            print("Changed percentage to \(percentage)")
         }
     }
     
@@ -51,6 +51,8 @@ class ProgressViewModel: ObservableObject {
     @Published public var listDoneAmount: Int = 0 {
         didSet {
             if(listLen > 0){
+                print("listcount \(progressList.count)")
+                print("Progress = \(listDoneAmount) / \(listLen)")
                 progress = Double(listDoneAmount) / Double(listLen)
             }
             else {
@@ -63,16 +65,26 @@ class ProgressViewModel: ObservableObject {
     
     @Published public var progressList: [Character] = [] {
         didSet {
+            print("\n--\tprogressList altered\n")
+            
             if listLen == 0 {
+                // Initialize listLen only once
                 listLen = progressList.count
-                print("list Length is now \(listLen)")
-
+                print("List length is now \(listLen)")
             }
+            
             else {
-                listDoneAmount += 1
+                listDoneAmount = listLen - progressList.count
                 print("Done amount incremented to \(listDoneAmount)")
+                print("\(listLen) - \(progressList.count)")
             }
         }
+    }
+
+    func appendBack(_ character: Character) {
+        progressList.insert(character, at: 0)
+        print("Inserted \(character.chinese)")
+        listDoneAmount -= 2 // going to increase by one anyway
     }
     
     func setListFor(units : Set<Int>) {
