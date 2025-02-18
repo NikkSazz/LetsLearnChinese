@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SceneKit
+import AVFoundation
 
 
 struct duckieView: View {
@@ -79,6 +80,7 @@ struct duckieView: View {
                             Spacer()
                             
                             Button {
+                                playQuackSound()
                                 print("Quack!")
                             } label: {
                                 Text("Quack       ")
@@ -140,6 +142,24 @@ struct duckieView: View {
             .ignoresSafeArea()
         }// z
     }// body
+    
+    func playQuackSound() {
+        var audioPlayer: AVAudioPlayer?
+
+        guard let url = Bundle.main.url(forResource: "quack", withExtension: "mp3") else {
+            print("Sound file not found")
+            return
+        }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+            print("Quack played")
+        } catch {
+            print("Failed to play sound: \(error.localizedDescription)")
+        }
+    }
+
 } // struct
 
 #Preview {
