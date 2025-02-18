@@ -52,8 +52,9 @@ class ProgressViewModel: ObservableObject {
         didSet {
             if(listLen > 0){
                 print("listcount \(progressList.count)")
-                print("Progress = \(listDoneAmount) / \(listLen)")
                 progress = Double(listDoneAmount) / Double(listLen)
+                print("Progress = \(listDoneAmount) / \(listLen) = \(progress)")
+
             }
             else {
                 progress = 0.0
@@ -76,7 +77,7 @@ class ProgressViewModel: ObservableObject {
             else {
                 listDoneAmount = listLen - progressList.count
                 print("Done amount incremented to \(listDoneAmount)")
-                print("\(listLen) - \(progressList.count)")
+                print("\(listLen) - \(progressList.count) = \(listDoneAmount)")
             }
         }
     }
@@ -84,7 +85,7 @@ class ProgressViewModel: ObservableObject {
     func appendBack(_ character: Character) {
         progressList.insert(character, at: 0)
         print("Inserted \(character.chinese)")
-        listDoneAmount -= 2 // going to increase by one anyway
+//        listDoneAmount -= 2 // going to increase by one anyway
     }
     
     func setListFor(units : Set<Int>) {
