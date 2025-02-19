@@ -23,3 +23,27 @@ SELECT * FROM Units
 
 -- load characters for one unit
 SELECT chinese, english, pinyin, id FROM Characters WHERE unit_id = ?
+
+
+SELECT Type, COUNT(*) AS WordCount
+FROM Characters
+GROUP BY Type
+ORDER BY WordCount DESC;
+
+
+SELECT ID, Chinese, English, LENGTH(English) AS TranslationLength
+FROM Characters
+ORDER BY TranslationLength DESC
+
+
+SELECT unit_id, COUNT(*) AS WordCount
+FROM Characters
+GROUP BY unit_id
+HAVING WordCount > 2
+ORDER BY unit_id ASC;
+
+
+SELECT ID, Chinese, English, Pinyin
+FROM Characters
+ORDER BY ID
+LIMIT 15 OFFSET  0; 
