@@ -9,6 +9,10 @@ import SwiftUI
 import SQLite3
 
 struct AllCharView: View {
+    @State private var inputText: String = ""
+    private let characterLimit = 20
+    
+    
     var body: some View {
         let characters: [Character] = loadAllCharacters()
         
@@ -16,6 +20,35 @@ struct AllCharView: View {
             DefaultBackground()
             VStack {
                 TopBar(title: "Character List", subtitle: "汉字表")
+                
+                
+                TextField("Search Chinese, English, or Pinyin ...", text: $inputText)
+                    .disabled(inputText.count >= characterLimit)
+                    .padding()
+                    .background(Color(UIColor.systemGray6))
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.accentColor.opacity(0.8), lineWidth: 3)
+                    )
+                    .padding(.horizontal)
+                    .shadow(color: .gray.opacity(0.4), radius: 4, x: 0, y: 2)
+                    .padding(.top)
+                
+                Text("You entered:")
+                    .font(.headline)
+                
+                Text(inputText)
+                    .lineLimit(1)
+                    .font(.body)
+                    .foregroundColor(.accent)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(.black)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                
+                Spacer()
                 
                 ScrollView {
                     Spacer(minLength: 15)
