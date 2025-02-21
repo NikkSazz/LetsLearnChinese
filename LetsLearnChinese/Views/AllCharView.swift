@@ -21,7 +21,7 @@ struct AllCharView: View {
                 TopBar(title: "Character List", subtitle: "汉字表")
                 
                 
-                TextFeild(inputText: $inputText)
+                CustomTextFeild(inputText: $inputText)
                 
                 HStack {
                     Text("Chinese")
@@ -88,7 +88,7 @@ struct AllCharView: View {
     }//loadCharacters func
 } // allcharview struct
 
-struct TextFeild: View {
+struct CustomTextFeild: View {
     @Binding var inputText: String
 //    private let characterLimit = 20
     
@@ -129,23 +129,6 @@ struct TextFeild: View {
 
 
     }
-}
-
-struct Character: Identifiable {
-    let id: Int
-    let chinese: String
-    let english: String
-    let pinyin: String
-    let unit_id: Int?
-    
-    init(id: Int, chinese: String, english: String, pinyin: String, unit_id: Int? = nil) {
-        self.id = id
-        self.chinese = chinese
-        self.english = english
-        self.pinyin = pinyin
-        self.unit_id = unit_id
-    }
-    
 }
 
 struct CharacterTriple: View {
