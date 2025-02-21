@@ -1,5 +1,5 @@
 //
-//  IdentifiableStruct.swift
+//  IdentifiableStructs.swift
 //  LetsLearnChinese
 //
 //  Created by Dmitry Sazonov on 2/21/25.
