@@ -35,9 +35,7 @@ struct AllCharView: View {
                     .shadow(color: .gray.opacity(0.4), radius: 4, x: 0, y: 2)
                     .padding(.top)
                 
-                Text("You entered:")
-                    .font(.headline)
-                
+                /*
                 Text(inputText)
                     .lineLimit(1)
                     .font(.body)
@@ -47,26 +45,25 @@ struct AllCharView: View {
                     .background(.black)
                     .cornerRadius(10)
                     .padding(.horizontal)
+                */
                 
-                Spacer()
+                HStack {
+                    Text("Chinese")
+                    Spacer()
+                    Text("English")
+                    Spacer()
+                    Text("Pinyin")
+                }
+                .padding(.horizontal, 30)
+                .font(.custom("InknutAntiqua-Bold", size: 22))
+                .shadow(radius: 2)
+                .foregroundStyle(Color.accentColor)
+                .frame(height: 30)
+                
+                DividerStyle().opacity(0.2)
                 
                 ScrollView {
-                    Spacer(minLength: 15)
-                    
                     VStack(alignment: .leading, spacing: 5) {
-                        HStack {
-                            Text("Chinese")
-                            Spacer()
-                            Text("English")
-                            Spacer()
-                            Text("Pinyin")
-                        }
-                        .padding(.horizontal, 30)
-                        .font(.custom("InknutAntiqua-Bold", size: 22))
-                        .shadow(radius: 2)
-                        .foregroundStyle(Color.accentColor)
-                        
-                        DividerStyle().opacity(0.2)
                         
                         ForEach(characters, id: \ .id) { character in
                             CharacterTriple(character: character)
