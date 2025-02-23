@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MainMenu: View {
-//    @StateObject private var motion = MotionManager()
     var body: some View {
         
         let buttonHeight: CGFloat = 75
@@ -33,9 +32,7 @@ struct MainMenu: View {
                             
                         Spacer()
                         
-                        homeMenuButton(text: "Units", destination: ViewByUnit(), buttonHeight: buttonHeight)
-                        
-                        homeMenuButton(text: "All Characters", destination: AllCharView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "View by Units", destination: ViewByUnit(), buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "NoteCards",
                                        destination: SelectUnitsView(title: "Note Cards",
@@ -45,11 +42,7 @@ struct MainMenu: View {
                                         continueTo: "Note Cards"),
                                        buttonHeight: buttonHeight)
                         
-                        homeMenuButton(text: "Writing", destination: NotImplimentedView(), buttonHeight: buttonHeight)
-                            .opacity(0.5)                            
-                        
-                        homeMenuButton(text: "Multiple Choice", destination: NotImplimentedView(), buttonHeight: buttonHeight)
-                            .opacity(0.5)
+                        homeMenuButton(text: "All Characters", destination: AllCharView(), buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "Particles", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
@@ -58,6 +51,12 @@ struct MainMenu: View {
                             .opacity(0.5)
                         
                         homeMenuButton(text: "Dates and Time", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                        
+                        homeMenuButton(text: "Writing", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                        
+                        homeMenuButton(text: "Multiple Choice", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
                         homeMenuButton(text: "Fish Game", destination: NotImplimentedView(), buttonHeight: buttonHeight)

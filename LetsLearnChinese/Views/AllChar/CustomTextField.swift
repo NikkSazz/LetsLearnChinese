@@ -36,6 +36,8 @@ struct CustomTextField: View {
                 .stroke(Color.accentColor.opacity(0.8), lineWidth: 3))
         .padding()
         
+        /*
+         * Testing the Binding
         Text(inputText)
             .lineLimit(1)
             .font(.body)
@@ -45,6 +47,7 @@ struct CustomTextField: View {
             .background(.black)
             .cornerRadius(10)
             .padding(.horizontal)
+         */
 
 
     }

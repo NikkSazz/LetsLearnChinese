@@ -11,6 +11,7 @@ import SwiftUI
 struct AllCharView: View {
     
     @State private var inputText: String = ""
+    @State private var searchResults: [Character]? = nil
     
     var body: some View {
         let characters: [Character] = loadAllCharacters()
@@ -22,6 +23,13 @@ struct AllCharView: View {
                 
                 
                 CustomTextField(inputText: $inputText)
+                    .onChange(of: inputText) {
+                                print("Changing searchResults")
+                                searchResults = textFeildCharacterSQL(of: inputText)
+                                
+                                print("searchResults:")
+                                print(searchResults ?? "nil")
+                            }
                 
                 HStack {
                     Text("Chinese")
@@ -41,9 +49,10 @@ struct AllCharView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 5) {
                         
-                        ForEach(characters, id: \ .id) { character in
+                        ForEach(searchResults == nil ? characters : searchResults!, id: \ .id) { character in
                             CharacterTriple(character: character)
                         } // for each
+                                                
                     } //v
                     Spacer(minLength: 25)
                 } // scroll
