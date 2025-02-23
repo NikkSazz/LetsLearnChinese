@@ -33,11 +33,13 @@ struct MainMenu: View {
                             
                         Spacer()
                         
-                        homeMenuButton(text: "Characters", destination: ViewByUnit(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "Units", destination: ViewByUnit(), buttonHeight: buttonHeight)
+                        
+                        homeMenuButton(text: "All Characters", destination: AllCharView(), buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "NoteCards",
                                        destination: SelectUnitsView(title: "Note Cards",
-                                        view: { binding in  // 'binding' is the placeholder for the closure parameter
+                                        view: { binding in
                                                 AnyView(NoteCardView(selectedUnits: binding)) // Pass the binding correctly
                                                 },
                                         continueTo: "Note Cards"),
@@ -55,14 +57,15 @@ struct MainMenu: View {
                         homeMenuButton(text: "Sentence Structure", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
+                        homeMenuButton(text: "Dates and Time", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                        
                         homeMenuButton(text: "Fish Game", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
                         homeMenuButton(text: "Review Exam", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
-                        
-                        homeMenuButton(text: "All Characters", destination: AllCharView(), buttonHeight: buttonHeight)
-                        
+                                                
                         homeMenuButton(text: "Emotional Duck", destination: duckieView(), buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "Statistics", destination: NotImplimentedView(), buttonHeight: buttonHeight)
