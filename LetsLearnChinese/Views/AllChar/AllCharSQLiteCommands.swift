@@ -42,3 +42,26 @@ func loadAllCharacters() -> [Character] {
     }
     return []
 }//loadCharacters func
+
+func textFeildCharacterSQL(of text: String) -> [Character]? {
+    if text == "" {
+        return nil
+    }
+    
+    // Placeholder
+    let characters: [Character] = [
+        Character(id: 1, chinese: "你", english: "you", pinyin: "nǐ", unit_id: 1),
+        Character(id: 2, chinese: "好", english: "good", pinyin: "hǎo", unit_id: 1),
+        Character(id: 3, chinese: "学", english: "study", pinyin: "xué", unit_id: 2),
+        Character(id: 4, chinese: "习", english: "practice", pinyin: "xí", unit_id: 2),
+        Character(id: 5, chinese: "我", english: "I", pinyin: "wǒ", unit_id: 1),
+        Character(id: 6, chinese: "是", english: "am/is/are", pinyin: "shì", unit_id: 3),
+        Character(id: 7, chinese: "的", english: "of", pinyin: "de", unit_id: 3),
+        Character(id: 8, chinese: "汉", english: "Chinese", pinyin: "hàn", unit_id: 4),
+        Character(id: 9, chinese: "语", english: "language", pinyin: "yǔ", unit_id: 4),
+        Character(id: 10, chinese: "天", english: "sky/day", pinyin: "tiān", unit_id: 5)
+    ]
+    return characters
+    // Placeholder
+
+}
