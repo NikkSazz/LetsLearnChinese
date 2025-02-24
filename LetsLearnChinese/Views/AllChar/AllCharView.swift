@@ -6,16 +6,23 @@
 //
 
 import SwiftUI
+import Combine
 
 
 struct AllCharView: View {
     
+    /// Every Possible Character, Used if searchResults is nil
+    let characters: [Character] = loadAllCharacters()
+    
+    /// Search Bar
     @State private var inputText: String = ""
+    
+    /// Selects only words which contain the inputText
     @State private var searchResults: [Character]? = nil
     
+    @State private var cancellable: AnyCancellable?
+    
     var body: some View {
-        let characters: [Character] = loadAllCharacters()
-        
         ZStack{
             DefaultBackground()
             VStack {
@@ -24,12 +31,20 @@ struct AllCharView: View {
                 
                 CustomTextField(inputText: $inputText)
                     .onChange(of: inputText) {
-                                print("Changing searchResults")
+                        cancellable?.cancel()
+                        cancellable = Just(inputText)
+                            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+                            .sink { text in
                                 searchResults = textFeildCharacterSQL(of: inputText)
-                                
-                                print("searchResults:")
-                                print(searchResults ?? "nil")
                             }
+                        
+                        
+//                                print("Changing searchResults")
+//                                searchResults = textFeildCharacterSQL(of: inputText)
+//                                
+//                                print("searchResults:")
+//                                print(searchResults ?? "nil")
+                        }
                 
                 HStack {
                     Text("Chinese")
