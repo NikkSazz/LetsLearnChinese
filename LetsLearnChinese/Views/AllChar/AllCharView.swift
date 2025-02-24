@@ -56,7 +56,14 @@ struct AllCharView: View {
                         ForEach(searchResults == nil ? characters : searchResults!, id: \ .id) { character in
                             CharacterTriple(character: character)
                         } // for each
-                                                
+                        
+                        
+                        if (searchResults != nil && searchResults!.isEmpty) {
+                            Text("--\tNothing found...\t--")
+                                .foregroundStyle(.accent)
+                                .opacity(0.75)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
                     } //v
                     Spacer(minLength: 25)
                 } // scroll
