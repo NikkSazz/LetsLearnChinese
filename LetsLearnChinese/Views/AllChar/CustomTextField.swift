@@ -31,7 +31,7 @@ struct CustomTextField: View {
             .frame(width: 20)
             .padding(.trailing, 16)
         } // z
-        .background(Color(UIColor.systemGray6))
+        .background(Color(UIColor.systemGray6).opacity(0.9))
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
@@ -53,4 +53,8 @@ struct CustomTextField: View {
 
 
     }
+}
+
+#Preview {
+    AllCharView()
 }
