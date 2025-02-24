@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Combine
+//import Combine
 
 
 struct AllCharView: View {
@@ -20,7 +20,7 @@ struct AllCharView: View {
     /// Selects only words which contain the inputText
     @State private var searchResults: [Character]? = nil
     
-    @State private var cancellable: AnyCancellable?
+//    @State private var cancellable: AnyCancellable?
     
     var body: some View {
         ZStack{
@@ -31,19 +31,8 @@ struct AllCharView: View {
                 
                 CustomTextField(inputText: $inputText)
                     .onChange(of: inputText) {
-                        cancellable?.cancel()
-                        cancellable = Just(inputText)
-                            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
-                            .sink { text in
-                                searchResults = textFeildCharacterSQL(of: inputText)
-                            }
-                        
-                        
-//                                print("Changing searchResults")
-//                                searchResults = textFeildCharacterSQL(of: inputText)
-//                                
-//                                print("searchResults:")
-//                                print(searchResults ?? "nil")
+                            searchResults = performSearch(text: inputText, in: characters)
+//                            searchResults = textFeildCharacterSQL(of: inputText)
                         }
                 
                 HStack {

@@ -14,8 +14,10 @@ struct CustomTextField: View {
     var body: some View {
         HStack {
             TextField("Search Chinese, English, or Pinyin ...", text: $inputText)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .keyboardType(.default)
                 .padding()
-//                .padding(.horizontal)
                 .shadow(color: .gray.opacity(0.4), radius: 4, x: 0, y: 2)
             
             // Clear button
