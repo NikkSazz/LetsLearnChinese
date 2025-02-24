@@ -164,14 +164,20 @@ struct NoteCardView: View {
                         Text("Selected Units:")
                             .font(.title)
                             .foregroundStyle(.black.opacity(0.5))
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(width: 185, alignment: .leading)
                             .padding(.horizontal)
                         
                         Spacer()
                         
-                        ForEach(Array(selectedUnits).sorted(), id: \.self) { level in
-                            Text("\(level)")
-                        } // display level for each
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack {
+                                ForEach(Array(selectedUnits).sorted(), id: \.self) { level in
+                                    Text("\(level)")
+                                } // display level for each
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .clipped()
                         
                         Spacer()
 //                            .padding(.leading)
