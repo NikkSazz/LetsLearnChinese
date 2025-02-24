@@ -47,3 +47,19 @@ SELECT ID, Chinese, English, Pinyin
 FROM Characters
 ORDER BY ID
 LIMIT 15 OFFSET  0; 
+
+
+exact matches come first, followed by matches in English, Chinese, and Pinyin (in that order)
+SELECT *
+FROM Characters
+WHERE chinese LIKE '%' || ? || '%'
+   OR english LIKE '%' || ? || '%'
+   OR pinyin LIKE '%' || ? || '%'
+ORDER BY
+   CASE
+      WHEN chinese = ? OR english = ? OR pinyin = ? THEN 1  -- Exact match
+      WHEN english LIKE '%' || ? || '%' THEN 2             -- Matches in English
+      WHEN chinese LIKE '%' || ? || '%' THEN 3             -- Matches in Chinese
+      WHEN pinyin LIKE '%' || ? || '%' THEN 4              -- Matches in Pinyin
+      ELSE 5                                               -- Fallback for no matches
+   END;
