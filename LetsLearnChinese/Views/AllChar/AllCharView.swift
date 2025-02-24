@@ -47,7 +47,7 @@ struct AllCharView: View {
                 DividerStyle().opacity(0.2)
                 
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 5) {
+                    LazyVStack(alignment: .leading, spacing: 5) { // load only the visible elements
                         
                         ForEach(searchResults == nil ? characters : searchResults!, id: \ .id) { character in
                             CharacterTriple(character: character)

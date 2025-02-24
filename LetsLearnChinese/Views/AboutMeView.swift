@@ -57,6 +57,14 @@ struct AboutMeView: View {
   
                         DividerStyle()
                         
+                        AboutMeParagraph(text: "What have I learned from this project.", fontSize: smallSize)
+                        
+                        AboutMeParagraph(text: " \"Debouncing\" optimization.", fontSize: smallSize)
+                        
+                        AboutMeParagraph(text: "Swift and SwiftUI using XCode.", fontSize: smallSize)
+                        
+                        DividerStyle()
+                        
                         AboutMeHeader(text: "Contact Me", fontSize: bigSize)
                         
                         AboutMeParagraph(text: "This is where I write all my contact Information", fontSize: smallSize)
