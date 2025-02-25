@@ -106,5 +106,9 @@ func textFeildCharacterSQL(of text: String) -> [Character]? {
 
 func performSearch(text: String, in characters: [Character]) -> [Character]? {
     guard !text.isEmpty else { return nil }
-    return characters.filter { $0.chinese.contains(text) || $0.english.contains(text) || $0.pinyin.contains(text) }
+    return characters.filter { $0.chinese.contains(text) || $0.english.contains(text) || normalizePinyin($0.pinyin).contains(text) }
+}
+
+func normalizePinyin(_ text: String) -> String {
+    return text.folding(options: .diacriticInsensitive, locale: .current)
 }
