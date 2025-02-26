@@ -23,8 +23,26 @@ struct DictionarySingleCharacterView: View {
             VStack(spacing: 10) {
                     
                 
-                coolDictText(character)
+                HStack {
+                    Spacer()
+                    
+                    coolDictText(character)
+//                        .padding(.horizontal)
+                    
+                    VStack {
+                        Text(character.english)
+                            .padding(.vertical)
+                        Text(character.pinyin)
+                            .padding(.bottom)
+                    }
+                    .padding(.horizontal)
+                    
+                    
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
                 
+                /*
                 moreWordsWith()
                 
                 // Old
@@ -75,6 +93,7 @@ struct DictionarySingleCharacterView: View {
                     
                 } // for each char in Dictionary Character
                 // \Old
+                 */
                 
                 newMoreWordsWith(character.chinese)
                 
