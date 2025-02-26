@@ -19,6 +19,8 @@ struct SelectUnitsView: View {
     let levels = [
             ("Units 1 - 5", [1,2,3,4,5]),
             ("Units 6 - 10", [6,7,8,9,10]),
+            ("*TEST* 11 - 15", [11,12,13,14,15]),
+            ("*TEST* 16 - 20", [16,17,18,19,20])
         ]
         
     @State private var selectedUnits: Set<Int> = []
@@ -34,7 +36,8 @@ struct SelectUnitsView: View {
                     .frame(alignment: .top)
                  
                 ScrollView {
-                    Text("May use characters, words, and sentences from previous unselected units.")
+                    Text("Scroll\t->\tPress your desired Units"
+                         + "\nPressing *Select* for all 5 units")
                         .lineLimit(2)
                         .foregroundStyle(.accent)
                         .padding(.horizontal, 20)
@@ -117,7 +120,7 @@ struct SelectUnitsView: View {
                 
                 NavigationLink(destination: view($selectedUnits)){
                     ZStack{
-                        Rectangle()
+                        RoundedRectangle(cornerRadius: 10)
                             .frame(height: 50)
                             .padding(.bottom)
                             .padding(.horizontal, 15)
@@ -129,6 +132,7 @@ struct SelectUnitsView: View {
                             .foregroundStyle(.white)
                             .padding(.bottom, 25)
                     } // Z
+                    .frame(height: 60)
                     
                 } // navlink
                 .opacity(selectedUnits.isEmpty ? 0.5 : 1.0)
