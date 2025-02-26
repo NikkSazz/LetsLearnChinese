@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainMenu: View {
+    @State var showEmojis: Bool = false
     var body: some View {
         
         let buttonHeight: CGFloat = 75
@@ -75,6 +76,18 @@ struct MainMenu: View {
                         
                         homeMenuButton(text: "About Me", destination: AboutMeView(), buttonHeight: buttonHeight)
 
+                        HStack {
+                            Toggle("Show Emojis", isOn: $showEmojis)
+                                .toggleStyle(AccentToggleStyle())
+                                .padding()
+                            
+                            if showEmojis {
+                                Text("😁")
+                            }
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
                         Spacer(minLength: 50)
                         Text(":)")
                             .foregroundStyle(.accent)
