@@ -5,7 +5,10 @@ Developer: Nikolai Sazonov
 
 ---
 Watch these YouTube Video!
+
 [NoteCard](https://www.youtube.com/watch?v=ultmWWEEGr4&list=PLRPU2LPZpxJKptsv8RwL1O3DNNRM3YfSV&index=1)
+
+[Characters by Units](https://www.youtube.com/watch?v=UGDX4BmEEVw&list=PLRPU2LPZpxJKptsv8RwL1O3DNNRM3YfSV&index=2)
 
 
 ## Features
