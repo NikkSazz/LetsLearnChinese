@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct MainMenu: View {
+    
     @State var emojis: Bool = false
+    
     var body: some View {
         
         let buttonHeight: CGFloat = 75
@@ -33,11 +35,14 @@ struct MainMenu: View {
                             
                         Spacer()
                         
-                        homeMenuButton(text: "View by Units", destination: ViewByUnit(), buttonHeight: buttonHeight)
+                        let viewByUnitsTxt = emojis ? "📚 View by Units 📖" : "View by Units"
+                        homeMenuButton(text: viewByUnitsTxt, destination: ViewByUnit(), buttonHeight: buttonHeight)
                         
-                        homeMenuButton(text: "🔎 Search Characters", destination: AllCharView(), buttonHeight: buttonHeight)
+                        let srchTxt = emojis ? "🔎 Search Characters 🕵️‍♂️" : "Search Characters"
+                        homeMenuButton(text: srchTxt, destination: AllCharView(), buttonHeight: buttonHeight)
                         
-                        homeMenuButton(text: "📓 Note Cards 📓",
+                        let ntcrdTxt = emojis ? "📓 Note Cards 🃏" : "Note Cards"
+                        homeMenuButton(text: ntcrdTxt,
                                        destination: SelectUnitsView(title: "Note Cards",
                                         view: { binding in
                                                 AnyView(NoteCardView(selectedUnits: binding)) // Pass the binding correctly
@@ -45,28 +50,36 @@ struct MainMenu: View {
                                         continueTo: "Note Cards"),
                                        buttonHeight: buttonHeight)
                         
-                        homeMenuButton(text: "Particles", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        let prtclsTxt = emojis ? "✨ Particles 🌀" : "Particles"
+                        homeMenuButton(text: prtclsTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Sentence Structure", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        let sntncTxt = emojis ? "⚙️ Sntnc* Structure 🧩" : "Sentence Structure"
+                        homeMenuButton(text: sntncTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "🕰️ Dates and Time ⏳", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        let dateTxt = emojis ? "🕰️ Dates and Time ⏳" : "Dates and Time"
+                        homeMenuButton(text: dateTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "📝 Writing 📝", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        let writingTxt = emojis ? "✍️ Writing 📝" : "Writing"
+                        homeMenuButton(text: writingTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Multiple Choice", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        let mltplTxt = emojis ? "❓ Multiple Choice ✅" : "Multiple Choice"
+                        homeMenuButton(text: mltplTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Fish Game", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        let fishTxt = emojis ? "🐟 Fish Game 🎣" : "Fish Game"
+                        homeMenuButton(text: fishTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Review Exam", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        let reviewTxt = emojis ? "🧠 Review Exam 🎯" : "Review Exam"
+                        homeMenuButton(text: reviewTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "🔖🩷 Pinned 🩷", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        let pinTxt = emojis ? "📌🩷 Pinned 🩷" : "    Pinned"
+                        homeMenuButton(text: pinTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
                         let duckTxt = emojis ? "🥹 Emotional Duck 🦆" : "Emotional Duck"
