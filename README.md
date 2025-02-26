@@ -1,6 +1,7 @@
 # Let's Learn Chinese
 
 Language Learning app developed for my College's Chinese Cirriculum
+
 Developer: Nikolai Sazonov
 
 ---
