@@ -10,7 +10,9 @@ Watch these YouTube Video!
 
 [Characters by Units](https://www.youtube.com/watch?v=UGDX4BmEEVw&list=PLRPU2LPZpxJKptsv8RwL1O3DNNRM3YfSV&index=2)
 
+[Emotional Duck](https://www.youtube.com/watch?v=mwl-P9bRy44&list=PLRPU2LPZpxJKptsv8RwL1O3DNNRM3YfSV&index=3)
 
+[All Character Search](https://www.youtube.com/watch?v=PQwnp4Skvow&list=PLRPU2LPZpxJKptsv8RwL1O3DNNRM3YfSV&index=4)
 ## Features
 
 Let's Learn Chinese has the following features:
