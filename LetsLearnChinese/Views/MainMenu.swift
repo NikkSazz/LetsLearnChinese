@@ -34,7 +34,9 @@ struct MainMenu: View {
                         
                         homeMenuButton(text: "View by Units", destination: ViewByUnit(), buttonHeight: buttonHeight)
                         
-                        homeMenuButton(text: "NoteCards",
+                        homeMenuButton(text: "🔎 Search Characters", destination: AllCharView(), buttonHeight: buttonHeight)
+                        
+                        homeMenuButton(text: "📓 Note Cards 📓",
                                        destination: SelectUnitsView(title: "Note Cards",
                                         view: { binding in
                                                 AnyView(NoteCardView(selectedUnits: binding)) // Pass the binding correctly
@@ -42,18 +44,16 @@ struct MainMenu: View {
                                         continueTo: "Note Cards"),
                                        buttonHeight: buttonHeight)
                         
-                        homeMenuButton(text: "All Characters", destination: AllCharView(), buttonHeight: buttonHeight)
-                        
                         homeMenuButton(text: "Particles", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
                         homeMenuButton(text: "Sentence Structure", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Dates and Time", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "🕰️ Dates and Time ⏳", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Writing", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        homeMenuButton(text: "📝 Writing 📝", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
                         homeMenuButton(text: "Multiple Choice", destination: NotImplimentedView(), buttonHeight: buttonHeight)
@@ -64,7 +64,10 @@ struct MainMenu: View {
                         
                         homeMenuButton(text: "Review Exam", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
-                                                
+                        
+                        homeMenuButton(text: "🔖🩷 Pinned 🩷", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                        
                         homeMenuButton(text: "Emotional Duck", destination: duckieView(), buttonHeight: buttonHeight)
                         
                         homeMenuButton(text: "Statistics", destination: NotImplimentedView(), buttonHeight: buttonHeight)
@@ -77,7 +80,6 @@ struct MainMenu: View {
                             .foregroundStyle(.accent)
                             .opacity(0.175)
                         Spacer(minLength: 50)
-                        
                     } // scroll
                     .padding(.bottom, 1) // For the bottom bar
                 } // v
