@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainMenu: View {
-    @State var showEmojis: Bool = false
+    @State var emojis: Bool = false
     var body: some View {
         
         let buttonHeight: CGFloat = 75
@@ -69,24 +69,27 @@ struct MainMenu: View {
                         homeMenuButton(text: "🔖🩷 Pinned 🩷", destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "Emotional Duck", destination: duckieView(), buttonHeight: buttonHeight)
+                        let duckTxt = emojis ? "🥹 Emotional Duck 🦆" : "Emotional Duck"
+                        homeMenuButton(text: duckTxt, destination: duckieView(), buttonHeight: buttonHeight)
                         
-                        homeMenuButton(text: "Statistics", destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                        let statTxt = emojis ? "📊 Statistics 📈" : "Statistics"
+                        homeMenuButton(text: statTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                         
-                        homeMenuButton(text: "About Me", destination: AboutMeView(), buttonHeight: buttonHeight)
+                        let abMeTxt = emojis ? "🧑‍💻 About Me 👋" : "About Me"
+                        homeMenuButton(text: abMeTxt, destination: AboutMeView(), buttonHeight: buttonHeight)
 
                         HStack {
-                            Toggle("Show Emojis", isOn: $showEmojis)
+                            Toggle("Show Emojis", isOn: $emojis)
                                 .toggleStyle(AccentToggleStyle())
-                                .padding()
-                            
-                            if showEmojis {
+                                
+                            if emojis {
                                 Text("😁")
                             }
-                            Spacer()
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(height: 40)
+                        .padding()
                         
                         Spacer(minLength: 50)
                         Text(":)")
