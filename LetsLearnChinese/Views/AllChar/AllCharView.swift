@@ -54,7 +54,10 @@ struct AllCharView: View {
                     LazyVStack(alignment: .leading, spacing: 5) { // load only the visible elements
                         
                         ForEach(searchResults == nil ? characters : searchResults!, id: \ .id) { character in
-                            CharacterTriple(character: character)
+                            NavigationLink(destination: DictionarySingleCharacterView(character: character)) {
+                                    CharacterTriple(character: character)
+                                    .foregroundStyle(Color.accentColor)
+                            } // navlink to dictionary
                         } // for each
                         
                         

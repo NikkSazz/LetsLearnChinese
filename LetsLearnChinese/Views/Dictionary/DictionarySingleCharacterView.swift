@@ -29,24 +29,7 @@ struct DictionarySingleCharacterView: View {
                 
                 Spacer()
                 
-                HStack {
-                    Spacer()
-                    
-                    coolDictText(character)
-//                        .padding(.horizontal)
-                    
-                    VStack {
-                        Text(character.english)
-                            .padding(.vertical)
-                        Text(character.pinyin)
-                            .padding(.bottom)
-                    }
-                    .padding(.horizontal)
-                    
-                    
-                    Spacer()
-                }
-                .frame(maxWidth: .infinity)
+                bigWord(character)
                 
                 NewMoreWordsWith(character.chinese)
                 
@@ -62,7 +45,40 @@ struct DictionarySingleCharacterView: View {
     } // body some view
 } // dictionary Signle Character View struct
 
-
+struct bigWord: View {
+    let character: Character
+    
+    init(_ character: Character) {
+        self.character = character
+    }
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            
+            coolDictText(character)
+//                        .padding(.horizontal)
+            
+            VStack {
+                Text(character.english)
+                    .padding(.vertical)
+                    .frame(alignment: .trailing)
+                
+                Text(character.pinyin)
+                    .padding(.bottom)
+                    .frame(alignment: .leading)
+                
+                Text("from Unit: \(character.unit_id ?? 0)")
+            }
+            .padding(.horizontal)
+            .frame(width: 160)
+            
+            
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
 
 struct coolDictText: View {
     let character: Character
