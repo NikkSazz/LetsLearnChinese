@@ -11,13 +11,8 @@ import SQLite3
 
 struct NewMoreWordsWith: View {
     let fullWord: String
-    
-    init(_ fullWord: String){
-        self.fullWord = fullWord
-    }
-    
-    @State private var expandedChar: String? = nil
-    @State private var expandedList: [Character] = []
+    @Binding var expandedChar: String?
+    @Binding var expandedList: [Character]
     
     var body: some View {
         VStack {

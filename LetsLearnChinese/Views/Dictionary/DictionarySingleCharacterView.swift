@@ -31,10 +31,9 @@ struct DictionarySingleCharacterView: View {
                 
                 bigWord(character)
                 
-                NewMoreWordsWith(character.chinese)
+                NewMoreWordsWith(fullWord: character.chinese, expandedChar: $expandedChar, expandedList: $expandedList)
                 
-//                Text("Expanded \(expandedChar ?? "∅")")
-//                    .font(.system(size: 30))
+//                ExampleSentence()
                 
                 Spacer()
                 
@@ -59,7 +58,7 @@ struct bigWord: View {
             coolDictText(character)
 //                        .padding(.horizontal)
             
-            VStack(spacing: 2) {
+            VStack(spacing: 10) {
                 Text(character.english)
                 
                 Text(character.pinyin)
@@ -67,7 +66,7 @@ struct bigWord: View {
                 Text("Unit: \(character.unit_id ?? 0)\n\(unitEnglish(unit_id: character.unit_id ?? 0))")
             }
             .padding(.horizontal)
-            .frame(width: 160, alignment: .leading)
+            .frame(width: 170, alignment: .leading)
             
             
             Spacer()
@@ -101,7 +100,8 @@ struct coolDictText: View {
 #Preview {
 //    MainMenu()
 //    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiǎojiě"))
-    DictionarySingleCharacterView(character: Character(id: 235, chinese: "常老师", english: "Teacher Chang", pinyin: "Cháng lǎoshī", unit_id: 6))
+//    DictionarySingleCharacterView(character: Character(id: 235, chinese: "子大常老师", english: "Teacher Chang", pinyin: "Cháng lǎoshī", unit_id: 6))
+    DictionarySingleCharacterView(character: Character(id: 327, chinese: "除了...以外", english: "except for", pinyin: "chúle... yǐwài", unit_id: 8))
 }
 
 // 「 你是谁？」《我是俄国人》 二零二五年 二月 十一日
