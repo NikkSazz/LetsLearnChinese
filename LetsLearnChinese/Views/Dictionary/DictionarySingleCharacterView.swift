@@ -59,19 +59,15 @@ struct bigWord: View {
             coolDictText(character)
 //                        .padding(.horizontal)
             
-            VStack {
+            VStack(spacing: 2) {
                 Text(character.english)
-                    .padding(.vertical)
-                    .frame(alignment: .trailing)
                 
                 Text(character.pinyin)
-                    .padding(.bottom)
-                    .frame(alignment: .leading)
                 
-                Text("from Unit: \(character.unit_id ?? 0)")
+                Text("Unit: \(character.unit_id ?? 0)\n\(unitEnglish(unit_id: character.unit_id ?? 0))")
             }
             .padding(.horizontal)
-            .frame(width: 160)
+            .frame(width: 160, alignment: .leading)
             
             
             Spacer()

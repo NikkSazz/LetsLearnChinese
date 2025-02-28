@@ -61,7 +61,7 @@ struct SelectUnitsView: View {
                                     }
                                 }) {
                                     VStack {
-                                        Text("Select \(level.0)") // Level number at the top
+                                        Text("Select \(level.0)") // Level number at the top "Units 1 - 5"
                                             .font(.custom("InknutAntiqua-Black", size: 24))
                                             .foregroundStyle(level.1.allSatisfy { selectedUnits.contains($0) } ? .black : .black.opacity(0.75))
                                             .padding()
