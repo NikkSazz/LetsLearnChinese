@@ -33,7 +33,7 @@ struct DictionarySingleCharacterView: View {
                 
                 NewMoreWordsWith(fullWord: character.chinese, expandedChar: $expandedChar, expandedList: $expandedList)
                 
-//                ExampleSentence()
+                ExampleSentence()
                 
                 Spacer()
                 
@@ -99,9 +99,18 @@ struct coolDictText: View {
 
 #Preview {
 //    MainMenu()
+    
+    // Defualt
 //    DictionarySingleCharacterView(character: Character(id: 9, chinese: "小姐", english: "miss", pinyin: "xiǎojiě"))
+    
+    // Many MoreWordsWith
 //    DictionarySingleCharacterView(character: Character(id: 235, chinese: "子大常老师", english: "Teacher Chang", pinyin: "Cháng lǎoshī", unit_id: 6))
+    
+    // Long Chinese
     DictionarySingleCharacterView(character: Character(id: 327, chinese: "除了...以外", english: "except for", pinyin: "chúle... yǐwài", unit_id: 8))
+    
+    // Long English
+//    DictionarySingleCharacterView(character: Character(id: 261, chinese: "张", english: "measure word (for flat objects)", pinyin: "zhāng", unit_id: 7))
 }
 
 // 「 你是谁？」《我是俄国人》 二零二五年 二月 十一日

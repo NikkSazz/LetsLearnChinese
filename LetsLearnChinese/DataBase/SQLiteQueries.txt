@@ -83,3 +83,9 @@ character_counts AS (
 SELECT character, occurrences
 FROM character_counts
 ORDER BY occurrences DESC;
+
+
+Length of Chinese character
+SELECT LENGTH(chinese) AS length, *
+FROM Characters
+ORDER BY length DESC;
