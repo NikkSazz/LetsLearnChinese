@@ -11,7 +11,7 @@ struct MainMenu: View {
     
     @State var emojis: Bool = false
     
-    @State var construction: Bool = false
+    @State var construction: Bool = true
     
     var body: some View {
         
@@ -51,57 +51,57 @@ struct MainMenu: View {
                                                 },
                                         continueTo: "Note Cards"),
                                        buttonHeight: buttonHeight)
-                        if construction {
-                            let prtclsTxt = emojis ? "✨ Particles 🌀" : "Particles"
-                            homeMenuButton(text: prtclsTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
-                                .opacity(0.5)
-                                .disabled(true)
-                            
-                            let sntncTxt = emojis ? "⚙️ Sntnc* Structure 🧩" : "Sentence Structure"
-                            homeMenuButton(text: sntncTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
-                                .opacity(0.5)
-                                .disabled(true)
-                            
-                            let dateTxt = emojis ? "🕰️ Dates and Time ⏳" : "Dates and Time"
-                            homeMenuButton(text: dateTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
-                                .opacity(0.5)
-                                .disabled(true)
-                            
-                            let writingTxt = emojis ? "✍️ Writing 📝" : "Writing"
-                            homeMenuButton(text: writingTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
-                                .opacity(0.5)
-                                .disabled(true)
-                            
-                            let mltplTxt = emojis ? "❓ Multiple Choice ✅" : "Multiple Choice"
-                            homeMenuButton(text: mltplTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
-                                .opacity(0.5)
-                                .disabled(true)
-                            
-                            let fishTxt = emojis ? "🐟 Fish Game 🎣" : "Fish Game"
-                            homeMenuButton(text: fishTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
-                                .opacity(0.5)
-                                .disabled(true)
-                            
-                            let reviewTxt = emojis ? "🧠 Review Exam 🎯" : "Review Exam"
-                            homeMenuButton(text: reviewTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
-                                .opacity(0.5)
-                                .disabled(true)
-                            
-                            let pinTxt = emojis ? "📌🩷 Pinned 🩷" : "    Pinned"
-                            homeMenuButton(text: pinTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
-                                .opacity(0.5)
-                                .disabled(true)
-                        }
+                    if construction {
+                        let prtclsTxt = emojis ? "✨ Particles 🌀" : "Particles"
+                        homeMenuButton(text: prtclsTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                            .disabled(true)
                         
+                        let sntncTxt = emojis ? "⚙️ Sntnc* Structure 🧩" : "Sentence Structure"
+                        homeMenuButton(text: sntncTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                            .disabled(true)
+                        
+                        let dateTxt = emojis ? "🕰️ Dates and Time ⏳" : "Dates and Time"
+                        homeMenuButton(text: dateTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                            .disabled(true)
+                        
+                        let writingTxt = emojis ? "✍️ Writing 📝" : "Writing"
+                        homeMenuButton(text: writingTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                            .disabled(true)
+                        
+                        let mltplTxt = emojis ? "❓ Multiple Choice ✅" : "Multiple Choice"
+                        homeMenuButton(text: mltplTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                            .disabled(true)
+                        
+                        let fishTxt = emojis ? "🐟 Fish Game 🎣" : "Fish Game"
+                        homeMenuButton(text: fishTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                            .disabled(true)
+                        
+                        let reviewTxt = emojis ? "🧠 Review Exam 🎯" : "Review Exam"
+                        homeMenuButton(text: reviewTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                            .disabled(true)
+                        
+                        let pinTxt = emojis ? "📌🩷 Pinned 🩷" : "    Pinned"
+                        homeMenuButton(text: pinTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
+                            .disabled(true)
+                    }
+                    
                         let duckTxt = emojis ? "🥹 Emotional Duck 🦆" : "Emotional Duck"
                         homeMenuButton(text: duckTxt, destination: duckieView(), buttonHeight: buttonHeight)
                         
-                        if construction {
+                    if construction {
                         let statTxt = emojis ? "📊 Statistics 📈" : "Statistics"
                         homeMenuButton(text: statTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                             .disabled(true)
-                         }
+                    }
                         
                         let abMeTxt = emojis ? "🧑‍💻 About Me 👋" : "About Me"
                         homeMenuButton(text: abMeTxt, destination: AboutMeView(), buttonHeight: buttonHeight)
