@@ -63,3 +63,23 @@ ORDER BY
       WHEN pinyin LIKE '%' || ? || '%' THEN 4              -- Matches in Pinyin
       ELSE 5                                               -- Fallback for no matches
    END;
+
+
+Selects every character, and prints the amount of times it appears
+WITH RECURSIVE split_chars AS (
+    SELECT id, SUBSTR(chinese, 1, 1) AS character, SUBSTR(chinese, 2) AS remaining
+    FROM Characters
+    WHERE LENGTH(chinese) > 0
+    UNION ALL
+    SELECT id, SUBSTR(remaining, 1, 1), SUBSTR(remaining, 2)
+    FROM split_chars
+    WHERE LENGTH(remaining) > 0
+),
+character_counts AS (
+    SELECT character, COUNT(*) AS occurrences
+    FROM split_chars
+    GROUP BY character
+)
+SELECT character, occurrences
+FROM character_counts
+ORDER BY occurrences DESC;
