@@ -167,7 +167,7 @@ id,chinese,english,pinyin,unit_id,type
 166,别人,other people,biérén,4,n
 167,别的,other,bié de,4,adj
 168,看朋友,to see friends,kàn péngyǒu,5,w
-169,呀,(exclamation),ya,5,p
+169,呀,exclamation,ya,5,p
 170,进,to enter,jìn,5,v
 171,快,quick,kuài,5,adv / adj
 172,进来,to come in,jìnlái,5,vc
@@ -209,7 +209,7 @@ id,chinese,english,pinyin,unit_id,type
 208,在,to be at,zài,6,v
 209,就,just,jiù,6,adv
 210,您,polite you,nín,6,pr
-211,位,(people),wèi,6,m
+211,位,people,wèi,6,m
 212,下午,afternoon,xiàwǔ,6,t
 213,时间,time,shíjiān,6,n
 214,问题,problem,wèntí,6,n
@@ -236,7 +236,7 @@ id,chinese,english,pinyin,unit_id,type
 235,常老师,Teacher Chang,Cháng lǎoshī,6,name
 236,下个,next,xià gè,6,w
 237,下,down,xià,6,w
-238,中文,Chinese (language),zhōngwén,6,n
+238,中文,Chinese language,zhōngwén,6,n
 239,文,culture,wén,6,n
 240,帮,to help,bāng,6,v
 241,准备,to prepare,zhǔnbèi,6,v
@@ -449,3 +449,92 @@ id,chinese,english,pinyin,unit_id,type
 448,发短信,to send a text message,fā duǎnxìn,10,vo
 449,新年,New Year,xīnnián,10,n
 450,快乐,happy,kuàilè,10,adj
+451,谈天气,Talking about weather,tán tiānqì,11,vo
+452,天气,weather,tiānqì,11,n
+453,比,compare,bǐ,11,prep / v
+454,下雪,to snow,xià xuě,11,vo
+455,约,to make an appointment,yuē,11,v
+456,公园,park,gōngyuán,11,n
+457,滑冰,to ice skate,huá bīng,11,vo
+458,会,will,huì,11,mv
+459,刚才,just now,gāngcái,11,t
+460,网上,online,wǎng shàng,11,w
+461,预报,to forecast,yùbào,11,v
+462,更,even more,gèng,11,adv
+463,"不但..., 而且...","not only..., but also...","bùdàn..., érqiě...",11,conj
+464,暖和,warm,nuǎnhuo,11,adj
+465,冷,cold,lěng,11,adj
+466,办,to handle,bàn,11,v
+467,碟,disc,dié,11,n
+468,那么,so,nàme,11,pr
+469,好玩,fun,hǎowán,11,adj
+470,出去,to go out,chūqù,11,vc
+471,非常,extremely,fēicháng,11,adv
+472,糟糕,terrible,zāogāo,11,adj
+473,下雨,to rain,xià yǔ,11,vo
+474,又,again,yòu,11,adv
+475,面试,interview,miànshì,11,v / n
+476,回去,to go back,huíqù,11,vc
+477,冬天,winter,dōngtiān,11,n
+478,夏天,summer,xiàtiān,11,n
+479,热,hot,rè,11,adj
+480,春天,spring,chūntiān,11,n
+481,秋天,autumn,qiūtiān,11,n
+482,舒服,comfortable,shūfu,11,adj
+483,加州,California,jiāzhōu,11,w
+484,吃饭,to have a meal,chī fàn,12,w
+485,饭馆,restaurant,fànguǎn,12,n
+486,好像,to seem,hǎoxiàng,12,v
+487,位子,seat,wèizi,12,n
+488,服务员,waiter,fúwùyuán,12,n
+489,服务,to serve,fúwù,12,v
+490,桌子,table,zhuōzi,12,n
+491,点菜,to order food,diǎn cài,12,vo
+492,盘,plate,pán,12,n
+493,饺子,dumpling,jiǎozi,12,n
+494,素,vegetarian,sù,12,adj
+495,家常,home-style,jiācháng,12,n
+496,豆腐,tofu,dòufu,12,n
+497,放,to put,fàng,12,v
+498,肉,meat,ròu,12,n
+499,碗,bowl,wǎn,12,n
+500,酸辣汤,hot and sour soup,suān là tāng,12,n
+501,酸,sour,suān,12,adj
+502,辣,spicy,là,12,adj
+503,汤,soup,tāng,12,n
+504,味精,monosodium glutamate,wèijīng,12,n
+505,盐,salt,yán,12,n
+506,白菜,bok choy,báicài,12,n
+507,刚,just,gāng,12,adv
+508,卖完,to be sold out,mài wán,12,vc
+509,完,to finish,wán,12,c
+510,青菜,green vegetables,qīngcài,12,n
+511,冰茶,iced tea,bīng chá,12,n
+512,冰,ice,bīng,12,n
+513,渴,thirsty,kě,12,adj
+514,些,some,xiē,12,m
+515,够,enough,gòu,12,adj
+516,饿,hungry,è,12,adj
+517,上菜,to serve food,shàng cài,12,vo
+518,师傅,master worker,shīfu,12,n
+519,好吃,delicious,hǎochī,12,adj
+520,糖醋鱼,sweet and sour fish,táng cù yú,12,n
+521,糖,sugar,táng,12,n
+522,醋,vinegar,cù,12,n
+523,甜,sweet,tián,12,adj
+524,酸,sour,suān,12,adj
+525,极,extremely,jí,12,adv
+526,红烧,braised in soy sauce,hóng shāo,12,v
+527,牛肉,beef,niú ròu,12,n
+528,牛,cow,niú,12,n
+529,鱼,fish,yú,12,n
+530,凉拌,cold blended,liángbàn,12,v
+531,黄瓜,cucumber,huángguā,12,n
+532,米饭,cooked rice,mǐfàn,12,n
+533,忘,to forget,wàng,12,v
+534,带,to bring,dài,12,v
+535,饭卡,meal card,fànkǎ,12,n
+536,错,wrong,cuò,12,adj
+537,清楚,clear,qīngchu,12,adj
+538,没关系,it doesn't matter,méi guānxi,12,w
+539,上海,Shanghai,Shànghǎi,12,n
