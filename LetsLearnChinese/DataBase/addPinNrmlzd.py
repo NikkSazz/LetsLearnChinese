@@ -17,13 +17,13 @@ def normalize_pinyin():
         pass
 
     # Fetch all rows from the characters table
-    cursor.execute("SELECT id, pinyin FROM characters")
+    cursor.execute("SELECT id, pinyin, pinyin_normalized FROM characters")
     rows = cursor.fetchall()
 
     # Iterate over rows to normalize pinyin and update the database
     for row in rows:
-        char_id, pinyin = row
-        if pinyin:  # Check if pinyin is not None
+        char_id, pinyin, pinyin_normalized = row
+        if pinyin and pinyin_normalized is None:  # Only normalize if pinyin_normalized is NULL
             normalized_pinyin = remove_accents(pinyin)
             cursor.execute(
                 "UPDATE characters SET pinyin_normalized = ? WHERE id = ?",
