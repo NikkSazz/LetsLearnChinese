@@ -22,7 +22,7 @@ with open(csv_file, encoding="utf-8") as file:
     reader = csv.DictReader(file)
     for row in reader:
         cursor.execute(f"""
-        INSERT INTO {tableName} (id, chinese, english, pinyin, unit_id, type)
+        INSERT OR IGNORE INTO {tableName} (id, chinese, english, pinyin, unit_id, type)
         VALUES (?, ?, ?, ?, ?, ?)
         """, (row["id"], row["chinese"], row["english"], row["pinyin"], row["unit_id"], row["type"]))
 
