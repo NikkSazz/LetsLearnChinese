@@ -9,7 +9,7 @@ import SwiftUI
 import SQLite3
 
 
-struct NewMoreWordsWith: View {
+struct MoreWordsWith: View {
     let fullWord: String
     @Binding var expandedChar: String?
     @Binding var expandedList: [Character]
@@ -21,7 +21,7 @@ struct NewMoreWordsWith: View {
             HStack{
 
                 Spacer()
-                ForEach(fullWord.filter { $0 != "." }.map { String($0) }, id: \.self) { char in
+                ForEach(fullWord.filter { $0 != "." && $0 != "," && $0 != " " }.map { String($0) }, id: \.self) { char in
                     
                     Button(action: {
                         withAnimation{

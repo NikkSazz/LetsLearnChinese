@@ -29,9 +29,9 @@ struct DictionarySingleCharacterView: View {
                 
                 Spacer()
                 
-                bigWord(character)
+                bigWord(character: character, expanded: expandedChar)
                 
-                NewMoreWordsWith(fullWord: character.chinese, expandedChar: $expandedChar, expandedList: $expandedList)
+                MoreWordsWith(fullWord: character.chinese, expandedChar: $expandedChar, expandedList: $expandedList)
                 
                 ExampleSentence()
                 
@@ -46,16 +46,13 @@ struct DictionarySingleCharacterView: View {
 
 struct bigWord: View {
     let character: Character
-    
-    init(_ character: Character) {
-        self.character = character
-    }
+    let expanded: String?
     
     var body: some View {
         HStack {
             Spacer()
             
-            coolDictText(character)
+            coolDictText(anythingExpanded: expanded, character: character)
 //                        .padding(.horizontal)
             
             VStack(spacing: 10) {
@@ -76,24 +73,25 @@ struct bigWord: View {
 }
 
 struct coolDictText: View {
+    let anythingExpanded: String?
     let character: Character
     
-    init(_ character: Character) {
-        self.character = character
-    } // makes things cleaner while coding
-    
     var body: some View {
-        Text(character.chinese)
-            .font(.system(size: 65))
+        Text(anythingExpanded != nil ? character.chinese.prefix(1) + "..." : character.chinese)
+            .font(.system(size: anythingExpanded != nil ? 50 : 65)) // Reduce font size if folded
+            .lineLimit(anythingExpanded != nil ? 1 : 2) // Ensure text stays on one line if folded
             .padding()
+            .frame(width: 150, alignment: .center) // Set fixed width for consistency
             .background(
-                LinearGradient(gradient: Gradient(colors: [.cyan.opacity(0.2), .purple.opacity(0.2)]),
-                               startPoint: .bottomLeading,
-                               endPoint: .topTrailing)
+                LinearGradient(
+                    gradient: Gradient(colors: [.cyan.opacity(0.2), .purple.opacity(0.2)]),
+                    startPoint: .bottomLeading,
+                    endPoint: .topTrailing
+                )
                 .cornerRadius(10)
-            ) // background
+            )
             .shadow(color: .black, radius: 3, x: -5, y: 5)
-//                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .minimumScaleFactor(0.5) // Allows scaling down text size if necessary
     }
 }
 
