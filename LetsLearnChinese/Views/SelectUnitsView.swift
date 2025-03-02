@@ -157,19 +157,40 @@ func unitEnglish(unit_id: Int) -> String {
     case 5:
         return "Visiting Friends"
     case 6:
-        return "Appointments"
+        return "Making Appointments"
     case 7:
-        return "Studying"
+        return "Studying Chinese"
     case 8:
         return "School Life"
     case 9:
         return "Shopping"
     case 10:
         return "Transportation"
+    case 11:
+        return "Talking about the Weather"
+    case 12:
+        return "Dining"
+    case 13:
+        return "Asking Directions"
+    case 14:
+        return "Birthday Party"
+    case 15:
+        return "Seeing a Doctor"
+    case 16:
+        return "Dating"
+    case 17:
+        return "Renting an Apartment"
+    case 18:
+        return "Sports"
+    case 19:
+        return "Travel"
+    case 20:
+        return "At the Airport"
     default:
         return "Unit"
     }
 }
+
 
 func unitChinese(unitName: String) -> String {
     switch unitName {
