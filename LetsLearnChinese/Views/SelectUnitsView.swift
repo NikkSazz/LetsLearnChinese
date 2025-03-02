@@ -19,8 +19,8 @@ struct SelectUnitsView: View {
     let levels = [
             ("Units 1 - 5", [1,2,3,4,5]),
             ("Units 6 - 10", [6,7,8,9,10]),
-            ("*TEST* 11 - 15", [11,12,13,14,15]),
-            ("*TEST* 16 - 20", [16,17,18,19,20])
+            ("Units 11 - 15", [11,12,13,14,15]),
+            ("Units 16 - 20", [16,17,18,19,20])
         ]
         
     @State private var selectedUnits: Set<Int> = []

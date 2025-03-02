@@ -48,10 +48,31 @@ func unitChinese(unitName: String) -> String {
         return "买东西"
     case "Transportation":
         return "交通"
+    case "Weather":
+        return "谈天气"
+    case "Dining":
+        return "吃饭"
+    case "Directions":
+        return "问路"
+    case "Birthday":
+        return "生日晚会"
+    case "Doctor":
+        return "看病"
+    case "Dating":
+        return "约会"
+    case "Apartments":
+        return "租房子"
+    case "Sports":
+        return "运动"
+    case "Travel":
+        return "旅行"
+    case "Airport":
+        return "在机场"
     default:
         return "你好"
     }
 }
+
 
 func unitEnglish(unit_id: Int) -> String {
     switch unit_id {
@@ -66,9 +87,9 @@ func unitEnglish(unit_id: Int) -> String {
     case 5:
         return "Visiting Friends"
     case 6:
-        return "Making Appointments"
+        return "Appointments"
     case 7:
-        return "Studying Chinese"
+        return "Studying"
     case 8:
         return "School Life"
     case 9:
@@ -76,25 +97,25 @@ func unitEnglish(unit_id: Int) -> String {
     case 10:
         return "Transportation"
     case 11:
-        return "Talking about the Weather"
+        return "Weather"
     case 12:
         return "Dining"
     case 13:
-        return "Asking Directions"
+        return "Directions"
     case 14:
-        return "Birthday Party"
+        return "Birthday"
     case 15:
-        return "Seeing a Doctor"
+        return "Doctor"
     case 16:
         return "Dating"
     case 17:
-        return "Renting an Apartment"
+        return "Apartments"
     case 18:
         return "Sports"
     case 19:
         return "Travel"
     case 20:
-        return "At the Airport"
+        return "Airport"
     default:
         return "Unit"
     }

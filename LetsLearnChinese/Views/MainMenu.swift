@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MainMenu: View {
     
-    @State var emojis: Bool = false
+    @State var emojis: Bool = true
     
-    @State var construction: Bool = true
+    @State var construction: Bool = false
     
     var body: some View {
         
