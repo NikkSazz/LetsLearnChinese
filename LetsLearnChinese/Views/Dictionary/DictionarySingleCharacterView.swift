@@ -33,7 +33,7 @@ struct DictionarySingleCharacterView: View {
                 
                 MoreWordsWith(fullWord: character.chinese, expandedChar: $expandedChar, expandedList: $expandedList)
                 
-                ExampleSentence()
+//                ExampleSentence()
                 
                 Spacer()
                 
@@ -53,7 +53,7 @@ struct bigWord: View {
         HStack {
             Spacer()
             
-            coolDictText(anythingExpanded: expanded, character: character, expandedList: expandedListLen)
+            coolDictText(anythingExpanded: expanded, expandedList: expandedListLen, character: character)
 //                        .padding(.horizontal)
             
             VStack(spacing: 10) {

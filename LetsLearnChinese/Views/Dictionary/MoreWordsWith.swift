@@ -50,12 +50,28 @@ struct MoreWordsWith: View {
                         Text("No other words with \(expandedChar ?? "Error")")
                     }
                     
-                    ForEach(expandedList, id: \.id) { character in
-                        // you can make these a button to go to the dictionary
-                        CharacterTriple(character: character)
-                    } // For each in expandedList
+                    let characterTripleHeight: CGFloat = 50 // Adjust this to match the height of a CharacterTriple view
+
+                    if expandedList.count > 4 {
+                        ScrollView {
+                            VStack {
+                                ForEach(expandedList, id: \.id) { character in
+                                    CharacterTriple(character: character)
+                                        .frame(height: characterTripleHeight) // Ensure consistent height
+                                }
+                            }
+                        }
+                        .frame(height: characterTripleHeight * 6) // Height for exactly 4 CharacterTriple views
+                    } else {
+                        VStack {
+                            ForEach(expandedList, id: \.id) { character in
+                                CharacterTriple(character: character)
+                            }
+                        }
+                    }
+                    
                 } // V
-            } // if
+            } // if expandedChar != nil
             
         } // body
     }
