@@ -538,3 +538,227 @@ id,chinese,english,pinyin,unit_id,type
 537,清楚,clear,qīngchu,12,adj
 538,没关系,it doesn't matter,méi guānxi,12,w
 539,上海,Shanghai,Shànghǎi,12,n
+540,问路,to ask for directions,wèn lù,13,w
+541,上,to go,shàng,13,v
+542,中心,center,zhōngxīn,13,n
+543,听说,to hear of,tīngshuō,13,v
+544,运动,sports,yùndòng,13,n
+545,场,field,chǎng,13,n
+546,旁边,side,pángbiān,13,n
+547,远,far,yuǎn,13,adj
+548,离,away from,lí,13,prep
+549,近,near,jìn,13,adj
+550,活动,activity,huódòng,13,n
+551,中间,middle,zhōngjiān,13,n
+552,书店,bookstore,shūdiàn,13,n
+553,地方,place,dìfāng,13,n
+554,里边,inside,lǐbiān,13,n
+555,过,(past experience),guò,13,p
+556,中国城,Chinatown,zhōngguó chéng,13,n
+557,城,city,chéng,13,n
+558,地图,map,dìtú,13,n
+559,拿,to take,ná,13,v
+560,次,time,cì,13,m
+561,从,from,cóng,13,prep
+562,一直,straight,yìzhí,13,adv
+563,往,toward,wǎng,13,prep
+564,南,south,nán,13,n
+565,过,to cross,guò,13,v
+566,路口,intersection,lùkǒu,13,n
+567,西,west,xī,13,n
+568,拐,to turn,guǎi,13,v
+569,哎,(suprised),āi,13,exlc
+570,东,east,dōng,13,n
+571,北,north,běi,13,n
+572,前,forward,qián,13,n
+573,红绿灯,traffic light,hónglǜdēng,13,n
+574,灯,light,dēng,13,n
+575,右,right,yòu,13,n
+576,左,left,zuǒ,13,n
+577,前面,in front,qiánmiàn,13,n
+578,日文,Japanese language,rìwén,13,n
+579,东京,Tokyo,dōngjīng,13,n
+580,日本,Japan,rìběn,13,n
+581,生日晚会,birthday party,shēngrì wǎnhuì,14,w
+582,舞会,dance party,wǔhuì,14,n
+583,表姐,older female cousin,biǎojiě,14,n
+584,中学,middle school,zhōngxué,14,n
+585,送,to give as a gift,sòng,14,v
+586,礼物,gift,lǐwù,14,n
+587,本,measure word for books,běn,14,m
+588,饮料,beverage,yǐnliào,14,n
+589,水果,fruit,shuǐguǒ,14,n
+590,把,measure word for bunches of things,bǎ,14,m
+591,花,flower,huā,14,n
+592,爱,to love,ài,14,v
+593,苹果,apple,píngguǒ,14,n
+594,梨,pear,lí,14,n
+595,西瓜,watermelon,xīguā,14,n
+596,住,to live,zhù,14,v
+597,重,heavy,zhòng,14,adj
+598,楼,"floor, building",lóu,14,n
+599,王红,personal name,Wáng Hóng,14,name
+600,钟头,hour,zhōngtóu,14,n
+601,以为,to assume incorrectly,yǐwéi,14,v
+602,聪明,smart,cōngmíng,14,adj
+603,用功,hardworking,yònggōng,14,adj
+604,暑期,summer term,shǔqī,14,n
+605,班,class,bān,14,n
+606,长,to grow,zhǎng,14,v
+607,可爱,cute,kě'ài,14,adj
+608,去年,last year,qùnián,14,t
+609,属,to belong to (zodiac),shǔ,14,v
+610,狗,dog,gǒu,14,n
+611,脸,face,liǎn,14,n
+612,圆,round,yuán,14,adj
+613,眼睛,eyes,yǎnjing,14,n
+614,鼻子,nose,bízi,14,n
+615,嘴,mouth,zuǐ,14,n
+616,像,to be like,xiàng,14,v
+617,长大,to grow up,zhǎngdà,14,vc
+618,一定,certainly,yídìng,14,adj / adv
+619,蛋糕,cake,dàngāo,14,n
+620,最,most,zuì,14,adv
+621,海伦,personal name,Hǎilún,14,name
+622,汤姆,personal name,Tāngmǔ,14,name
+623,看病,to see a doctor,kànbìng,15,vo
+624,病人,patient,bìngrén,15,n
+625,病,illness,bìng,15,n / v
+626,医院,hospital,yīyuàn,15,n
+627,肚子,stomach,dùzi,15,n
+628,疼死,really painful,téng sǐ,15,adj + c
+629,疼,to ache,téng,15,adj
+630,死,to die,sǐ,15,v / c
+631,夜里,at night,yèlǐ,15,n
+632,好几,quite a few,hǎojǐ,15,prase
+633,厕所,restroom,cèsuǒ,15,n
+634,把,indicating disposal,bǎ,15,prep
+635,冰箱,refrigerator,bīngxiāng,15,n
+636,发烧,to have a fever,fāshāo,15,vo
+637,躺下,to lie down,tǎngxià,15,vc
+638,躺,to lie,tǎng,15,v
+639,检查,to examine,jiǎnchá,15,v
+640,吃坏,to get sick because of bad food,chī huài,15,vc
+641,坏,bad,huài,15,adj
+642,打针,to get a shot,dǎzhēn,15,vo
+643,针,needle,zhēn,15,n
+644,药,medicine,yào,15,n
+645,片,measure word for tablets,piàn,15,m
+646,遍,measure word for complete actions,biàn,15,m
+647,最好,had better,zuìhǎo,15,adv
+648,小时,hour,xiǎoshí,15,n
+649,办法,method,bànfǎ,15,n
+650,感冒,to have a cold,gǎnmào,15,v
+651,伤病,illness,shāngbìng,15,vo
+652,身体,body,shēntǐ,15,n
+653,痒,itchy,yǎng,15,adj
+654,过敏,allergy,guòmǐn,15,v
+655,药店,pharmacy,yàodiàn,15,n
+656,健康,healthy,jiànkāng,15,adj / n
+657,保险,insurance,bǎoxiǎn,15,n
+658,赶快,right away,gǎnkuài,15,adv
+659,要不然,otherwise,yàobùrán,15,conj
+660,越来越,more and more,yuèláiyuè,15,adv
+661,上次,last time,shàngcì,15,adv
+662,休息,to rest,xiūxí,15,v
+663,懒,lazy,lǎn,15,adj
+664,再说,moreover,zàishuō,15,conj
+665,乱,randomly,luàn,15,adv
+666,约会,date,yuēhuì,16,w
+667,同,same,tóng,16,adj
+668,印象,impression,yìnxiàng,16,n
+669,成,to become,chéng,16,v
+670,演,to perform,yǎn,16,v
+671,费,to spend,fèi,16,v
+672,力气,strength,lìqi,16,n
+673,就,small number,jiù,16,adv
+674,俩,two,liǎ,16,nu + m
+675,后天,the day after tomorrow,hòutiān,16,t
+676,一言为定,that settles it,yī yán wéi dìng,16,prase
+677,记得,to remember,jìde,16,v
+678,想起来,to recall,xiǎng qǐlái,16,vc
+679,号码,number,hàomǎ,16,n
+680,搬,to move,bān,16,v
+681,打扫,to clean up,dǎsǎo,16,v
+682,扫,to sweep,sǎo,16,v
+683,整理,to tidy up,zhěnglǐ,16,v
+684,房间,room,fángjiān,16,n
+685,旅行,to travel,lǚxíng,16,v
+686,电,electricity,diàn,16,n
+687,租房子,to rent a house,zū fángzi,17,w
+688,吵,noisy,chǎo,17,v / adj
+689,连,even,lián,17,prep
+690,做饭,to cook,zuòfàn,17,vo
+691,报纸,newspaper,bàozhǐ,17,n
+692,广告,advertisement,guǎnggào,17,n
+693,附近,nearby,fùjìn,17,n
+694,套,(set),tào,17,m
+695,公寓,apartment,gōngyù,17,n
+696,出租,to rent out,chūzū,17,v
+697,走路,to walk,zǒulù,17,vo
+698,分钟,minute,fēnzhōng,17,n
+699,厨房,kitchen,chúfáng,17,n
+700,卫生间,bathroom,wèishēngjiān,17,n
+701,客厅,living room,kètīng,17,n
+702,家具,furniture,jiājù,17,n
+703,可能,possibly,kěnéng,17,mv / adj
+704,一房一厅,one bedroom and one living room,yì fáng yì tīng,17,prase
+705,干净,clean,gānjìng,17,adj
+706,沙发,sofa,shāfā,17,n
+707,饭桌,dining table,fànzhuō,17,n
+708,椅子,chair,yǐzi,17,n
+709,书桌,desk,shūzhuō,17,n
+710,书架,bookshelf,shūjià,17,n
+711,哪里,there,nǎlǐ,17,pr
+712,安静,quiet,ānjìng,17,adj
+713,房租,rent,fángzū,17,n
+714,元,Chinese currency,yuán,17,m
+715,美元,US dollar,měiyuán,17,n
+716,人民币,Chinese yuan,rénmínbì,17,n
+717,人民,people,rénmín,17,n
+718,币,currency,bì,17,n
+719,差不多,almost,chàbuduō,17,adv / adj
+720,费,fee,fèi,17,n
+721,押金,deposit,yājīn,17,n
+722,当,to serve as,dāng,17,v
+723,还,to return,huán,17,v
+724,另外,in addition,lìngwài,17,conj
+725,准,to allow,zhǔn,17,v
+726,养,to raise,yǎng,17,v
+727,宠物,pet,chǒngwù,17,n
+728,兴趣,interest,xìngqù,17,n
+729,灯,light,dēng,17,n
+730,运动,sports,yùndòng,18,w
+731,当然,of course,dāngrán,18,adv
+732,胖,fat,pàng,18,adj
+733,怕,to fear,pà,18,v
+734,简单,simple,jiǎndān,18,adj
+735,跑步,to jog,pǎobù,18,vo
+736,跑,to run,pǎo,18,v
+737,难受,uncomfortable,nánshòu,18,adj
+738,网球,tennis,wǎngqiú,18,n
+739,拍,racket,pāi,18,n
+740,篮球,basketball,lánqiú,18,n
+741,游泳,to swim,yóuyǒng,18,vo
+742,危险,dangerous,wēixiǎn,18,adj
+743,淹死,to drown,yānsǐ,18,vc
+744,愿意,to be willing,yuànyì,18,av
+745,上大学,to attend college,shàng dàxué,18,vo
+746,为了,for the sake of,wèile,18,prep
+747,提高,to improve,tígāo,18,v
+748,水平,level,shuǐpíng,18,n
+749,足球,soccer,zúqiú,18,n
+750,比赛,game; match,bǐsài,18,n / v
+751,国际,international,guójì,18,adj
+752,美式,American style,měishì,18,adj
+753,应该,should,yīnggāi,18,mv
+754,脚,foot,jiǎo,18,n
+755,踢,to kick,tī,18,v
+756,手,hand,shǒu,18,n
+757,抱,to hold,bào,18,v
+758,压,to press,yā,18,v
+759,被,by (passive),bèi,18,prep
+760,担心,to worry,dānxīn,18,vo
+761,棒,great,bàng,18,adj
+762,运动服,sportswear,yùndòngfú,18,n
+763,半天,half a day,bàntiān,18,t
