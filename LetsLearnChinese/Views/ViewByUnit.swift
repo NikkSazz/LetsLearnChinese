@@ -176,14 +176,14 @@ struct ViewByUnit: View {
     private func loadCharacters(for unitID: Int) {
         guard let dbPath = Bundle.main.path(forResource: "llcdb", ofType: "sqlite") else {
             print("Database not found")
-            return // dbPath
-        } // guard dbPath
-        
+            return
+        }
+
         var db: OpaquePointer?
         if sqlite3_open(dbPath, &db) == SQLITE_OK {
             defer { sqlite3_close(db) }
 
-            let query = "SELECT chinese, english, pinyin, id FROM Characters WHERE unit_id = ?"
+            let query = "SELECT * FROM Characters WHERE unit_id = ?"
             var statement: OpaquePointer?
 
             if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK {
@@ -192,13 +192,14 @@ struct ViewByUnit: View {
                 var fetchedCharacters: [Character] = []
 
                 while sqlite3_step(statement) == SQLITE_ROW {
-                    let chinese = String(cString: sqlite3_column_text(statement, 0))
-                    let english = String(cString: sqlite3_column_text(statement, 1))
-                    let pinyin = String(cString: sqlite3_column_text(statement, 2))
-                    let id = Int(sqlite3_column_int(statement, 3))
+                    let id = Int(sqlite3_column_int(statement, 0))
+                    let chinese = String(cString: sqlite3_column_text(statement, 1))
+                    let english = String(cString: sqlite3_column_text(statement, 2))
+                    let pinyin = String(cString: sqlite3_column_text(statement, 3))
+                    let unitID = Int(sqlite3_column_int(statement, 4))
+                    let type = String(cString: sqlite3_column_text(statement, 5))
 
-                    let character = Character(id: id, chinese: chinese, english: english, pinyin: pinyin)
-//                    print("\t\(character.id)\t\(character.chinese)\t\(character.english)\t\(character.pinyin)")
+                    let character = Character(id: id, chinese: chinese, english: english, pinyin: pinyin, unit_id: unitID, type: type)
                     fetchedCharacters.append(character)
                 }
 
@@ -206,11 +207,12 @@ struct ViewByUnit: View {
                 characters = fetchedCharacters
             } else {
                 print("Failed to prepare statement")
-            } // prep statement
+            }
         } else {
             print("Failed to open database")
-        } // open path
-    }//loadCharacters func
+        }
+    }
+
     
 } // struct ViewByUnit
 
