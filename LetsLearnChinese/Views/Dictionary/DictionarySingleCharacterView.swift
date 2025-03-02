@@ -29,7 +29,7 @@ struct DictionarySingleCharacterView: View {
                 
                 Spacer()
                 
-                bigWord(character: character, expanded: expandedChar)
+                bigWord(character: character, expanded: expandedChar, expandedListLen: expandedList.count)
                 
                 MoreWordsWith(fullWord: character.chinese, expandedChar: $expandedChar, expandedList: $expandedList)
                 
@@ -47,12 +47,13 @@ struct DictionarySingleCharacterView: View {
 struct bigWord: View {
     let character: Character
     let expanded: String?
+    let expandedListLen: Int
     
     var body: some View {
         HStack {
             Spacer()
             
-            coolDictText(anythingExpanded: expanded, character: character)
+            coolDictText(anythingExpanded: expanded, character: character, expandedList: expandedListLen)
 //                        .padding(.horizontal)
             
             VStack(spacing: 10) {
@@ -74,12 +75,15 @@ struct bigWord: View {
 
 struct coolDictText: View {
     let anythingExpanded: String?
+    let expandedList: Int
     let character: Character
     
     var body: some View {
         Text(anythingExpanded != nil ? character.chinese.prefix(1) + "..." : character.chinese)
             .font(.system(size: anythingExpanded != nil ? 50 : 65)) // Reduce font size if folded
-            .lineLimit(anythingExpanded != nil ? 1 : 2) // Ensure text stays on one line if folded
+            .lineLimit(
+                anythingExpanded == nil ? 2 : // I have no idea what this does, cuz it doesnt even work :/ ?
+                    expandedList > 3 ? 1 : 2)
             .padding()
             .frame(width: 150, alignment: .center) // Set fixed width for consistency
             .background(
