@@ -762,3 +762,72 @@ id,chinese,english,pinyin,unit_id,type
 761,棒,great,bàng,18,adj
 762,运动服,sportswear,yùndòngfú,18,n
 763,半天,half a day,bàntiān,18,t
+764,旅行,to travel,lǚxíng,19,v
+765,马上,immediately,mǎshàng,19,adv
+766,放假,to have a holiday,fàng jià,19,vo
+767,放,to let go,fàng,19,v
+768,假,holiday,jià,19,n
+769,公司,company,gōngsī,19,n
+770,实习,to intern,shíxí,19,v
+771,打工,to work part-time,dǎgōng,19,vo
+772,计划,plan,jìhuà,19,n / v
+773,暑假,summer vacation,shǔjià,19,n
+774,打算,to plan,dǎsuàn,19,v / n
+775,父母,parents,fùmǔ,19,n
+776,首都,capital city,shǒudū,19,n
+777,政治,politics,zhèngzhì,19,n
+778,文化,culture,wénhuà,19,n
+779,名胜古迹,famous scenic spots and historic sites,míngshèng gǔjì,19,loc
+780,有名,famous,yǒumíng,19,adj
+781,导游,tour guide,dǎoyóu,19,n
+782,护照,passport,hùzhào,19,n
+783,订,to reserve,dìng,19,v
+784,签证,visa,qiānzhèng,19,n
+785,旅行社,travel agency,lǚxíngshè,19,n
+786,长城,Great Wall,chángchéng,19,loc
+787,香港,Hong Kong,xiānggǎng,19,loc
+788,台北,Taipei,táiběi,19,loc
+789,初,beginning,chū,19,n
+790,单程,one-way,dānchéng,19,n
+791,往返,round-trip,wǎngfǎn,19,v
+792,航空,aviation,hángkōng,19,n
+793,查,to check,chá,19,v
+794,航班,flight,hángbān,19,n
+795,千,thousand,qiān,19,nu
+796,直飞,direct flight,zhífēi,19,w
+797,打折,to discount,dǎzhé,19,vo
+798,转机,to change planes,zhuǎnjī,19,vo
+799,靠,to lean on,kào,19,v
+800,窗户,window,chuānghù,19,n
+801,走道,aisle,zǒudào,19,n
+802,份,measure word for meal order,fèn,19,m
+803,素餐,vegetarian meal,sùcān,19,n
+804,旅馆,hotel,lǚguǎn,19,n
+805,租,to rent,zū,19,v
+806,中国国际航空公司,Air China,zhōngguó guójì hángkōng gōngsī,19,loc
+807,西北航空公司,Northwest Airlines,xīběi hángkōng gōngsī,19,loc
+808,在机场,at the airport,zài jīchǎng,20,w
+809,行李,luggage,xíngli,20,n
+810,托运,to check (luggage),tuōyùn,20,v
+811,包,bag,bāo,20,n
+812,箱子,suitcase,xiāngzi,20,n
+813,超重,overweight (of luggage),chāozhòng,20,v
+814,超,to exceed,chāo,20,v
+815,登机牌,boarding pass,dēngjīpái,20,n
+816,牌,card,pái,20,n
+817,登机口,boarding gate,dēngjīkǒu,20,n
+818,口,gate,kǒu,20,n
+819,哭,to cry,kū,20,v
+820,地,particle (used before a verb),de,20,p
+821,照顾,to take care of,zhàogu,20,v
+822,起飞,to take off,qǐfēi,20,v
+823,小心,to be careful,xiǎoxīn,20,v
+824,一路平安,have a safe trip,yílù píng'ān,20,prase
+825,叔叔,uncle,shūshu,20,n
+826,阿姨,aunt,āyí,20,n
+827,欢迎,welcome,huānyíng,20,v
+828,瘦,thin,shòu,20,adj
+829,爷爷,grandfather (paternal),yéye,20,n
+830,奶奶,grandmother (paternal),nǎinai,20,n
+831,烤鸭,roast duck,kǎoyā,20,n
+832,首都机场,Capital Airport,shǒudū jīchǎng,20,loc
