@@ -26,6 +26,15 @@ struct Character: Identifiable {
     
 }
 
+struct Unit: Identifiable {
+    let id: Int
+    let nameEnglish: String
+    let nameChinese: String
+    let namePinyin: String
+    let level_id: Int
+    let level_part: Int
+}
+
 func unitChinese(unitName: String) -> String {
     switch unitName {
     case "Greetings":

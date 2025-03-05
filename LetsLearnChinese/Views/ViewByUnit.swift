@@ -22,34 +22,10 @@ struct ViewByUnit: View {
                 ScrollView {
                     VStack (alignment: .leading, spacing: 10) {
                         
-                        /*
-                        NavigationLink(destination: AllCharView()){
-                            ZStack {
-                                Rectangle()
-                                    .fill(Color.buttonEdge)
-                                    .frame(height: 50)
-                                    .cornerRadius(10)
-                                
-                                Rectangle()
-                                    .fill(Color.buttonFill)
-                                    .frame(height: 50 - 10)
-                                    .cornerRadius(10)
-                                    .padding(.all, 4)
-                                
-                                
-                                Text("To all Characters")
-                                    .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity)
-                                    .font(.custom("InknutAntiqua-Bold", size: UIScreen.main.bounds.width * 0.08 - 5))
-                                    .lineLimit(1)
-                            } // z
-                        } // navlink
-                        .padding()
-                        .padding(.bottom, -25)
-                         */
                         Spacer(minLength: 10)
                         
                         ForEach(units, id: \.id) { unit in
+                            
                             Button(action: {
                                 withAnimation {
                                     if expandedUnitID == unit.id {
@@ -215,15 +191,6 @@ struct ViewByUnit: View {
 
     
 } // struct ViewByUnit
-
-struct Unit: Identifiable {
-    let id: Int
-    let nameEnglish: String
-    let nameChinese: String
-    let namePinyin: String
-    let level_id: Int
-    let level_part: Int
-}
 
 #Preview {
     ViewByUnit()
