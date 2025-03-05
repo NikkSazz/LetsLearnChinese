@@ -7,8 +7,6 @@
 
 import SwiftUI
 import SceneKit
-import AVFoundation
-
 
 struct duckieView: View {
     init(){ // for picker style
@@ -19,12 +17,13 @@ struct duckieView: View {
     
     @State var duckType: Int = 0
     
-    @State private var audioPlayer: AVAudioPlayer?
+//    @State private var audioPlayer: AVAudioPlayer? // Should be part of the quacks file
     
     let ducks = [
         Duck(id: 0, name: "Rubber", modelName: "duck.obj", textureName: "duck.png"),
         Duck(id: 1, name: "Red", modelName: "duck.obj", textureName: "redduck.png"),
         Duck(id: 2, name: "Green", modelName: "greenduck.obj", textureName: "greenduck.png"),
+        Duck(id: 3, name: "Frog", modelName: "frog.obj", textureName: "frog.tif")
 //        Duck(id: 3, name: "Traveler ", modelName: "duck_fin_posed.obj", textureName: "greenduck.png"),
 //        Duck(id: 4, name: "Wooden", modelName: "wooden_duck_toy.obj", textureName: "greenduck.png")
         ]
@@ -145,33 +144,6 @@ struct duckieView: View {
             .ignoresSafeArea()
         }// z
     }// body
-    
-    func playQuackSound() {
-        // Ensure the audio session is set up for playback
-        do {
-            let audioSession = AVAudioSession.sharedInstance()
-            try audioSession.setCategory(.playback, mode: .default, options: .mixWithOthers)
-            try audioSession.setActive(true)
-        } catch {
-            print("Error setting up audio session: \(error.localizedDescription)")
-            return
-        }
-
-        // Try loading the sound file
-        guard let url = Bundle.main.url(forResource: "quack", withExtension: "mp3") else {
-            print("Sound file not found")
-            return
-        }
-
-        // Play the sound
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.play()
-        } catch {
-            print("Failed to play sound: \(error.localizedDescription)")
-        }
-    }
-
 } // struct
 
 #Preview {
