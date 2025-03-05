@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MainMenu: View {
     
-    @State var emojis: Bool = true
+    @AppStorage("mainMenuEmoji") var emojis: Bool = false
     
-    @State var construction: Bool = false
+    @AppStorage("mainMenuConstruction") var construction: Bool = false
     
     var body: some View {
         
