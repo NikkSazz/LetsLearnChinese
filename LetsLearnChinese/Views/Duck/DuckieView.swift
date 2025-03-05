@@ -17,6 +17,7 @@ struct duckieView: View {
     }
     
     @State var duckType: Int = 0
+    @AppStorage("randQuack") var randQuack: Bool = false
     
 //    @State private var audioPlayer: AVAudioPlayer? // Should be part of the quacks file
     
@@ -58,7 +59,7 @@ struct duckieView: View {
                             
                             Button { // action
                                 
-                                playQuackSound()
+                                playQuackSound(random: randQuack)
 //                                print("Quack!")
                                 quackCount += 1
                                 
@@ -109,7 +110,12 @@ struct duckieView: View {
                         
                         DividerStyle().opacity(0.2)
                         
+                        Toggle("Random Quacks", isOn: $randQuack)
+                            .toggleStyle(AccentToggleStyle())
+                        
                         Text("Quack: \(quackCount)")
+                            .foregroundStyle(.accent.opacity(0.8))
+                            .padding(.horizontal)
                         
 //                        Text("*Note some of the ducks may not be centerd.")
 //                            .foregroundStyle(.gray.opacity(0.5))

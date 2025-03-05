@@ -6,7 +6,7 @@
 //
 import AVFoundation
 
-func playQuackSound() {
+func playQuackSound(random rand: Bool) {
     var audioPlayer: AVAudioPlayer?
     // Ensure the audio session is set up for playback
     do {
@@ -19,7 +19,7 @@ func playQuackSound() {
     }
 
     // Try loading the sound file
-    guard let url = Bundle.main.url(forResource: "quack", withExtension: "mp3") else {
+    guard let url = Bundle.main.url(forResource: rand ? randQuackName() : "quack", withExtension: "mp3") else {
         print("Sound file not found")
         return
     }
@@ -31,4 +31,21 @@ func playQuackSound() {
     } catch {
         print("Failed to play sound: \(error.localizedDescription)")
     }
+}
+
+func randQuackName() -> String {
+    let options = [
+        "quack",
+        "quack",
+        "quack",
+        "quack",
+        "quack2",
+        "quack3",
+        "quack4",
+        "quack5",
+        "quack6",
+        "quack7",
+        "quack8"
+    ]
+    return options.randomElement()! // ! should not be an issue
 }
