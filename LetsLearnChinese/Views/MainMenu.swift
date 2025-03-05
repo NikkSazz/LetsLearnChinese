@@ -51,6 +51,7 @@ struct MainMenu: View {
                                                 },
                                         continueTo: "Note Cards"),
                                        buttonHeight: buttonHeight)
+                        
                     if construction {
                         let prtclsTxt = emojis ? "✨ Particles 🌀" : "Particles"
                         homeMenuButton(text: prtclsTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
@@ -86,12 +87,11 @@ struct MainMenu: View {
                         homeMenuButton(text: reviewTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                             .disabled(true)
-                        
-                        let pinTxt = emojis ? "📌🩷 Pinned 🩷" : "    Pinned"
-                        homeMenuButton(text: pinTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
-                            .opacity(0.5)
-                            .disabled(true)
                     }
+                        
+                        let pinTxt = emojis ? "🩷 Favorites 🩷" : "Favorites"
+                        homeMenuButton(text: pinTxt, destination: Favorites(), buttonHeight: buttonHeight)
+                            .opacity(0.5)
                     
                         let duckTxt = emojis ? "🥹 Emotional Duck 🦆" : "Emotional Duck"
                         homeMenuButton(text: duckTxt, destination: duckieView(), buttonHeight: buttonHeight)
