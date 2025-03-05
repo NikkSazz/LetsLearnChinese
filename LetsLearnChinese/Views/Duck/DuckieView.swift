@@ -9,6 +9,7 @@ import SwiftUI
 import SceneKit
 
 struct duckieView: View {
+    
     init(){ // for picker style
         UISegmentedControl.appearance().selectedSegmentTintColor = .accent
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
@@ -25,6 +26,8 @@ struct duckieView: View {
         Duck(id: 2, name: "Green", modelName: "greenduck.obj", textureName: "greenduck.png"),
         Duck(id: 3, name: "Frog", modelName: "frog.obj", textureName: "frogTexturePNG.png")
         ]
+    
+    @AppStorage("quackCount") private var quackCount: Int = 0
     
     var body: some View{
         ZStack{
@@ -53,9 +56,13 @@ struct duckieView: View {
                             
                             Spacer()
                             
-                            Button {
+                            Button { // action
+                                
                                 playQuackSound()
-                                print("Quack!")
+//                                print("Quack!")
+                                quackCount += 1
+                                
+                                
                             } label: {
                                 Text("Quack       ")
                                     .font(.title2)
