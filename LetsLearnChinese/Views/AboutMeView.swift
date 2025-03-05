@@ -259,17 +259,17 @@ struct LinkStyle: View {
 struct DividerStyle: View {
     var body: some View {
         ZStack {
+            
             Divider()
-                .frame(height: 2)
-                .background(.accent)
                 .blur(radius: 10)
                 .opacity(0.8)
             
             Divider()
-                .frame(height: 2)
                 .frame(maxWidth: .infinity)
-                .background(.accent)
+            
         }
+        .frame(height: 2)
+        .background(.accent)
     }
 }
 

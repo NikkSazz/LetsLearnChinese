@@ -89,8 +89,8 @@ struct MainMenu: View {
                             .disabled(true)
                     }
                         
-                        let pinTxt = emojis ? "🩷 Favorites 🩷" : "Favorites"
-                        homeMenuButton(text: pinTxt, destination: Favorites(), buttonHeight: buttonHeight)
+                        let favTxt = emojis ? "🩷 Favorites 🩷" : "Favorites"
+                        homeMenuButton(text: favTxt, destination: Favorites(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                     
                         let duckTxt = emojis ? "🥹 Emotional Duck 🦆" : "Emotional Duck"

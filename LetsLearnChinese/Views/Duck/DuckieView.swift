@@ -107,6 +107,10 @@ struct duckieView: View {
                             .foregroundStyle(.accent.opacity(0.8))
                             .padding(.horizontal)
                         
+                        DividerStyle().opacity(0.2)
+                        
+                        Text("Quack: \(quackCount)")
+                        
 //                        Text("*Note some of the ducks may not be centerd.")
 //                            .foregroundStyle(.gray.opacity(0.5))
 
