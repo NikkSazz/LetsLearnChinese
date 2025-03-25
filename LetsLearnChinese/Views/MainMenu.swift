@@ -87,11 +87,11 @@ struct MainMenu: View {
                         homeMenuButton(text: reviewTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                             .disabled(true)
-                    }
                         
                         let favTxt = emojis ? "🩷 Favorites 🩷" : "Favorites"
                         homeMenuButton(text: favTxt, destination: Favorites(), buttonHeight: buttonHeight)
                             .opacity(0.5)
+                    }
                     
                         let duckTxt = emojis ? "🥹 Emotional Duck 🦆" : "Emotional Duck"
                         homeMenuButton(text: duckTxt, destination: duckieView(), buttonHeight: buttonHeight)
@@ -101,7 +101,7 @@ struct MainMenu: View {
                         homeMenuButton(text: statTxt, destination: NotImplimentedView(), buttonHeight: buttonHeight)
                             .opacity(0.5)
                             .disabled(true)
-                    }
+                   }
                         
                         let abMeTxt = emojis ? "🧑‍💻 About Me 👋" : "About Me"
                         homeMenuButton(text: abMeTxt, destination: AboutMeView(), buttonHeight: buttonHeight)
