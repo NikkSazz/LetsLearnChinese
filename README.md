@@ -5,7 +5,7 @@ Language Learning app developed for my College's Chinese Cirriculum
 Developer: Nikolai Sazonov
 
 ---
-Watch these YouTube Video!
+Watch these!
 
 [NoteCard](https://www.youtube.com/watch?v=ultmWWEEGr4&list=PLRPU2LPZpxJKptsv8RwL1O3DNNRM3YfSV&index=1)
 
