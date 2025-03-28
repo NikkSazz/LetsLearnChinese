@@ -53,6 +53,11 @@ struct AllCharView: View {
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 5) { // load only the visible elements
                         
+                        // Show view by type, if there is no input text
+                        if inputText == "" {
+                            homeMenuButton(text: "View by Type", destination: ViewByType(), buttonHeight: 75)
+                        }
+                        
                         ForEach(searchResults == nil ? characters : searchResults!, id: \ .id) { character in
                             NavigationLink(destination: DictionarySingleCharacterView(character: character)) {
                                     CharacterTriple(character: character)
