@@ -25,14 +25,10 @@ Let's Learn Chinese has the following features:
 - **Emotional Duck**: 3-dimensional support duck.
 - **Statistics**: Statistics of the users percentage error of given characters or units, and game modes.
 
-If applicable, include screenshots or a demo GIF:
-
-![Screenshot](link-to-screenshot.png)
-
 ---
 
 ## Contact
 
-If you have any questions, feel free to reach out:
-- Email: nsazonov9@example.com
+If you have any questions, feel free to reach out to me:
+- Email: nsazonov9@gmail.com
 - GitHub: [@NikkSazz](https://github.com/NikkSazz)
